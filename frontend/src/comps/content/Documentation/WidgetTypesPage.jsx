@@ -7,13 +7,15 @@ const getWidgetsData = async () => {
       name: 'Live Conversation Widget',
       desc: 'Allows real-time chat between visitors and your team.',
       useCases: ['Sales inquiries', 'Support questions', 'Pre-purchase clarifications'],
-      features: ['Real-time chat', 'Email capture (paid plans)', 'Conversation history', 'Team responses from dashboard']
+      features: ['Real-time chat', 'Email capture (paid plans)', 'Conversation history', 'Team responses from dashboard'],
+      link:  'available-widgets/live-conversation'
     },
     {
       name: 'AI Chatbot Widget',
       desc: 'Automates responses to common questions using AI.',
       useCases: ['FAQs', 'Basic lead qualification', 'After-hours support'],
-      features: ['Custom instructions', 'Controlled AI usage via credits', 'Human takeover when needed']
+      features: ['Custom instructions', 'Controlled AI usage via credits', 'Human takeover when needed'],
+      link:  'available-widgets/ai-chatbot-widget'
     },
     {
       name: 'Contact Form Widget',

@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       subItems: [
         { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget' },
         { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot Widget' },
-        // { id: 'available-widgets/live-chat', label: 'Live Chat Widget' },
+        { id: 'available-widgets/live-conversation', label: 'Live Conversation Widget' },
         // { id: 'available-widgets/comment-box', label: 'Comment Box Widget' },
         // { id: 'available-widgets/visitor-tracker', label: 'Visitor Tracker' },
         // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }
@@ -140,7 +140,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                           <Link
                             href={href}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors group ${
-                              isActive || isSubItemActive ? 'bg-orange-600 text-white' : 'text-gray-300 hover:bg-gray-800'
+                              isActive || isSubItemActive ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'
                             }`}
                             onClick={handleLinkClick}
                           >
@@ -171,7 +171,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                                     key={subItem.id}
                                     href={`/${subItem.id}`}
                                     className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-                                      isSubActive ? 'bg-orange-600/80 text-white' : 'text-gray-300 hover:bg-gray-800'
+                                      isSubActive ? 'bg-blue-600/80 text-white' : 'text-gray-300 hover:bg-gray-800'
                                     }`}
                                     onClick={handleLinkClick}
                                   >
@@ -187,7 +187,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                         <Link
                           href={href}
                           className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-                            isActive ? 'bg-orange-600 text-white' : 'text-gray-300 hover:bg-gray-800'
+                            isActive ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'
                           }`}
                           onClick={handleLinkClick}
                         >

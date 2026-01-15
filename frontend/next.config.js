@@ -1,9 +1,18 @@
-const path = require('path');
+const path = require("path");
 
+/** @type {import('next').NextConfig} */
 module.exports = {
-  turbopack: {}, // Enable Turbopack with an empty configuration
+  output: "export",           // Static export for Netlify
+  images: {
+    unoptimized: true,        // Required for static export
+  },
+
+  // Explicitly disable Turbopack
+  turbopack: {},
+
+  // Use webpack (stable)
   webpack: (config) => {
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    config.resolve.alias["@"] = path.resolve(__dirname, "src");
     return config;
   },
 };

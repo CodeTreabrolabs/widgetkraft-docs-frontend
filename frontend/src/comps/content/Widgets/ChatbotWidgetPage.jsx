@@ -76,7 +76,7 @@ export default function ChatbotWidgetPage() {
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
           <div className="text-center">
             {/* Using Next.js Image component for better performance */}
-            <img src="/images/chatbot/image.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/chatbot/image.png" alt="WidgetKraft: Creating an AI Chatbot Widget - Dashboard Selection" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">{widgetDetails.screenshotCaption}</p>
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function ChatbotWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/chatbot/chatbot-one.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/chatbot/chatbot-one.png" alt="WidgetKraft: Header Tab - Custom title, subtitle, and logo configuration" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Chatbot header with custom title, subtitle, and logo</p>
           </div>
         </div>
@@ -257,7 +257,7 @@ export default function ChatbotWidgetPage() {
 
             <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
                 <div className="text-center">
-                    <img src="/images/chatbot/chatbot-two.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+                    <img src="/images/chatbot/chatbot-two.png" alt="WidgetKraft: Chat Tab - Custom message bubble colors and fonts" className="mx-auto mb-3 rounded-lg shadow-lg" />
                     <p className="text-gray-300 text-sm mt-4">Example: Chatbot Chat with custom bubble colors and Fonts</p>
                 </div>
             </div>
@@ -359,7 +359,7 @@ export default function ChatbotWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8">
           <div className="text-center">
-            <img src="/images/chatbot/chatbot-three.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/chatbot/chatbot-three.png" alt="WidgetKraft: Input Tab - Styled input field with custom colors and placeholder text" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Styled input field with custom colors</p>
           </div>
         </div>
@@ -427,7 +427,7 @@ export default function ChatbotWidgetPage() {
             </div>
             <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
                 <div className="text-center">
-                    <img src="/images/chatbot/chatbot-four.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+                    <img src="/images/chatbot/chatbot-four.png" alt="WidgetKraft: Appearance Tab - Widget dimensions, background color, and theme customization" className="mx-auto mb-3 rounded-lg shadow-lg" />
                     <p className="text-gray-300 text-sm mt-4">Example: Chatbot Appearence with customization and Background Settings</p>
                 </div>
             </div>
@@ -499,7 +499,7 @@ export default function ChatbotWidgetPage() {
           </div>
           <div className="bg-gray-800 mt-2 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
             <div className="text-center">
-                <img src="/images/chatbot/chatbot-five-1.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+                <img src="/images/chatbot/chatbot-five-1.png" alt="WidgetKraft: AI Tab - Master prompt configuration and AI behavior settings" className="mx-auto mb-3 rounded-lg shadow-lg" />
                 <p className="text-gray-300 text-sm mt-4">Example: AI tab with custom master prompt and generate prompt CTA through site url</p>
             </div>
           </div>
@@ -529,7 +529,7 @@ export default function ChatbotWidgetPage() {
             </div>
             <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
                 <div className="text-center">
-                    <img src="/images/chatbot/chatbot-five-2.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+                    <img src="/images/chatbot/chatbot-five-2.png" alt="WidgetKraft: AI Prompt Generation - Website URL input for automatic master prompt generation" className="mx-auto mb-3 rounded-lg shadow-lg" />
                 </div>
             </div>
           </div>
@@ -565,7 +565,7 @@ export default function ChatbotWidgetPage() {
           
           <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
             <div className="text-center">
-                <img src="/images/chatbot/chatbot-six.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+                <img src="/images/chatbot/chatbot-six.png" alt="WidgetKraft: Code Tab - Embed code snippet with widget ID and integration instructions" className="mx-auto mb-3 rounded-lg shadow-lg" />
             </div>
           </div>
           

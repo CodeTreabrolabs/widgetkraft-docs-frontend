@@ -81,7 +81,7 @@ export default async function ContactFormWidgetPage() {
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
           <div className="text-center">
             {/* Using Next.js Image component for better performance */}
-            <img src="/images/contactform/first.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/contactform/first.png" alt="WidgetKraft: Creating a Contact Form Widget - Dashboard Selection" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">{widgetDetails.screenshotCaption}</p>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default async function ContactFormWidgetPage() {
         {/* Screenshot Placeholder 2 */}
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-12 mb-6">
           <div className="text-center">
-            <img src="/images/contactform/second.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/contactform/second.png" alt="WidgetKraft: Form Editor Interface with Live Preview" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: Form Editor Interface with Live Preview</p>
           </div>
         </div>
@@ -189,7 +189,7 @@ export default async function ContactFormWidgetPage() {
         {/* Screenshot Placeholder 3 */}
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/contactform/third.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/contactform/third.png" alt="WidgetKraft: Form Fields - Field Settings Panel" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: Field Settings Panel</p>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default async function ContactFormWidgetPage() {
         {/* Screenshot Placeholder 4 */}
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/contactform/fourth.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/contactform/fourth.png" alt="WidgetKraft: Form Design - Theme Presets and Color Customization" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: Theme Presets & Color Customization</p>
           </div>
         </div>
@@ -323,7 +323,7 @@ export default async function ContactFormWidgetPage() {
 
         {/* Live Preview */}
         <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-          <img src="/images/contactform/fifth.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+          <img src="/images/contactform/fifth.png" alt="WidgetKraft: Form Design - Live Preview Panel" className="mx-auto mb-3 rounded-lg shadow-lg" />
           <p className="text-gray-300">
             The left panel always shows the exact final form. What you see here is exactly what visitors 
             will see on your website. No save required to preview changes.
@@ -387,7 +387,7 @@ export default async function ContactFormWidgetPage() {
         {/* Screenshot Placeholder 5 */}
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/contactform/sixth.png" alt="Dashboard Create Widget Screenshot" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/contactform/sixth.png" alt="WidgetKraft: Code Tab - Embed Code with Copy Button" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: Embed Code Tab with Copy Button</p>
           </div>
         </div>

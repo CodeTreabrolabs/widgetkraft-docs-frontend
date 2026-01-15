@@ -75,7 +75,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/live-one.png" alt="Live Conversation Widget Dashboard" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-one.png" alt="WidgetKraft: Creating a Live Conversation Widget - Dashboard Selection" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Dashboard showing how to active Live Conversation widget</p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/live-two.png" alt="Live Conversation Header Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-two.png" alt="WidgetKraft: Header Tab - Custom title, subtitle, and welcome message" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Live Conversation header with custom title, subtitle, and welcome message</p>
           </div>
         </div>
@@ -237,7 +237,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/live-three.png" alt="Live Conversation Chat Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-three.png" alt="WidgetKraft: Chat Tab - Custom message bubble colors and styling" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Live Conversation with custom bubble colors and styling</p>
           </div>
         </div>
@@ -314,7 +314,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/live-four.png" alt="Live Conversation Input Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-four.png" alt="WidgetKraft: Input Tab - Message input field configuration" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Styled input field with custom colors and placeholder</p>
           </div>
         </div>
@@ -416,7 +416,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/live-five.png" alt="Live Conversation Appearance Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-five.png" alt="WidgetKraft: Appearance Tab - Widget dimensions and visual styling" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Complete widget with custom dimensions and styling</p>
           </div>
         </div>
@@ -434,7 +434,7 @@ export default function LiveConversationWidgetPage() {
           <p className="text-gray-300 mb-4">You'll see a ready-to-use embed snippet that includes your widget ID:</p>
           
           <div className="text-center">
-            <img src="/images/liveconversation/live-six.png" alt="Live Conversation Appearance Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/live-six.png" alt="WidgetKraft: Code Tab - Embed code snippet with widget ID" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Example: Complete widget with custom dimensions and styling</p>
           </div>
 
@@ -497,7 +497,7 @@ export default function LiveConversationWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
           <div className="text-center">
-            <img src="/images/liveconversation/chat-eight.png" alt="Live Conversation Admin Dashboard Preview" className="mx-auto mb-4 rounded-lg shadow-lg" />
+            <img src="/images/liveconversation/chat-eight.png" alt="WidgetKraft: Admin Dashboard - Active sessions and conversations" className="mx-auto mb-4 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm mt-4">Admin dashboard showing active sessions and conversations</p>
           </div>
         </div>

@@ -21,7 +21,7 @@ const Header = ({ onMenuClick }) => {
   };
   
   return (
-    <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-gray-900 text-gray-300 border-b border-gray-800 z-30 flex items-center justify-between px-6">
+    <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-black text-gray-300 border-b border-gray-800 z-30 flex items-center justify-between px-6">
       <button onClick={onMenuClick} className="lg:hidden">
         <Menu size={24} className="text-gray-300" />
       </button>
@@ -32,7 +32,8 @@ const Header = ({ onMenuClick }) => {
         {/* Removed theme toggle button since only dark theme is required */}
         
         <Link
-          href="/dashboard"
+          href="https://www.widgetkraft.com"
+          target='_blank'
           className="px-4 py-2 bg-blue-600 hover:bg-orange-700 text-white rounded-lg transition-colors text-sm"
         >
           Dashboard →

@@ -98,14 +98,15 @@ const Sidebar = ({ isOpen, onClose }) => {
       
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 left-0 h-full bg-gray-900 text-gray-300 w-64 border-r border-gray-800 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full bg-black text-gray-300 w-64 border-r border-gray-800 z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 overflow-y-auto`}
       >
-        <div className="p-4 border-b border-gray-800">
+        <div className="p-4 border-b border-gray-800 h-16">
           <div className="flex items-center justify-between">
+            <img src="/widgetkraft_logo.png" alt="WidgetKraft Logo" className="h-7 w-auto" />
             <h1 className="text-xl font-bold text-white">
-              WidgetKraft<span className="text-blue-600">docs</span>
+              WidgetKraft<span className="text-blue-600"> Docs</span>
             </h1>
             <button onClick={onClose} className="lg:hidden">
               <X size={20} className="text-gray-300" />

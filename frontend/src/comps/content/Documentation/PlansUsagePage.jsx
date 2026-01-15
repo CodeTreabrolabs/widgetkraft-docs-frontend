@@ -24,10 +24,10 @@ const getPlansData = async () => {
       note: 'Credits reset monthly and do not roll over unless specified.',
     },
     credits: [
-      { type: 'Chat messages', usage: '1 credit per message' },
-      { type: 'Form submissions', usage: 'Credits based on complexity' },
-      { type: 'Meeting bookings', usage: 'Higher credit consumption' },
-      { type: 'Visitor events', usage: 'Minimal credit usage' },
+      // { type: 'Chat messages', usage: '1 credit per message' },
+      // { type: 'Form submissions', usage: 'Credits based on complexity' },
+      // { type: 'Meeting bookings', usage: 'Higher credit consumption' },
+      // { type: 'Visitor events', usage: 'Very Minimal credit usage' },
     ],
   };
 
@@ -72,7 +72,7 @@ export default async function PlansUsagePage() {
       <div className="bg-gray-800 p-6 rounded-lg mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-white">Understanding Credits</h2>
         <p className="text-gray-300 mb-4">
-          Credits ensure you only pay for what you use. Each interaction consumes credits based on the action type:
+          Credits ensure you only pay for what you use.
         </p>
         <ul className="text-gray-300 space-y-2">
           {plans.credits.map((credit, idx) => (

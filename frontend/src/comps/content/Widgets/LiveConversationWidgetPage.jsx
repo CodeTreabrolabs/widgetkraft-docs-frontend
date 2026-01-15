@@ -19,7 +19,7 @@ const getLiveConversationWidgetData = () => {
       'Configure your widget in the editor',
       'Copy the embed code to your site',
     ],
-    pricing: '0.8 credit / chat',
+    pricing: '0.8 credit / thread',
     sampleWidgetId: '1d8b83...b276',
   };
 };

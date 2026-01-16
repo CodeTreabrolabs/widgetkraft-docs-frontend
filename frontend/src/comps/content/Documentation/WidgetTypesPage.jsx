@@ -34,7 +34,8 @@ const getWidgetsData = async () => {
       name: 'Visitor Tracker Widget',
       desc: 'Track website visitors without complex analytics dashboards.',
       useCases: ['Traffic awareness', 'Basic visitor insights', 'Activity monitoring'],
-      features: ['Lightweight tracking', 'No setup complexity', 'Credit-efficient events']
+      features: ['Lightweight tracking', 'No setup complexity', 'Credit-efficient events'],
+      link:  'available-widgets/visitor-tracker-analysis'
     },
     {
       name: 'AI Meet Scheduler (Paid)',

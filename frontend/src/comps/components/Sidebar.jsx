@@ -26,11 +26,11 @@ const Sidebar = ({ isOpen, onClose }) => {
       section: 'Core Features',
       hasSubItems: true,
       subItems: [
-        { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget' },
         { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot Widget' },
+        { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget' },
         { id: 'available-widgets/live-conversation', label: 'Live Conversation Widget' },
+        { id: 'available-widgets/visitor-tracker-analysis', label: 'Visitor Tracking Analysis' },
         // { id: 'available-widgets/comment-box', label: 'Comment Box Widget' },
-        // { id: 'available-widgets/visitor-tracker', label: 'Visitor Tracker' },
         // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }
       ]
     },

@@ -763,11 +763,6 @@ export default function ChatbotWidgetPage() {
             <span>Update instantly without changing embed code</span>
           </div>
         </div>
-        <div className="bg-gray-900/50 p-4 rounded-lg border border-purple-800">
-          <p className="text-gray-300 italic">
-            <strong className="text-white">Powered by Claude AI:</strong> Your chatbot uses state-of-the-art language models to understand context, provide helpful responses, and create natural conversations that feel genuinely helpful to your visitors.
-          </p>
-        </div>
       </section>
     </div>
   );

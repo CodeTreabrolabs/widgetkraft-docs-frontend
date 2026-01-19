@@ -1,4 +1,5 @@
 import { MessageCircle, Users, Clock, Eye, Settings, Code, Palette, Save, Copy, CheckCircle, AlertCircle, Mail, Sparkles } from 'lucide-react';
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 // Server-side data fetching (in a real app, this would fetch from your API/database)
 const getLiveConversationWidgetData = () => {
@@ -28,12 +29,12 @@ export default function LiveConversationWidgetPage() {
   const widgetData = getLiveConversationWidgetData();
   
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="bg-gradient-to-br from-blue-600 to-teal-500 p-3 rounded-lg">
-            <MessageCircle size={28} className="text-white" />
+          <div className="bg-black p-3 rounded-lg">
+            <HiChatBubbleLeftRight size={28} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white">{widgetData.title}</h1>
         </div>
@@ -45,7 +46,7 @@ export default function LiveConversationWidgetPage() {
       </div>
 
       {/* What You Can Customize */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-8 border border-gray-700">
+      <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
         <h2 className="text-2xl font-semibold mb-4 text-white">You Can Fully Customize:</h2>
         <div className="grid md:grid-cols-2 gap-3">
           {widgetData.customizableFeatures.map((feature, idx) => (
@@ -58,7 +59,7 @@ export default function LiveConversationWidgetPage() {
       </div>
 
       {/* Creating a Live Conversation Widget */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating a Live Conversation Widget</h2>
         <p className="text-gray-300 mb-4">To create a Live Conversation widget:</p>
         
@@ -82,13 +83,13 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* Understanding the Editor */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Understanding the Live Conversation Editor</h2>
-        <p className="text-gray-300 mb-6">
+        <p className="text-gray-300 mb-4">
           The editor is divided into five main configuration tabs:
         </p>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
             <MessageCircle size={32} className="text-blue-500 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Header</h3>
@@ -118,7 +119,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* 1. Header Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">1. Header Tab</h2>
           <p className="text-gray-300">Controls the top section of your Live Conversation widget.</p>
@@ -163,7 +164,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* 2. Chat Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">2. Chat Tab</h2>
           <p className="text-gray-300">Customize how chat messages appear in conversations.</p>
@@ -244,7 +245,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* 3. Input Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">3. Input Tab</h2>
           <p className="text-gray-300">Configure the message input area where visitors type.</p>
@@ -321,7 +322,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* 4. Appearance Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">4. Appearance Tab</h2>
           <p className="text-gray-300">Control the overall widget dimensions and visual style.</p>
@@ -423,7 +424,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* 5. Code Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">5. Code (Embedding the Live Conversation)</h2>
           <p className="text-gray-300">Once your Live Conversation is configured, get the embed code to add it to your website.</p>
@@ -491,7 +492,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* Admin Dashboard Preview */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Admin Dashboard & Analytics</h2>
         <p className="text-gray-300 mb-6">Monitor and manage all live conversations from your dashboard:</p>
 
@@ -504,7 +505,7 @@ export default function LiveConversationWidgetPage() {
       </section>
 
       {/* Integration Notes */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
           <h3 className="text-xl font-semibold mb-3 text-white">Integration & Technical Notes</h3>
           <ul className="text-gray-300 space-y-2">

@@ -1,4 +1,5 @@
 import { Eye, CheckCircle, Sparkles, Settings, Code, Palette } from 'lucide-react';
+import { HiMiniUserGroup } from "react-icons/hi2";
 
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
@@ -29,12 +30,12 @@ export default function VisitorTrackerWidgetPage() {
   const widgetDetails = getWidgetData();
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="bg-blue-600 p-3 rounded-lg">
-            <Eye size={28} className="text-white" />
+          <div className="bg-black p-3 rounded-lg">
+            <HiMiniUserGroup size={28} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
@@ -42,7 +43,7 @@ export default function VisitorTrackerWidgetPage() {
       </div>
 
       {/* What You Can Customize */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-8 border border-gray-700">
+      <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
         <h2 className="text-2xl font-semibold mb-4 text-white">You Can Fully Customize:</h2>
         <div className="grid md:grid-cols-2 gap-3">
           {widgetDetails.customizableFeatures.map((feature, idx) => (
@@ -58,7 +59,7 @@ export default function VisitorTrackerWidgetPage() {
       </div>
 
       {/* Creating a Visitor Tracker Widget */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating a Visitor Tracker Widget</h2>
         <p className="text-gray-300 mb-4">To create a Visitor Tracker widget:</p>
 
@@ -104,7 +105,7 @@ export default function VisitorTrackerWidgetPage() {
       </section>
 
       {/* Live Preview Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Live Preview</h2>
         <p className="text-gray-300 mb-4">
           This is a placeholder preview for the Get Widget Tracker widget. When installed on your site, it records:
@@ -127,7 +128,7 @@ export default function VisitorTrackerWidgetPage() {
       </section>
 
       {/* Visitor Data Table Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Visitor Data Dashboard</h2>
         <p className="text-gray-300 mb-4">
           Filter visitor data by date and view detailed information about each visitor:

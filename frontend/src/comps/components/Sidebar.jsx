@@ -4,6 +4,11 @@ import { Home, BookOpen, SquareLibrary, Layers, Package, DollarSign, Lightbulb, 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { LuCreditCard } from "react-icons/lu";
+import { TbMessageChatbot } from "react-icons/tb";
+import { TiContacts } from "react-icons/ti";
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
+import { HiMiniUserGroup } from "react-icons/hi2";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const pathname = usePathname();
@@ -26,15 +31,15 @@ const Sidebar = ({ isOpen, onClose }) => {
       section: 'Core Features',
       hasSubItems: true,
       subItems: [
-        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot Widget' },
-        { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget' },
-        { id: 'available-widgets/live-conversation', label: 'Live Conversation Widget' },
-        { id: 'available-widgets/visitor-tracker-analysis', label: 'Visitor Tracking Analysis' },
+        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot Widget',icon: TbMessageChatbot },
+        { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget', icon: TiContacts },
+        { id: 'available-widgets/live-conversation', label: 'Live Conversation Widget', icon: HiChatBubbleLeftRight },
+        { id: 'available-widgets/visitor-tracker-analysis', label: 'Visitor Tracking Analysis', icon: HiMiniUserGroup },
         // { id: 'available-widgets/comment-box', label: 'Comment Box Widget' },
         // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }
       ]
     },
-    { id: 'plans-usage', label: 'Plans & Usage', icon: DollarSign, section: 'Core Features' },
+    { id: 'plans-usage', label: 'Plans & Usage', icon: LuCreditCard, section: 'Core Features' },
     { id: 'best-practices', label: 'Best Practices', icon: Lightbulb, section: 'Guides' },
     { id: 'security-privacy', label: 'Security & Privacy', icon: Shield, section: 'Guides' }
   ];
@@ -100,9 +105,9 @@ const Sidebar = ({ isOpen, onClose }) => {
       <aside 
         className={`fixed top-0 left-0 h-full bg-black text-gray-300 w-64 border-r border-gray-800 z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 overflow-y-auto`}
+        } lg:translate-x-0 flex flex-col`}
       >
-        <div className="p-4 border-b border-gray-800 h-16">
+        <div className="sticky top-0 p-4 border-b border-gray-800 h-16 bg-black z-10 flex-shrink-0">
           <div className="flex items-center justify-between">
             <img src="/widgetkraft_logo.png" alt="WidgetKraft Logo" className="h-7 w-auto" />
             <h1 className="text-xl font-bold text-white">
@@ -114,7 +119,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           </div>
         </div>
         
-        <nav className="p-4">
+        <nav className="p-4 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-transparent">
           {sections.map(section => (
             <div key={section} className="mb-6">
               <h3 className="text-xs font-semibold uppercase mb-2 text-gray-500">
@@ -176,7 +181,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                                     }`}
                                     onClick={handleLinkClick}
                                   >
-                                    <span className="text-xs ml-1">↳</span>
+                                    <span className="text-xs ml-1">{subItem.icon && <subItem.icon size={12} />}</span>
                                     <span className="text-sm">{subItem.label}</span>
                                   </Link>
                                 );

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Plus, Settings, Code, Eye, Palette, Save, Copy, CheckCircle, AlertCircle } from 'lucide-react';
+import { TiContacts } from "react-icons/ti";
 
 // This runs on the server
 const getWidgetData = async () => {
@@ -31,12 +32,12 @@ export default async function ContactFormWidgetPage() {
   const widgetDetails = await getWidgetData();
   
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="bg-blue-600 p-3 rounded-lg">
-            <Mail size={28} className="text-white" />
+          <div className="bg-black p-3 rounded-lg">
+            <TiContacts size={28} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
@@ -44,7 +45,7 @@ export default async function ContactFormWidgetPage() {
       </div>
 
       {/* What You Can Customize */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-8 border border-gray-700">
+      <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
         <h2 className="text-2xl font-semibold mb-4 text-white">You Can Fully Customize:</h2>
         <div className="grid md:grid-cols-2 gap-3">
           {widgetDetails.customizableFeatures.map((feature, idx) => (
@@ -60,7 +61,7 @@ export default async function ContactFormWidgetPage() {
       </div>
 
       {/* Creating a Contact Form Widget */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating a Contact Form Widget</h2>
         <p className="text-gray-300 mb-4">To create a Contact Form widget:</p>
         
@@ -93,13 +94,13 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* Understanding the Editor */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Understanding the Contact Form Editor</h2>
         <p className="text-gray-300 mb-6">
           The editor is divided into three main sections:
         </p>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
             <Plus size={32} className="text-blue-600 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Form Fields</h3>
@@ -127,7 +128,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* 1. Form Fields Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">1. Form Fields</h2>
           <p className="text-gray-300">This section controls what information the visitor submits.</p>
@@ -225,7 +226,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* 2. Form Design Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">2. Form Design</h2>
           <p className="text-gray-300">This section controls how the form looks and feels.</p>
@@ -332,7 +333,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* 3. Code Section */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-blue-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">3. Code (Embedding the Form)</h2>
           <p className="text-gray-300">Once your form is ready, go to the Code tab.</p>
@@ -406,7 +407,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* Saving & Publishing */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-blue-600">
           <h2 className="text-2xl font-bold mb-3 text-white flex items-center gap-2">
             <Save size={28} className="text-blue-600" />
@@ -421,7 +422,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* What Happens After Submission */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">What Happens After Submission</h2>
         <p className="text-gray-300 mb-4">When a visitor submits the form:</p>
         
@@ -450,7 +451,7 @@ export default async function ContactFormWidgetPage() {
       </section>
 
       {/* Best Practices */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Best Practices for Contact Forms</h2>
         <div className="space-y-3">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">

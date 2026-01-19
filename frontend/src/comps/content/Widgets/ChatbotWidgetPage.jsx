@@ -1,4 +1,5 @@
 import { Mail, MessageCircle, Plus, Settings, Code, Eye, Palette, Save, Copy, CheckCircle, AlertCircle, Bot, Sparkles } from 'lucide-react';
+import { TbMessageChatbot } from "react-icons/tb";
 
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
@@ -29,12 +30,12 @@ export default function ChatbotWidgetPage() {
   const widgetDetails = getWidgetData();
   
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg">
-            <Bot size={28} className="text-white" />
+          <div className="bg-black p-3 rounded-lg">
+            <TbMessageChatbot size={28} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
@@ -42,7 +43,7 @@ export default function ChatbotWidgetPage() {
       </div>
 
       {/* What You Can Customize */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-8 border border-gray-700">
+      <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
         <h2 className="text-2xl font-semibold mb-4 text-white">You Can Fully Customize:</h2>
         <div className="grid md:grid-cols-2 gap-3">
           {widgetDetails.customizableFeatures.map((feature, idx) => (
@@ -58,7 +59,7 @@ export default function ChatbotWidgetPage() {
       </div>
 
       {/* Creating a Chatbot Widget */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating an AI Chatbot Widget</h2>
         <p className="text-gray-300 mb-4">To create an AI Chatbot widget:</p>
         
@@ -100,13 +101,13 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* Understanding the Editor */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Understanding the Chatbot Editor</h2>
-        <p className="text-gray-300 mb-6">
+        <p className="text-gray-300 mb-4">
           The editor is divided into six main configuration tabs:
         </p>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
             <MessageCircle size={32} className="text-purple-600 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Header</h3>
@@ -141,13 +142,13 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 1. Header Tab */}
-      <section className="mb-10">
-        <div className="border-l-4 border-purple-600 pl-6 mb-6">
+      <section className="mb-6">
+        <div className="border-l-4 border-purple-600 pl-6 mb-4">
           <h2 className="text-3xl font-bold mb-3 text-white">1. Header Tab</h2>
           <p className="text-gray-300">Controls the top section of your chatbot widget.</p>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
+        <div className="bg-gray-800 p-6 rounded-lg mb-4 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Configurable Elements</h3>
           
           <div className="space-y-4">
@@ -201,7 +202,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 2. Chat Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-purple-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">2. Chat Tab</h2>
           <p className="text-gray-300">Customize how chat messages appear in the conversation.</p>
@@ -290,7 +291,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 3. Input Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-purple-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">3. Input Tab</h2>
           <p className="text-gray-300">Configure the message input area where visitors type.</p>
@@ -366,7 +367,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 4. Appearance Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-purple-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">4. Appearance Tab</h2>
           <p className="text-gray-300">Control the overall widget dimensions and visual style.</p>
@@ -463,7 +464,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 5. AI Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-purple-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">5. AI Tab</h2>
           <p className="text-gray-300">Configure your AI assistant's knowledge and behavior.</p>
@@ -553,7 +554,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* 6. Code Tab */}
-      <section className="mb-10">
+      <section className="mb-6">
         <div className="border-l-4 border-purple-600 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">6. Code (Embedding the Chatbot)</h2>
           <p className="text-gray-300">Once your chatbot is configured, get the embed code to add it to your website.</p>
@@ -691,7 +692,7 @@ export default function ChatbotWidgetPage() {
       </section>
 
       {/* Best Practices */}
-      <section className="mb-10">
+      <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Best Practices for AI Chatbots</h2>
         <div className="space-y-3">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">

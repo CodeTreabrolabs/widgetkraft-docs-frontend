@@ -4,45 +4,52 @@ import Link from 'next/link';
 const getWidgetsData = async () => {
   const widgets = [
     {
-      name: 'Live Conversation Widget',
-      desc: 'Allows real-time chat between visitors and your team.',
-      useCases: ['Sales inquiries', 'Support questions', 'Pre-purchase clarifications'],
-      features: ['Real-time chat', 'Email capture (paid plans)', 'Conversation history', 'Team responses from dashboard'],
-      link:  'available-widgets/live-conversation'
-    },
-    {
-      name: 'AI Chatbot Widget',
+      name: 'AI Chatbot',
       desc: 'Automates responses to common questions using AI.',
       useCases: ['FAQs', 'Basic lead qualification', 'After-hours support'],
       features: ['Custom instructions', 'Controlled AI usage via credits', 'Human takeover when needed'],
       link:  'available-widgets/ai-chatbot-widget'
     },
     {
-      name: 'Contact Form Widget',
+      name: 'AI Meet Scheduler (Coming Soon)',
+      desc: 'Allows visitors to book meetings directly from your website.',
+      useCases: ['Sales calls', 'Consultations', 'Support scheduling'],
+      features: ['Calendar integration', 'AI-assisted scheduling', 'High-intent lead capture']
+    },
+    {
+      name: 'Comment Box (Coming Soon)',
+      desc: 'Embed comments directly into blog posts or content pages.',
+      useCases: ['Blog engagement', 'Community discussions', 'Feedback collection'],
+      features: ['Moderation controls', 'Spam reduction', 'Centralized comment management']
+    },
+    {
+      name: 'Contact Forms',
       desc: 'Collect structured leads directly from your site.',
       useCases: ['Contact requests', 'Demo inquiries', 'Service quotations'],
       features: ['Custom fields', 'CSV export (paid plans)', 'Email notifications (paid plans)'],
       link:  'available-widgets/contactform-widget'
     },
     {
-      name: 'Comment Box Widget',
-      desc: 'Embed comments directly into blog posts or content pages.',
-      useCases: ['Blog engagement', 'Community discussions', 'Feedback collection'],
-      features: ['Moderation controls', 'Spam reduction', 'Centralized comment management']
+      name: 'Feedback Loop',
+      desc: 'Feedback Loop is a Widget that lets your users share feedback, ideas, and issues directly from your website, helping you capture real insights without breaking their experience.',
+      useCases: ['Collect early user feedback', 'Gather feature requests', 'Report bugs and usability issues'],
+      features: [ 'Moderation controls', 'Spam protection', 'Centralized feedback management'],
+      link:  'available-widgets/feedback-loop'
     },
     {
-      name: 'Visitor Tracker Widget',
+      name: 'Live Conversation',
+      desc: 'Allows real-time chat between visitors and your team.',
+      useCases: ['Sales inquiries', 'Support questions', 'Pre-purchase clarifications'],
+      features: ['Real-time chat', 'Email capture (paid plans)', 'Conversation history', 'Team responses from dashboard'],
+      link:  'available-widgets/live-conversation'
+    },
+    {
+      name: 'Visitor Tracker',
       desc: 'Track website visitors without complex analytics dashboards.',
       useCases: ['Traffic awareness', 'Basic visitor insights', 'Activity monitoring'],
       features: ['Lightweight tracking', 'No setup complexity', 'Credit-efficient events'],
       link:  'available-widgets/visitor-tracker-analysis'
     },
-    {
-      name: 'AI Meet Scheduler (Paid)',
-      desc: 'Allows visitors to book meetings directly from your website.',
-      useCases: ['Sales calls', 'Consultations', 'Support scheduling'],
-      features: ['Calendar integration', 'AI-assisted scheduling', 'High-intent lead capture']
-    }
   ];
 
   return widgets;

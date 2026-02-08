@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { LuCreditCard } from "react-icons/lu";
 import { TbMessageChatbot } from "react-icons/tb";
-import { TiContacts } from "react-icons/ti";
+import { TiContacts, TiEdit } from "react-icons/ti";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { HiMiniUserGroup } from "react-icons/hi2";
 
@@ -31,9 +31,10 @@ const Sidebar = ({ isOpen, onClose }) => {
       section: 'Core Features',
       hasSubItems: true,
       subItems: [
-        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot Widget',icon: TbMessageChatbot },
-        { id: 'available-widgets/contactform-widget', label: 'Contact Form Widget', icon: TiContacts },
-        { id: 'available-widgets/live-conversation', label: 'Live Conversation Widget', icon: HiChatBubbleLeftRight },
+        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot',icon: TbMessageChatbot },
+        { id: 'available-widgets/contactform-widget', label: 'Contact Forms', icon: TiContacts },
+        { id: 'available-widgets/feedback-loop', label: 'Feedback Loop', icon: TiEdit },
+        { id: 'available-widgets/live-conversation', label: 'Live Conversation', icon: HiChatBubbleLeftRight },
         { id: 'available-widgets/visitor-tracker-analysis', label: 'Visitor Tracking Analysis', icon: HiMiniUserGroup },
         // { id: 'available-widgets/comment-box', label: 'Comment Box Widget' },
         // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }

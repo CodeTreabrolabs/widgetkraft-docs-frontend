@@ -43,6 +43,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://docs.widgetkraft.com/available-widgets/feedback-loop</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://docs.widgetkraft.com/available-widgets/live-conversation</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

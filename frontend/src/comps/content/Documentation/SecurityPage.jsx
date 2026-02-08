@@ -4,7 +4,7 @@ import Link from 'next/link';
 const getCommitmentsData = async () => {
   const commitments = [
     {
-      title: 'Your Data Belongs to You',
+      title: 'Your Data Belongs to You.',
       description:
         'All data collected through your widgets is entirely yours. We never claim ownership of customer data.',
     },

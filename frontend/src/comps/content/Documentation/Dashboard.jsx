@@ -31,7 +31,7 @@ export default async function DashboardPage() {
   const dashboardData = await getDashboardData();
   
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-white mb-3">Analytics Dashboard</h1>

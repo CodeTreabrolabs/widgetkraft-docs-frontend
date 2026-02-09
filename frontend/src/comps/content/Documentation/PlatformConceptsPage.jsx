@@ -8,12 +8,13 @@ const getConceptsData = async () => {
       description:
         'Widgets are embeddable components you place on your website. Each widget solves a specific interaction use case.',
       details: [
-        'Live Conversation',
         'AI Chatbot',
+        'AI Meet Scheduler (Coming Soon)',
+        'Comment Box (Coming Soon)',
         'Contact Form',
-        'Comment Box',
+        'Feedback Loop',
+        'Live Conversation',
         'Visitor Tracker',
-        'AI Meet Scheduler (paid plans)',
       ],
     },
     {

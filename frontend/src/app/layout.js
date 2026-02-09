@@ -1,6 +1,7 @@
 import './globals.css';
 import Sidebar from '@/comps/components/Sidebar';
 import Header from '@/comps/components/Header';
+import FeedbackWidgetContext from '@/comps/context/FeedbackWidgetContext';
 
 export const metadata = {
   title: 'WidgetKraft Documentation',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         <main className="lg:ml-64 bg-black pt-24 px-6 pb-12">
           {children}
         </main>
+        <FeedbackWidgetContext />
       </body>
     </html>
   );

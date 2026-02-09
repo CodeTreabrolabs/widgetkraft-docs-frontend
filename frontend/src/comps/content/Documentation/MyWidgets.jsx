@@ -103,7 +103,7 @@ export default async function MyWidgetsPage() {
   const widgetsData = await getUserWidgetsData();
   
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-4xl">
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">

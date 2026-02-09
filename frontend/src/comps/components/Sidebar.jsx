@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { LuCreditCard } from "react-icons/lu";
-import { TbMessageChatbot } from "react-icons/tb";
+import { TbMessageChatbot, TbPlugConnected  } from "react-icons/tb";
 import { TiContacts, TiEdit } from "react-icons/ti";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { HiMiniUserGroup } from "react-icons/hi2";
+import { FaSlack } from "react-icons/fa";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const pathname = usePathname();
@@ -22,7 +23,17 @@ const Sidebar = ({ isOpen, onClose }) => {
     { id: '', label: 'Home', icon: Home, section: 'Getting Started' },
     { id: 'introduction', label: 'Introduction', icon: BookOpen, section: 'Getting Started' },
     { id: 'platform-concepts', label: 'Platform Concepts', icon: Layers, section: 'Getting Started' },
-    { id: 'dashboards', label: 'Dashboards', icon: LayoutDashboard, section: 'Core Features' },
+    { 
+      id: 'integrations', 
+      label: 'Integrations', 
+      icon: TbPlugConnected, 
+      section: 'Core Features',
+      // hasSubItems: true,
+      subItems: [
+        // { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
+      ]
+    },
+    { id: 'dashboards', label: 'Analytics Dashboard', icon: LayoutDashboard, section: 'Core Features' },
     { id: 'my-widgets', label: 'My Widgets', icon: SquareLibrary, section: 'Core Features' },
     { 
       id: 'available-widgets', 

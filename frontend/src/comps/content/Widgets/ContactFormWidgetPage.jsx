@@ -23,6 +23,7 @@ const getWidgetData = async () => {
     ],
     screenshot: '/widgets/contactform/first.png',
     screenshotCaption: 'Screenshot: Dashboard → Create Widget → Select Contact Form',
+    pricing: '0.4 credit / submission',
   };
 
   return widgetDetails;
@@ -30,7 +31,7 @@ const getWidgetData = async () => {
 
 export default async function ContactFormWidgetPage() {
   const widgetDetails = await getWidgetData();
-  
+
   return (
     <div className="max-w-4xl">
       {/* Header */}
@@ -42,6 +43,10 @@ export default async function ContactFormWidgetPage() {
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
         <p className="text-lg text-gray-300">{widgetDetails.description}</p>
+        <div className="mt-4 inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
+          <span className="text-blue-400 font-medium">Pricing:</span>
+          <span className="text-white">{widgetDetails.pricing}</span>
+        </div>
       </div>
 
       {/* What You Can Customize */}
@@ -64,7 +69,7 @@ export default async function ContactFormWidgetPage() {
       <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating a Contact Form Widget</h2>
         <p className="text-gray-300 mb-4">To create a Contact Form widget:</p>
-        
+
         <ol className="text-gray-300 space-y-2 mb-6">
           {widgetDetails.creationSteps.map((step, idx) => (
             <li key={idx} className="flex items-start gap-3">
@@ -88,7 +93,7 @@ export default async function ContactFormWidgetPage() {
         </div>
 
         <p className="text-gray-300">
-          The form editor opens with a live preview on the left and controls on the right. 
+          The form editor opens with a live preview on the left and controls on the right.
           Any change you make updates the preview instantly.
         </p>
       </section>
@@ -151,14 +156,14 @@ export default async function ContactFormWidgetPage() {
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Field Settings</h3>
           <p className="text-gray-300 mb-4">For each field, you can configure:</p>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-1">Label</h4>
               <p className="text-gray-300 text-sm mb-1">What the user sees above the field</p>
               <p className="text-gray-300 text-sm italic">Example: Email, Name, Message</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Type</h4>
               <p className="text-gray-300 text-sm mb-1">Determines validation and input behavior</p>
@@ -168,13 +173,13 @@ export default async function ContactFormWidgetPage() {
                 <div>• <strong>Textarea</strong> → multi-line message input</div>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Placeholder Text</h4>
               <p className="text-gray-300 text-sm mb-1">Hint text shown inside the field</p>
               <p className="text-gray-300 text-sm italic">Example: you@domain.com</p>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Required Field</h4>
               <p className="text-gray-300 text-sm">When enabled:</p>
@@ -257,7 +262,7 @@ export default async function ContactFormWidgetPage() {
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Theme Presets</h3>
           <p className="text-gray-300 mb-4">At the top, you'll see preset themes like:</p>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
             <div className="bg-gray-700 p-3 rounded text-center text-gray-300 text-sm">
               Default
@@ -272,7 +277,7 @@ export default async function ContactFormWidgetPage() {
               Sunset
             </div>
           </div>
-          
+
           <p className="text-gray-300 text-sm mb-2">Clicking a preset automatically adjusts:</p>
           <ul className="text-gray-300 text-sm space-y-1">
             <li>• Background</li>
@@ -326,7 +331,7 @@ export default async function ContactFormWidgetPage() {
         <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
           <img src="/images/contactform/fifth.png" alt="WidgetKraft: Form Design - Live Preview Panel" className="mx-auto mb-3 rounded-lg shadow-lg" />
           <p className="text-gray-300">
-            The left panel always shows the exact final form. What you see here is exactly what visitors 
+            The left panel always shows the exact final form. What you see here is exactly what visitors
             will see on your website. No save required to preview changes.
           </p>
         </div>
@@ -343,7 +348,7 @@ export default async function ContactFormWidgetPage() {
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Embed Code Section</h3>
           <p className="text-gray-300 mb-4">You'll see a ready-to-use embed snippet:</p>
-          
+
           <div className="bg-gray-900 p-4 rounded-lg border border-gray-700 mb-4">
             <code className="text-sm text-green-400">
               {`<script src="https://unpkg.com/@getwidgets/contact-widget@latest/dist/contact-widget.umd.js"></script>
@@ -425,7 +430,7 @@ export default async function ContactFormWidgetPage() {
       <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">What Happens After Submission</h2>
         <p className="text-gray-300 mb-4">When a visitor submits the form:</p>
-        
+
         <div className="space-y-3">
           <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex items-start gap-3">
             <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />

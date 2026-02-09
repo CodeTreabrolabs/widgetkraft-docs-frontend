@@ -21,6 +21,7 @@ const getWidgetData = () => {
       'Click Configure',
     ],
     screenshotCaption: "Screenshot: Dashboard Create Widget - Visitor Tracker Selection",
+    pricing: '0.1 credit / visit',
   };
 
   return widgetDetails;
@@ -40,6 +41,10 @@ export default function VisitorTrackerWidgetPage() {
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
         <p className="text-lg text-gray-300">{widgetDetails.description}</p>
+        <div className="mt-4 inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
+          <span className="text-blue-400 font-medium">Pricing:</span>
+          <span className="text-white">{widgetDetails.pricing}</span>
+        </div>
       </div>
 
       {/* What You Can Customize */}
@@ -85,7 +90,7 @@ export default function VisitorTrackerWidgetPage() {
             <p className="text-gray-300 text-sm">Screenshot: My Widgets - Visitor Tracker Selection with Configure & View Dashboard</p>
           </div>
         </div>
-        
+
 
         <p className="text-gray-300 mb-4">
           The visitor tracker editor provides real-time insights and customizable options to suit your needs.
@@ -120,10 +125,10 @@ export default function VisitorTrackerWidgetPage() {
         </p>
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
-            <div className="text-center">
-                <img src="/images/visitortracker/visitor-tracker-configuration.png" alt="WidgetKraft: Creating a Visitor Tracker Widget and Using It" className="mx-auto mb-3 rounded-lg shadow-lg" />
-                <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
-            </div>
+          <div className="text-center">
+            <img src="/images/visitortracker/visitor-tracker-configuration.png" alt="WidgetKraft: Creating a Visitor Tracker Widget and Using It" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
+          </div>
         </div>
       </section>
 
@@ -134,8 +139,8 @@ export default function VisitorTrackerWidgetPage() {
           Filter visitor data by date and view detailed information about each visitor:
         </p>
         <div className="text-center">
-            <img src="/images/visitortracker/visitor-tracker-dashboard-interface.png" alt="WidgetKraft: Visitor Tracker Dashboard Interface" className="mx-auto mb-3 rounded-lg shadow-lg" />
-            <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
+          <img src="/images/visitortracker/visitor-tracker-dashboard-interface.png" alt="WidgetKraft: Visitor Tracker Dashboard Interface" className="mx-auto mb-3 rounded-lg shadow-lg" />
+          <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
         </div>
       </section>
     </div>

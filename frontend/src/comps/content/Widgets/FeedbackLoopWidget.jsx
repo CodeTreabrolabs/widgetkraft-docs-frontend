@@ -20,27 +20,27 @@ const getFeedbackLoopWidgetData = () => {
       'Go to My Widgets → Find Feedback Loop',
       'Click Configure & start customizing your widget',
     ],
-    pricing: '1 credit / feedback submission',
+    pricing: 'Free',
     sampleWidgetId: 'ca99254a...f0f9a',
   };
 };
 
 export default function FeedbackLoopWidgetPage() {
   const widgetData = getFeedbackLoopWidgetData();
-  
+
   return (
     <div className="max-w-4xl">
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
-          <div className="bg-gradient-to-br from-pink-500 to-rose-600 p-3 rounded-lg">
+          <div className=" p-3 rounded-lg">
             <TiEdit size={28} className="text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white">{widgetData.title}</h1>
         </div>
         <p className="text-lg text-gray-300">{widgetData.description}</p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-pink-900/30 px-4 py-2 rounded-lg">
-          <span className="text-pink-400 font-medium">Pricing:</span>
+        <div className="mt-4 inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
+          <span className="text-blue-400 font-medium">Pricing:</span>
           <span className="text-white">{widgetData.pricing}</span>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default function FeedbackLoopWidgetPage() {
         <div className="grid md:grid-cols-2 gap-3">
           {widgetData.customizableFeatures.map((feature, idx) => (
             <div key={idx} className="flex items-start gap-2 text-gray-300">
-              <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span>{feature}</span>
             </div>
           ))}
@@ -62,11 +62,11 @@ export default function FeedbackLoopWidgetPage() {
       <section className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-white">Creating a Feedback Loop Widget</h2>
         <p className="text-gray-300 mb-4">To create a Feedback Loop widget:</p>
-        
+
         <ol className="text-gray-300 space-y-2 mb-6">
           {widgetData.creationSteps.map((step, idx) => (
             <li key={idx} className="flex items-start gap-3">
-              <span className="bg-pink-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
+              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
                 {idx + 1}
               </span>
               <span>{step}</span>
@@ -91,22 +91,22 @@ export default function FeedbackLoopWidgetPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <MessageCircle size={32} className="text-pink-500 mx-auto mb-2" />
+            <MessageCircle size={32} className="text-blue-500 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Header</h3>
             <p className="text-gray-300 text-sm">Title, subtitle and branding</p>
           </div>
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Settings size={32} className="text-pink-500 mx-auto mb-2" />
+            <Settings size={32} className="text-blue-500 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Input</h3>
             <p className="text-gray-300 text-sm">Message input configuration</p>
           </div>
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Palette size={32} className="text-pink-500 mx-auto mb-2" />
+            <Palette size={32} className="text-blue-500 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Appearance</h3>
             <p className="text-gray-300 text-sm">Widget size and visual design</p>
           </div>
           <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Code size={32} className="text-pink-500 mx-auto mb-2" />
+            <Code size={32} className="text-blue-500 mx-auto mb-2" />
             <h3 className="font-semibold text-white mb-1">Code</h3>
             <p className="text-gray-300 text-sm">Embed snippet</p>
           </div>
@@ -115,14 +115,14 @@ export default function FeedbackLoopWidgetPage() {
 
       {/* 1. Header Tab */}
       <section className="mb-6">
-        <div className="border-l-4 border-pink-500 pl-6 mb-6">
+        <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">1. Header Tab</h2>
           <p className="text-gray-300">Controls the top section of your Feedback Loop widget including branding and messaging.</p>
         </div>
 
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Configurable Elements</h3>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-1">Title</h4>
@@ -135,7 +135,7 @@ export default function FeedbackLoopWidgetPage() {
                 <span>Hide Title</span>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Subtitle</h4>
               <p className="text-gray-300 text-sm mb-1">Supporting text below the title</p>
@@ -143,7 +143,7 @@ export default function FeedbackLoopWidgetPage() {
                 Example: "We value your feedback"
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Logo URL</h4>
               <p className="text-gray-300 text-sm mb-1">URL to your company logo or brand image</p>
@@ -164,7 +164,7 @@ export default function FeedbackLoopWidgetPage() {
             <div>
               <h4 className="font-semibold text-white mb-2">Background Color</h4>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded" style={{backgroundColor: '#E11D48'}}></div>
+                <div className="w-8 h-8 rounded" style={{ backgroundColor: '#E11D48' }}></div>
                 <p className="text-gray-300 text-sm">Header background color</p>
                 <code className="text-xs text-gray-400 ml-auto">#E11D48</code>
               </div>
@@ -201,14 +201,14 @@ export default function FeedbackLoopWidgetPage() {
 
       {/* 2. Input Tab */}
       <section className="mb-6">
-        <div className="border-l-4 border-pink-500 pl-6 mb-6">
+        <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">2. Input Tab</h2>
           <p className="text-gray-300">Configure the message input area where users type their feedback.</p>
         </div>
 
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Input Field Settings</h3>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-1">Placeholder Text</h4>
@@ -217,7 +217,7 @@ export default function FeedbackLoopWidgetPage() {
                 Example: "Type your message..."
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-2">Background Color</h4>
               <div className="flex items-center gap-3">
@@ -226,11 +226,11 @@ export default function FeedbackLoopWidgetPage() {
                 <code className="text-xs text-gray-400 ml-auto">#FFFFFF</code>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-2">Border Color</h4>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded border-2" style={{borderColor: '#FDA4AF'}}></div>
+                <div className="w-8 h-8 rounded border-2" style={{ borderColor: '#FDA4AF' }}></div>
                 <p className="text-gray-300 text-sm">Color of input field border</p>
                 <code className="text-xs text-gray-400 ml-auto">#FDA4AF</code>
               </div>
@@ -239,7 +239,7 @@ export default function FeedbackLoopWidgetPage() {
             <div>
               <h4 className="font-semibold text-white mb-2">Text Color</h4>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded" style={{backgroundColor: '#881337'}}></div>
+                <div className="w-8 h-8 rounded" style={{ backgroundColor: '#881337' }}></div>
                 <p className="text-gray-300 text-sm">Color of text as user types</p>
                 <code className="text-xs text-gray-400 ml-auto">#881337</code>
               </div>
@@ -257,14 +257,14 @@ export default function FeedbackLoopWidgetPage() {
 
       {/* 3. Appearance Tab */}
       <section className="mb-6">
-        <div className="border-l-4 border-pink-500 pl-6 mb-6">
+        <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">3. Appearance Tab</h2>
           <p className="text-gray-300">Control the overall widget dimensions, positioning, and visual style.</p>
         </div>
 
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Widget Dimensions</h3>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-1">Width</h4>
@@ -273,7 +273,7 @@ export default function FeedbackLoopWidgetPage() {
                 400px (min: 300px | max: 400px)
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Height</h4>
               <p className="text-gray-300 text-sm">Set the vertical size of feedback widget</p>
@@ -286,12 +286,12 @@ export default function FeedbackLoopWidgetPage() {
 
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
           <h3 className="text-xl font-semibold mb-4 text-white">Visual Styling</h3>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-2">Primary Color</h4>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded" style={{backgroundColor: '#E11D48'}}></div>
+                <div className="w-8 h-8 rounded" style={{ backgroundColor: '#E11D48' }}></div>
                 <p className="text-gray-300 text-sm">Main accent color for buttons and highlights</p>
                 <code className="text-xs text-gray-400 ml-auto">#E11D48</code>
               </div>
@@ -305,7 +305,7 @@ export default function FeedbackLoopWidgetPage() {
                 <code className="text-xs text-gray-400 ml-auto">#FFFFFF</code>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-semibold text-white mb-1">Border Radius</h4>
               <p className="text-gray-300 text-sm">Roundness of widget corners</p>
@@ -330,11 +330,11 @@ export default function FeedbackLoopWidgetPage() {
               <p className="text-gray-300 text-sm mb-3">Choose whether to display "Powered by WidgetKraft"</p>
               <div className="flex gap-4">
                 <label className="flex items-center gap-2 text-gray-300 cursor-pointer">
-                  <input type="radio" name="branding" className="text-pink-500" defaultChecked />
+                  <input type="radio" name="branding" className="text-blue-500" defaultChecked />
                   <span>Show branding</span>
                 </label>
                 <label className="flex items-center gap-2 text-gray-300 cursor-pointer">
-                  <input type="radio" name="branding" className="text-pink-500" />
+                  <input type="radio" name="branding" className="text-blue-500" />
                   <span>Remove branding</span>
                 </label>
               </div>
@@ -345,7 +345,7 @@ export default function FeedbackLoopWidgetPage() {
         <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
           <h3 className="text-xl font-semibold mb-3 text-white">Theme Presets</h3>
           <p className="text-gray-300 mb-4">Quick-start with pre-designed themes:</p>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
             <div className="bg-gray-100 p-3 rounded text-center text-gray-800 text-sm font-medium">
               Default
@@ -356,7 +356,7 @@ export default function FeedbackLoopWidgetPage() {
             <div className="bg-blue-600 p-3 rounded text-center text-white text-sm font-medium">
               Ocean
             </div>
-            <div className="bg-gradient-to-r from-orange-500 to-pink-500 p-3 rounded text-center text-white text-sm font-medium">
+            <div className="bg-gradient-to-r from-orange-500 to-blue-500 p-3 rounded text-center text-white text-sm font-medium">
               Sunset
             </div>
             <div className="bg-green-600 p-3 rounded text-center text-white text-sm font-medium">
@@ -369,7 +369,7 @@ export default function FeedbackLoopWidgetPage() {
               Rose
             </div>
           </div>
-          
+
           <p className="text-gray-300 text-sm mt-3 italic">
             Click any preset to instantly apply coordinated colors across all elements
           </p>
@@ -385,7 +385,7 @@ export default function FeedbackLoopWidgetPage() {
 
       {/* 4. Code Tab */}
       <section className="mb-6">
-        <div className="border-l-4 border-pink-500 pl-6 mb-6">
+        <div className="border-l-4 border-blue-500 pl-6 mb-6">
           <h2 className="text-3xl font-bold mb-3 text-white">4. Code (Embedding the Feedback Loop)</h2>
           <p className="text-gray-300">Once your Feedback Loop is configured, get the embed code to add it to your website.</p>
         </div>
@@ -396,7 +396,7 @@ export default function FeedbackLoopWidgetPage() {
 
           <div className="bg-gray-900 p-4 rounded-lg border border-gray-700 mb-4 overflow-x-auto">
             <code className="text-sm text-green-400 whitespace-pre">
-{`<div id="feedbackloop-root"></div>
+              {`<div id="feedbackloop-root"></div>
 
 <script src="https://unpkg.com/@getwidgets/feedback-loop-widget/dist/feedback-loop-widget.umd.js"></script>
 
@@ -409,7 +409,7 @@ export default function FeedbackLoopWidgetPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition">
+            <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
               <Copy size={18} />
               Copy Code
             </button>
@@ -424,22 +424,22 @@ export default function FeedbackLoopWidgetPage() {
           <h3 className="text-xl font-semibold mb-4 text-white">How to Use the Embed Code</h3>
           <ol className="text-gray-300 space-y-3">
             <li className="flex items-start gap-3">
-              <span className="bg-pink-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">1</span>
+              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">1</span>
               <span>Click <strong>Copy Code</strong> to copy the embed snippet</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-pink-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">2</span>
+              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">2</span>
               <div>
                 <span>Paste it into your website's HTML, typically before the closing <code className="bg-gray-900 px-2 py-1 rounded text-sm">&lt;/body&gt;</code> tag</span>
                 <p className="text-sm text-gray-400 mt-2">This ensures the Feedback Loop loads on every page of your site</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-pink-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">3</span>
+              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">3</span>
               <span>The Feedback Widget will appear based on your configured position (top-right, bottom-right, etc.)</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-pink-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">4</span>
+              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">4</span>
               <span>Visitors can select a feedback category and submit their thoughts instantly</span>
             </li>
           </ol>
@@ -481,7 +481,7 @@ export default function FeedbackLoopWidgetPage() {
       {/* Dashboard */}
       <section className="mb-6">
         <div className="mb-6">
-            <hr className='my-4'></hr>
+          <hr className='my-4'></hr>
           <h2 className="text-3xl font-bold mb-3 text-white">Admin Dashboard & Analytics</h2>
           <p className="text-gray-300">Monitor and manage all feedback submissions from your centralized dashboard.</p>
         </div>
@@ -491,7 +491,7 @@ export default function FeedbackLoopWidgetPage() {
           <p className="text-gray-300 mb-4">
             The Feedback Loop dashboard provides a comprehensive view of all user feedback, organized by category with real-time analytics.
           </p>
-          
+
           <div className="space-y-4">
             <div>
               <h4 className="font-semibold text-white mb-2">Key Metrics at a Glance</h4>
@@ -531,7 +531,7 @@ export default function FeedbackLoopWidgetPage() {
           <p className="text-gray-300 mb-4">
             Quickly filter feedback by category to focus on specific types of submissions:
           </p>
-          
+
           <div className="flex flex-wrap gap-2 mb-4">
             <button className="px-4 py-2 bg-gray-700 text-white rounded-full text-sm font-medium hover:bg-gray-600 transition">
               All Types
@@ -565,7 +565,7 @@ export default function FeedbackLoopWidgetPage() {
           <p className="text-gray-300 mb-4">
             Each feedback submission is displayed with key information for easy review:
           </p>
-          
+
           <div className="space-y-4">
             {/* Feature Requests Example */}
             <div className="bg-gray-900 p-4 rounded-lg border-l-4 border-green-500">
@@ -626,27 +626,27 @@ export default function FeedbackLoopWidgetPage() {
           <h3 className="text-xl font-semibold mb-4 text-white">Dashboard Features</h3>
           <ul className="text-gray-300 space-y-2">
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Real-time updates:</strong> Dashboard refreshes automatically when new feedback arrives</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Category-based filtering:</strong> View feedback by type (Bug Reports, Feature Requests, etc.)</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Timestamp tracking:</strong> See exactly when each feedback was submitted</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Unique IDs:</strong> Each submission has a unique identifier for tracking and reference</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Export functionality:</strong> Download all feedback data for external analysis</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Progress indicators:</strong> Visual bars show the distribution of feedback types</span>
             </li>
           </ul>
@@ -659,9 +659,9 @@ export default function FeedbackLoopWidgetPage() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 p-5 rounded-lg border border-pink-700/50">
+        <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-5 rounded-lg border border-blue-700/50">
           <h4 className="font-semibold text-white mb-2 flex items-center gap-2">
-            <Sparkles size={20} className="text-pink-400" />
+            <Sparkles size={20} className="text-blue-400" />
             Pro Tip: Actionable Insights
           </h4>
           <p className="text-gray-300 text-sm">
@@ -676,27 +676,27 @@ export default function FeedbackLoopWidgetPage() {
           <h3 className="text-xl font-semibold mb-3 text-white">Integration & Technical Notes</h3>
           <ul className="text-gray-300 space-y-2">
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Lightweight integration:</strong> Single script tag with minimal performance impact</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Categorized feedback:</strong> Pre-defined categories help organize user input effectively</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Instant submission:</strong> Feedback is captured and stored immediately upon submission</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Mobile responsive:</strong> Works seamlessly on all devices and screen sizes</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Dashboard analytics:</strong> View and manage all feedback from your admin panel</span>
             </li>
             <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-pink-500 flex-shrink-0 mt-0.5" />
+              <CheckCircle size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
               <span><strong>Powered by WidgetKraft:</strong> Professional support and reliable infrastructure</span>
             </li>
           </ul>
@@ -704,36 +704,36 @@ export default function FeedbackLoopWidgetPage() {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-r from-pink-900/30 to-rose-900/30 p-8 rounded-lg border border-pink-700">
+      <section className="bg-gradient-to-r from-blue-900/30 to-rose-900/30 p-8 rounded-lg border border-blue-700">
         <h2 className="text-3xl font-bold mb-4 text-white">Summary</h2>
         <p className="text-gray-300 mb-4">The Feedback Loop Widget allows you to:</p>
         <div className="grid md:grid-cols-2 gap-3 mb-6">
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Collect structured feedback through categorized options</span>
           </div>
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Customize appearance to match your brand perfectly</span>
           </div>
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Position the widget anywhere on your page</span>
           </div>
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Track and analyze user feedback from your dashboard</span>
           </div>
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Embed with a single script tag—no complex setup required</span>
           </div>
           <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-pink-500 flex-shrink-0 mt-0.5" />
+            <CheckCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
             <span>Improve your product based on real user insights</span>
           </div>
         </div>
-        <div className="bg-gray-900/50 p-4 rounded-lg border border-pink-800">
+        <div className="bg-gray-900/50 p-4 rounded-lg border border-blue-800">
           <p className="text-gray-300 italic">
             <strong className="text-white">Empower your users to share their voice</strong> – The Feedback Loop Widget makes it easy for customers to tell you what they love, what needs improvement, and what features they want next, helping you build a better product.
           </p>

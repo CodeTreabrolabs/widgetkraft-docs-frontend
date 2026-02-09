@@ -28,9 +28,9 @@ const Sidebar = ({ isOpen, onClose }) => {
       label: 'Integrations', 
       icon: TbPlugConnected, 
       section: 'Core Features',
-      // hasSubItems: true,
+      hasSubItems: true,
       subItems: [
-        // { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
+        { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
       ]
     },
     { id: 'dashboards', label: 'Analytics Dashboard', icon: LayoutDashboard, section: 'Core Features' },

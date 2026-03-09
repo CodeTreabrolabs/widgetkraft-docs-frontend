@@ -1,102 +1,213 @@
+// app/plans/page.jsx  (Next.js App Router - Server Component)
 import Link from 'next/link';
 
-// This runs on the server
-const getPlansData = async () => {
-  const plans = {
-    free: {
-      title: 'Free Plan',
-      features: [
-        'Limited widgets',
-        'Limited monthly credits',
-        'Ideal for testing and low-traffic sites',
-        'Basic features',
-      ],
-      note: 'Perfect for getting started and exploring the platform.',
-    },
-    paid: {
-      title: 'Paid Plans',
-      features: [
-        'Higher widget limits',
-        'More credits',
-        'Advanced features like exports and notifications',
-        'AI Meet Scheduler access',
-      ],
-      note: 'Credits reset monthly and do not roll over unless specified.',
-    },
-    credits: [
-      // { type: 'Chat messages', usage: '1 credit per message' },
-      // { type: 'Form submissions', usage: 'Credits based on complexity' },
-      // { type: 'Meeting bookings', usage: 'Higher credit consumption' },
-      // { type: 'Visitor events', usage: 'Very Minimal credit usage' },
+const plans = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "/ forever",
+    description: "Perfect for getting started and exploring the basics.",
+    credits: "50",
+    creditsInfinite: false,
+    usage: [
+      "Upto 50 live chat threads",
+      "Or 125 form submissions",
+      "Or 200 visitor tracking events",
+      "Unlimited Feedbacks",
+      "Or 60 AI chatbot chats",
+      'Or 200 Comment submissions',
     ],
-  };
+    includes: [
+      "1 widget of each type",
+      "Basic analytics",
+      "7-day data retention",
+      "Community support",
+      "Slack integration",
+      "Email notifications",
+    ],
+    includesTitle: "Includes",
+    cta: "Get Started",
+    ctaHref: "/signup",
+    popular: false,
+  },
+  {
+    name: "Basic",
+    price: "$17",
+    period: "/ month",
+    description: "For small teams and startups",
+    credits: "300",
+    creditsInfinite: false,
+    usage: [
+      "Upto 300 live chat threads",
+      "Or 750 form submissions",
+      "Unlimited Feedbacks",
+      "Or 3000+ visitor tracking events",
+      "Or 375 AI chatbot chats",
+      'Or 1200 Comment submissions',
+      "Slack integration",
+      "Email notifications",
+    ],
+    includes: [
+      "Everything in Free, plus",
+      "1 widget of each type",
+      "5 automated scraping runs",
+      "15-day data retention",
+      "Remove WidgetKraft branding",
+    ],
+    includesTitle: "Includes",
+    cta: "Choose Plan",
+    ctaHref: "/signup?plan=basic",
+    popular: false,
+  },
+  {
+    name: "Premium",
+    price: "$27",
+    period: "/ month",
+    description: "For advanced needs",
+    credits: "∞",
+    creditsInfinite: true,
+    usage: [
+      "Unlimited live chat threads",
+      "Unlimited form submissions",
+      "Unlimited visitor tracking events",
+      "Unlimited Feedbacks",
+      'Unlimited Comment submissions',
+      "Upto 3000 AI chatbot chats / month",
+    ],
+    includes: [
+      "Everything in Basic, plus",
+      "2 widgets of each type",
+      "15 automated scraping runs",
+      "30-day data retention",
+      "Priority support",
+    ],
+    includesTitle: "What's included",
+    cta: "Choose Plan",
+    ctaHref: "/signup?plan=premium",
+    popular: true,
+  },
+  {
+    name: "Business",
+    price: "$47",
+    period: "/ month",
+    description: "For high-volume teams & automation-heavy use cases",
+    credits: "∞",
+    creditsInfinite: true,
+    usage: [
+      "Unlimited live chat threads",
+      "Unlimited form submissions",
+      "Unlimited visitor tracking events",
+      "Unlimited Feedbacks",
+      'Unlimited Comment submissions',
+      "Upto 5000 AI chatbot chats / month",
+    ],
+    includes: [
+      "Everything in Premium, plus",
+      "3 widgets of each type",
+      "30 automated scraping runs",
+      "Unlimited data retention",
+    ],
+    includesTitle: "What's included",
+    cta: "Choose Plan",
+    ctaHref: "/signup?plan=business",
+    popular: false,
+  },
+];
 
-  return plans;
+export const metadata = {
+  title: "Plans & Pricing | WidgetKraft",
+  description: "Simple, credit-based pricing. Choose any mix that fits your needs.",
 };
 
-export default async function PlansUsagePage() {
-  const plans = await getPlansData();
-  
-  // Convert plans object to array for the grid
-  const planEntries = [
-    { key: 'free', plan: plans.free },
-    { key: 'paid', plan: plans.paid }
-  ];
-  
+export default async function PlansPage() {
   return (
-    <div className="max-w-4xl">
-      <h1 className="text-4xl font-bold mb-4 text-white">Plans & Usage</h1>
-      <p className="text-lg text-gray-300 mb-8">
-        Choose the plan that fits your needs and scale as you grow.
-      </p>
+    <div className="min-h-screen bg-[#0a0a0f] text-white px-6 py-16 font-sans">
 
-      <div className="grid md:grid-cols-2 gap-6 mb-8">
-        {planEntries.map(({ key, plan }) => (
+      {/* Header */}
+      <div className="text-center mb-14">
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+          Simple, Credit-Based Pricing
+        </h1>
+        <p className="text-[#8888aa] text-base">
+          Use credits across all widgets. Choose any mix that fits your needs.
+        </p>
+      </div>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 max-w-[1200px] mx-auto">
+        {plans.map((plan) => (
           <div
-            key={key}
-            className={`bg-gray-800 p-6 rounded-lg border-2 ${
-              key === 'paid' ? 'border-orange-600' : 'border-gray-700'
-            }`}
+            key={plan.name}
+            className={`
+              relative flex flex-col rounded-[18px] p-6 border transition-all duration-200
+              ${plan.popular
+                ? "bg-[#0d1020] border-[#3b6bff] shadow-[0_0_0_1px_rgba(59,107,255,0.2),0_8px_40px_rgba(59,107,255,0.15)] pt-9"
+                : "bg-[#12121a] border-[#1e1e2e] hover:border-[#2a2a40] hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:-translate-y-1"
+              }
+            `}
           >
-            <h2 className="text-2xl font-semibold mb-3 text-white">{plan.title}</h2>
-            <ul className="text-gray-300 space-y-2 mb-4">
-              {plan.features.map((feature, idx) => (
-                <li key={idx}>• {feature}</li>
+            {/* Popular Badge */}
+            {plan.popular && (
+              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#3b6bff] text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                Popular
+              </span>
+            )}
+
+            {/* Plan Name */}
+            <h2 className="text-lg font-bold text-white mb-1">{plan.name}</h2>
+
+            {/* Price */}
+            <div className="flex items-baseline gap-1 mb-1.5">
+              <span className="text-4xl font-extrabold text-white leading-none">{plan.price}</span>
+              <span className="text-[13px] text-[#8888aa] font-medium">{plan.period}</span>
+            </div>
+
+            {/* Description */}
+            <p className="text-[12.5px] text-[#8888aa] leading-relaxed mb-0">{plan.description}</p>
+
+            {/* Credits Box */}
+            <div className="flex items-center gap-2 bg-[#1a1a28] rounded-xl px-4 py-3 my-4">
+              <span className="text-[28px] font-extrabold text-[#3b6bff] leading-none">{plan.credits}</span>
+              <span className="text-[13px] text-[#8888aa] font-medium">credits / month</span>
+            </div>
+
+            {/* Usage Section */}
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#555577] mb-2.5">
+              Example usage (choose any combination):
+            </p>
+            <ul className="flex flex-col gap-1.5 mb-0">
+              {plan.usage.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-[13px] text-[#aaaacc] leading-snug">
+                  <span className="mt-[5px] w-[5px] h-[5px] rounded-full bg-[#3b6bff] flex-shrink-0" />
+                  {item}
+                </li>
               ))}
             </ul>
-            <p className="text-gray-300 text-sm italic">{plan.note}</p>
+
+            {/* Divider */}
+            <div className="h-px bg-[#1e1e30] my-5" />
+
+            {/* Includes Section */}
+            <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#555577] mb-2.5">
+              {plan.includesTitle}
+            </p>
+            <ul className="flex flex-col gap-1.5 mb-0">
+              {plan.includes.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-[13px] text-[#aaaacc] leading-snug">
+                  <span className="text-[#3b6bff] text-sm leading-none mt-[2px]">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
 
-      <div className="bg-gray-800 p-6 rounded-lg mb-8">
-        <h2 className="text-2xl font-semibold mb-4 text-white">Understanding Credits</h2>
-        <p className="text-gray-300 mb-4">
-          Credits ensure you only pay for what you use.
-        </p>
-        <ul className="text-gray-300 space-y-2">
-          {plans.credits.map((credit, idx) => (
-            <li key={idx}>
-              • <span className="font-semibold">{credit.type}:</span> {credit.usage}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="flex gap-4">
-        <Link
-          href="/available-widgets"
-          className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
-        >
-          ← Previous
-        </Link>
-        <Link
-          href="/best-practices"
-          className="px-6 py-3 bg-blue-600 hover:bg-orange-700 text-white rounded-lg transition-colors"
-        >
-          Next: Best Practices →
-        </Link>
-      </div>
+      {/* Footer Note */}
+      <p className="text-center text-[#555577] text-[13px] mt-14 max-w-xl mx-auto leading-relaxed">
+        All plans include community access, documentation, and regular updates.{" "}
+        Credits reset monthly and can be used across any widget combination.
+      </p>
     </div>
   );
 }

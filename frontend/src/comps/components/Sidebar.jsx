@@ -10,6 +10,7 @@ import { TiContacts, TiEdit } from "react-icons/ti";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaSlack } from "react-icons/fa";
+import { BsEnvelopePaper } from "react-icons/bs";
 
 const Sidebar = ({ isOpen, onClose }) => {
   const pathname = usePathname();
@@ -23,18 +24,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { id: '', label: 'Home', icon: Home, section: 'Getting Started' },
     { id: 'introduction', label: 'Introduction', icon: BookOpen, section: 'Getting Started' },
     { id: 'platform-concepts', label: 'Platform Concepts', icon: Layers, section: 'Getting Started' },
-    { 
-      id: 'integrations', 
-      label: 'Integrations', 
-      icon: TbPlugConnected, 
-      section: 'Core Features',
-      hasSubItems: true,
-      subItems: [
-        { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
-      ]
-    },
     { id: 'dashboards', label: 'Analytics Dashboard', icon: LayoutDashboard, section: 'Core Features' },
-    { id: 'my-widgets', label: 'My Widgets', icon: SquareLibrary, section: 'Core Features' },
     { 
       id: 'available-widgets', 
       label: 'Available Widgets', 
@@ -43,12 +33,23 @@ const Sidebar = ({ isOpen, onClose }) => {
       hasSubItems: true,
       subItems: [
         { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot',icon: TbMessageChatbot },
+        { id: 'available-widgets/comment-chaos', label: 'Comment Chaos', icon: BsEnvelopePaper },
         { id: 'available-widgets/contactform-widget', label: 'Contact Forms', icon: TiContacts },
         { id: 'available-widgets/feedback-loop', label: 'Feedback Loop', icon: TiEdit },
+        { id: 'available-widgets/visitor-tracker-analysis', label: 'Know Your Visitor', icon: HiMiniUserGroup },
         { id: 'available-widgets/live-conversation', label: 'Live Conversation', icon: HiChatBubbleLeftRight },
-        { id: 'available-widgets/visitor-tracker-analysis', label: 'Visitor Tracking Analysis', icon: HiMiniUserGroup },
-        // { id: 'available-widgets/comment-box', label: 'Comment Box Widget' },
         // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }
+      ]
+    },
+    { id: 'my-widgets', label: 'My Widgets', icon: SquareLibrary, section: 'Core Features' },
+    { 
+      id: 'integrations', 
+      label: 'Integrations', 
+      icon: TbPlugConnected, 
+      section: 'Core Features',
+      hasSubItems: true,
+      subItems: [
+        { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
       ]
     },
     { id: 'plans-usage', label: 'Plans & Usage', icon: LuCreditCard, section: 'Core Features' },

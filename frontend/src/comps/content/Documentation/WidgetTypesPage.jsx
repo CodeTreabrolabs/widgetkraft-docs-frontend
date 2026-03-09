@@ -17,7 +17,7 @@ const getWidgetsData = async () => {
       features: ['Calendar integration', 'AI-assisted scheduling', 'High-intent lead capture']
     },
     {
-      name: 'Comment Box (Coming Soon)',
+      name: 'Comment Chaos',
       desc: 'Embed comments directly into blog posts or content pages.',
       useCases: ['Blog engagement', 'Community discussions', 'Feedback collection'],
       features: ['Moderation controls', 'Spam reduction', 'Centralized comment management']
@@ -44,7 +44,7 @@ const getWidgetsData = async () => {
       link:  'available-widgets/live-conversation'
     },
     {
-      name: 'Visitor Tracker',
+      name: 'Know Your Visitor',
       desc: 'Track website visitors without complex analytics dashboards.',
       useCases: ['Traffic awareness', 'Basic visitor insights', 'Activity monitoring'],
       features: ['Lightweight tracking', 'No setup complexity', 'Credit-efficient events'],

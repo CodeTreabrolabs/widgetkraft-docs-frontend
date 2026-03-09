@@ -48,6 +48,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://docs.widgetkraft.com/available-widgets/comment-chaos</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://docs.widgetkraft.com/available-widgets/ai-chatbot-widget</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

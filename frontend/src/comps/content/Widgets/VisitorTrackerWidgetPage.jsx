@@ -4,9 +4,9 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
   const widgetDetails = {
-    title: 'Visitor Tracker Analysis',
+    title: 'Know Your Visitor',
     description:
-      'The Visitor Tracker Widget allows you to monitor and analyze visitor activity on your website in real-time. Gain insights into user behavior and optimize your site for better engagement.',
+      'The Know Your Visitor Widget allows you to monitor and analyze visitor activity on your website in real-time. Gain insights into user behavior and optimize your site for better engagement.',
     customizableFeatures: [
       'Real-time visitor tracking',
       'Customizable tracking parameters',
@@ -63,10 +63,10 @@ export default function VisitorTrackerWidgetPage() {
         </p>
       </div>
 
-      {/* Creating a Visitor Tracker Widget */}
+      {/* Creating a Know Your Visitor Widget */}
       <section className="mb-6">
-        <h2 className="text-3xl font-bold mb-4 text-white">Creating a Visitor Tracker Widget</h2>
-        <p className="text-gray-300 mb-4">To create a Visitor Tracker widget:</p>
+        <h2 className="text-3xl font-bold mb-4 text-white">Creating a Know Your Visitor Widget</h2>
+        <p className="text-gray-300 mb-4">To create a Know Your Visitor Widget:</p>
 
         <ol className="text-gray-300 space-y-2 mb-6">
           {widgetDetails.creationSteps.map((step, idx) => (
@@ -81,12 +81,12 @@ export default function VisitorTrackerWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
           <div className="text-center">
-            <img src="/images/visitortracker/visitor-tracker-widget.png" alt="WidgetKraft: Creating a Visitor Tracker Widget - Dashboard Selection" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/visitortracker/visitor-tracker-widget.png" alt="WidgetKraft: Creating a Know Your Visitor Widget - Dashboard Selection" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">{widgetDetails.screenshotCaption}</p>
           </div>
 
           <div className="text-center pt-2">
-            <img src="/images/visitortracker/visitor-tracker-installed-widgets.png" alt="WidgetKraft: Creating a Visitor Tracker Widget - Configure & View Dashboard" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/visitortracker/visitor-tracker-installed-widgets.png" alt="WidgetKraft: Creating a Know Your Visitor Widget - Configure & View Dashboard" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: My Widgets - Visitor Tracker Selection with Configure & View Dashboard</p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default function VisitorTrackerWidgetPage() {
 
         <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
           <div className="text-center">
-            <img src="/images/visitortracker/visitor-tracker-configuration.png" alt="WidgetKraft: Creating a Visitor Tracker Widget and Using It" className="mx-auto mb-3 rounded-lg shadow-lg" />
+            <img src="/images/visitortracker/visitor-tracker-configuration.png" alt="WidgetKraft: Creating a Know Your Visitor Widget and Using It" className="mx-auto mb-3 rounded-lg shadow-lg" />
             <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
           </div>
         </div>
@@ -140,6 +140,9 @@ export default function VisitorTrackerWidgetPage() {
         </p>
         <div className="text-center">
           <img src="/images/visitortracker/visitor-tracker-dashboard-interface.png" alt="WidgetKraft: Visitor Tracker Dashboard Interface" className="mx-auto mb-3 rounded-lg shadow-lg" />
+        </div>
+        <div className="text-center">
+          <img src="/images/visitortracker/visitor-tracker-dashboard-interface1.png" alt="WidgetKraft: Visitor Tracker Dashboard Interface" className="mx-auto mb-3 rounded-lg shadow-lg" />
           <p className="text-gray-300 text-sm">Screenshot: Visitor Tracker - Upload the site url, Click Save Visitor Config & just copy the code</p>
         </div>
       </section>

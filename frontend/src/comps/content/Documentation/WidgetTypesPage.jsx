@@ -21,6 +21,7 @@ const getWidgetsData = async () => {
       desc: 'Embed comments directly into blog posts or content pages.',
       useCases: ['Blog engagement', 'Community discussions', 'Feedback collection'],
       features: ['Moderation controls', 'Spam reduction', 'Centralized comment management']
+      link: 'available-widgets/comment-chaos'
     },
     {
       name: 'Contact Forms',

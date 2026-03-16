@@ -1,5 +1,6 @@
 import { Eye, CheckCircle, Sparkles, Settings, Code, Palette } from 'lucide-react';
 import { HiMiniUserGroup } from "react-icons/hi2";
+import { VisitorCodes } from './Codes/VisitorCodes';
 
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
@@ -62,6 +63,8 @@ export default function VisitorTrackerWidgetPage() {
           Track visitor activity and gain actionable insights to improve your website.
         </p>
       </div>
+
+      <VisitorCodes />
 
       {/* Creating a Know Your Visitor Widget */}
       <section className="mb-6">

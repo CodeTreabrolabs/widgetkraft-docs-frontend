@@ -1,5 +1,6 @@
 import { Mail, MessageCircle, Plus, Settings, Code, Eye, Palette, Save, Copy, CheckCircle, AlertCircle, Bot, Sparkles } from 'lucide-react';
 import { TbMessageChatbot } from "react-icons/tb";
+import { ChatbotCodes } from './Codes/ChatbotCodes';
 
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
@@ -62,6 +63,8 @@ export default function ChatbotWidgetPage() {
           Your AI assistant is powered by Claude and can be customized with your own knowledge base.
         </p>
       </div>
+
+      <ChatbotCodes /> 
 
       {/* Creating a Chatbot Widget */}
       <section className="mb-6">
@@ -588,11 +591,6 @@ export default function ChatbotWidgetPage() {
 </script>`}
             </code>
           </div>
-
-          <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-            <Copy size={18} />
-            Copy Code
-          </button>
         </div>
 
         <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">

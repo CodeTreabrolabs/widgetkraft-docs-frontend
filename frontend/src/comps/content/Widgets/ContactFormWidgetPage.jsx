@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Plus, Settings, Code, Eye, Palette, Save, Copy, CheckCircle, AlertCircle } from 'lucide-react';
 import { TiContacts } from "react-icons/ti";
+import { ContactCodes } from './Codes/ContactCodes';
 
 // This runs on the server
 const getWidgetData = async () => {
@@ -64,6 +65,8 @@ export default async function ContactFormWidgetPage() {
           All submissions are captured inside your WidgetKraft dashboard.
         </p>
       </div>
+
+      <ContactCodes />
 
       {/* Creating a Contact Form Widget */}
       <section className="mb-6">
@@ -359,12 +362,6 @@ export default async function ContactFormWidgetPage() {
               });
               </script>`}
             </code>
-          </div>
-
-          {/* Note: This button would need to be client component for copy functionality */}
-          <div className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg w-fit">
-            <Copy size={18} />
-            Copy Code
           </div>
         </div>
 

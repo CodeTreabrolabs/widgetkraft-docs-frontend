@@ -1,5 +1,6 @@
 import { MessageCircle, Users, Clock, Eye, Settings, Code, Palette, Save, Copy, CheckCircle, AlertCircle, Mail, Sparkles } from 'lucide-react';
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
+import { LiveChatCodes } from './Codes/LiveChatCodes';
 
 // Server-side data fetching (in a real app, this would fetch from your API/database)
 const getLiveConversationWidgetData = () => {
@@ -57,6 +58,8 @@ export default function LiveConversationWidgetPage() {
           ))}
         </div>
       </div>
+
+      <LiveChatCodes />
 
       {/* Creating a Live Conversation Widget */}
       <section className="mb-6">
@@ -454,10 +457,6 @@ export default function LiveConversationWidgetPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-              <Copy size={18} />
-              Copy Code
-            </button>
             <div className="text-gray-400 text-sm ml-2">
               <CheckCircle size={16} className="inline mr-1 text-green-500" />
               Widget ID is auto-filled

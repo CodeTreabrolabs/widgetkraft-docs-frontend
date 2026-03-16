@@ -1,5 +1,6 @@
 import { CheckCircle, Sparkles, MessageSquare } from 'lucide-react';
 import { BsEnvelopePaper } from "react-icons/bs";
+import { CommentCodes } from './Codes/CommentCodes';
 
 // This runs on the server (in real Next.js app)
 const getWidgetData = () => {
@@ -62,6 +63,8 @@ export default function CommentChaosWidgetPage() {
           Engage your audience and manage all conversations from one place.
         </p>
       </div>
+
+      <CommentCodes />
 
       {/* Creating a Comment Chaos Widget */}
       <section className="mb-6">

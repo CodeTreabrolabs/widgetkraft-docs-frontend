@@ -34,7 +34,7 @@ const Header = ({ onMenuClick }) => {
         <Link
           href="https://www.widgetkraft.com"
           target='_blank'
-          className="px-4 py-2 bg-blue-600 hover:bg-orange-700 text-white rounded-lg transition-colors text-sm"
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
         >
           Platform →
         </Link>

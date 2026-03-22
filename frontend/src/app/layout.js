@@ -2,6 +2,7 @@ import './globals.css';
 import Sidebar from '@/comps/components/Sidebar';
 import Header from '@/comps/components/Header';
 import FeedbackWidgetContext from '@/comps/context/FeedbackWidgetContext';
+import AIChatbotWidget from '@/comps/components/AIChatbotWidget';
 
 export const metadata = {
   title: 'WidgetKraft Documentation',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <FeedbackWidgetContext />
+        <AIChatbotWidget />
       </body>
     </html>
   );

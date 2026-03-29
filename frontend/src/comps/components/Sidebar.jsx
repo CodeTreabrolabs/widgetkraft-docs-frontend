@@ -9,7 +9,7 @@ import { TbMessageChatbot, TbPlugConnected  } from "react-icons/tb";
 import { TiContacts, TiEdit } from "react-icons/ti";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { HiMiniUserGroup } from "react-icons/hi2";
-import { FaSlack } from "react-icons/fa";
+import { FaDiscord, FaSlack } from "react-icons/fa";
 import { BsEnvelopePaper } from "react-icons/bs";
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -50,6 +50,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       hasSubItems: true,
       subItems: [
         { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
+        { id: 'integrations/connect-discord', label: 'Discord',icon: FaDiscord },
       ]
     },
     { id: 'plans-usage', label: 'Plans & Usage', icon: LuCreditCard, section: 'Core Features' },

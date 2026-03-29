@@ -10,11 +10,11 @@ const getConceptsData = async () => {
       details: [
         'AI Chatbot',
         'AI Meet Scheduler (Coming Soon)',
-        'Comment Box (Coming Soon)',
+        'Comment Chaos',
         'Contact Form',
         'Feedback Loop',
         'Live Conversation',
-        'Visitor Tracker',
+        'Know Your Visitor',
       ],
     },
     {

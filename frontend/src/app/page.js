@@ -33,7 +33,7 @@ export default async function Page() {
           WidgetKraft Documentation
         </h1>
         <p className="text-lg text-gray-300">
-          Learn how to capture conversations, leads, and visitor insights with WidgetKraft — 
+          Learn how to capture conversations, leads, and visitor insights with WidgetKraft 
           <span className="font-semibold"> qualify leads, boost engagement, automate responses</span>, and 
           <span className="font-semibold"> streamline your customer interactions</span>.
         </p>

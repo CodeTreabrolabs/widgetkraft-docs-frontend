@@ -1,5 +1,7 @@
-import { Link2, Zap, CheckCircle, AlertCircle, Settings, Bell, MessageSquare } from 'lucide-react';
-import { FaSlack } from "react-icons/fa";
+"use client";
+
+import { Zap, CheckCircle, AlertCircle, Settings, Bell, MessageSquare } from 'lucide-react';
+import { FaSlack, FaDiscord } from "react-icons/fa";
 import { SiGooglecalendar } from "react-icons/si";
 import { TbPlugConnected  } from "react-icons/tb";
 
@@ -24,83 +26,38 @@ const getIntegrationsData = async () => {
       },
       {
         id: 2,
+        name: 'Discord',
+        description: 'Send widget activity updates to Discord channels',
+        icon: <FaDiscord />,
+        status: 'available',
+        category: 'Communication',
+        features: [
+          'Real-time notifications',
+          'Thread replies',
+          'Embed messages',
+          'Activity logs'
+        ],
+        useCase: 'Ideal for community-driven projects. Keep your Discord community informed about feedback and user interactions in real-time.'
+      },
+      {
+        id: 3,
         name: 'Google Calendar',
         description: 'Automatically sync events and schedules with Google Calendar',
         icon: <SiGooglecalendar />,
         status: 'coming-soon',
         category: 'Productivity & Scheduling',
         features: [
-            'Two-way event sync',
-            'Automatic reminders',
-            'Real-time updates',
-            'Multi-calendar support'
+          'Two-way event sync',
+          'Automatic reminders',
+          'Real-time updates',
+          'Multi-calendar support'
         ],
         useCase: 'Sync widget-generated events directly to Google Calendar. Ideal for managing bookings, reminders, meetings, and schedules in one place.'
       },
-      //   {
-    //     id: 5,
-    //     name: 'Webhook',
-    //     description: 'Send widget events to any endpoint via webhooks',
-    //     icon: '🔗',
-    //     status: 'coming-soon',
-    //     category: 'Developer Tools',
-    //     features: [
-    //       'Custom endpoints',
-    //       'Event filtering',
-    //       'Payload customization',
-    //       'Retry logic'
-    //     ],
-    //     useCase: 'Build custom integrations with your own systems. Receive widget events in real-time to any URL.'
-    //   },
-    //   {
-    //     id: 6,
-    //     name: 'Email',
-    //     description: 'Get email notifications for widget activities',
-    //     icon: '📧',
-    //     status: 'coming-soon',
-    //     category: 'Communication',
-    //     features: [
-    //       'Instant alerts',
-    //       'Digest mode',
-    //       'Custom templates',
-    //       'Multiple recipients'
-    //     ],
-    //     useCase: 'Stay informed via email. Get notified about new feedback, chat requests, or form submissions.'
-    //   },
-    //   {
-    //     id: 2,
-    //     name: 'Discord',
-    //     description: 'Send widget activity updates to Discord channels',
-    //     icon: '🎮',
-    //     status: 'coming-soon',
-    //     category: 'Communication',
-    //     features: [
-    //       'Webhook integration',
-    //       'Role mentions',
-    //       'Embed messages',
-    //       'Activity logs'
-    //     ],
-    //     useCase: 'Ideal for community-driven projects. Keep your Discord community informed about feedback and user interactions.'
-    //   },
-    //   {
-    //     id: 3,
-    //     name: 'Zapier',
-    //     description: 'Connect your widgets to 5,000+ apps via Zapier',
-    //     icon: '⚡',
-    //     status: 'coming-soon',
-    //     category: 'Automation',
-    //     features: [
-    //       'Multi-step workflows',
-    //       'App connections',
-    //       'Conditional logic',
-    //       'Data transformation'
-    //     ],
-    //     useCase: 'Automate everything. Connect widgets to CRMs, email tools, databases, and more without writing code.'
-    //   },
     ],
     summary: {
-      totalIntegrations: 2,
-      availableNow: 1,
+      totalIntegrations: 3,
+      availableNow: 2,
       comingSoon: 1,
       categories: 2
     }
@@ -218,10 +175,7 @@ export default async function IntegrationsPage() {
 
               {/* Action Button */}
               {integration.status === 'available' ? (
-                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                  <Zap size={16} />
-                  Connect {integration.name}
-                </button>
+                <ConnectButton integrationName={integration.name} />
               ) : (
                 <button className="w-full bg-gray-700 text-gray-400 font-medium py-2 px-4 rounded-lg cursor-not-allowed flex items-center justify-center gap-2">
                   <Bell size={16} />
@@ -245,7 +199,7 @@ export default async function IntegrationsPage() {
           <div>
             <p className="font-medium text-white mb-2">What you can do here:</p>
             <ul className="space-y-2 ml-5 list-disc">
-              <li><strong>Connect Apps:</strong> Link your widgets to communication tools like Slack</li>
+              <li><strong>Connect Apps:</strong> Link your widgets to communication tools like Slack and Discord</li>
               <li><strong>Sync Schedules:</strong> Automatically sync widget events to Google Calendar</li>
               <li><strong>Stay Informed:</strong> Get real-time alerts when users interact with your widgets</li>
               <li><strong>Automate Workflows:</strong> Set up automatic notifications and event tracking</li>
@@ -258,11 +212,11 @@ export default async function IntegrationsPage() {
             <div className="grid md:grid-cols-2 gap-3 mt-3">
               <div className="bg-gray-900 p-3 rounded-lg border border-gray-700">
                 <p className="font-medium text-white text-sm mb-1">💬 Communication</p>
-                <p className="text-gray-400 text-xs">Slack - Stay connected with your team through real-time notifications</p>
+                <p className="text-gray-400 text-xs">Slack & Discord — Stay connected with your team through real-time notifications across your preferred platform</p>
               </div>
               <div className="bg-gray-900 p-3 rounded-lg border border-gray-700">
                 <p className="font-medium text-white text-sm mb-1">📅 Productivity & Scheduling</p>
-                <p className="text-gray-400 text-xs">Google Calendar - Manage events and schedules seamlessly</p>
+                <p className="text-gray-400 text-xs">Google Calendar — Manage events and schedules seamlessly</p>
               </div>
             </div>
           </div>
@@ -290,11 +244,15 @@ export default async function IntegrationsPage() {
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
+                <span><strong>Discord Integration:</strong> Route widget interactions like bug reports or feature requests to specific Discord channels. Keep your community and team in the loop without switching tools.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
                 <span><strong>Google Calendar Sync:</strong> Automatically create calendar events when users book appointments through your widgets. Keep your schedule organized without manual entry.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Team Coordination:</strong> Route different widget interactions to specific Slack channels. For example, send bug reports to #engineering and feature requests to #product.</span>
+                <span><strong>Team Coordination:</strong> Use Slack or Discord to route different widget interactions to specific channels — send bug reports to #engineering and feature requests to #product.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
@@ -321,5 +279,22 @@ export default async function IntegrationsPage() {
         </button>
       </div>
     </div>
+  );
+}
+
+// Moved the button click handler to a client-side component
+function ConnectButton({ integrationName }) {
+  const handleClick = () => {
+    window.location.href = 'https://www.widgetkraft.com/signin';
+  };
+
+  return (
+    <button 
+      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center gap-2"
+      onClick={handleClick}
+    >
+      <Zap size={16} />
+      Connect {integrationName}
+    </button>
   );
 }

@@ -5,7 +5,7 @@ const getPageData = async () => {
   // You can replace this with actual API/database call
   const data = {
     title: 'Introduction',
-    description: 'WidgetKraft is a unified widget platform that helps businesses capture conversations, leads, and visitor insights directly from their website—without juggling multiple tools.',
+    description: 'WidgetKraft is a unified widget platform that helps businesses capture conversations, leads, and visitor insights directly from their website-without juggling multiple tools.',
   };
 
   return data;

@@ -58,7 +58,7 @@ export default function App() {
 
       // Initialize widget
       widget.init({
-        widgetId: "fd5273fb-2797-45d6-9bc2-253aab17fa18",
+        widgetId: "YOUR_WIDGET_ID",
       });
 
       // Set logged-in user

@@ -23,6 +23,7 @@ const getLiveConversationWidgetData = () => {
     ],
     pricing: '1 credit / thread',
     sampleWidgetId: '1d8b83...b276',
+    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/live-conversation',
   };
 };
 
@@ -31,6 +32,7 @@ export default function LiveConversationWidgetPage() {
   
   return (
     <div className="max-w-4xl">
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetData?.currentPageUrl}`}</p>
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">

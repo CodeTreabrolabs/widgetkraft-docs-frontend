@@ -23,6 +23,7 @@ const getFeedbackLoopWidgetData = () => {
     ],
     pricing: 'Free',
     sampleWidgetId: 'ca99254a...f0f9a',
+    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/feedback-loop',
   };
 };
 
@@ -31,6 +32,7 @@ export default function FeedbackLoopWidgetPage() {
 
   return (
     <div className="max-w-4xl">
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetData?.currentPageUrl}`}</p>
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">

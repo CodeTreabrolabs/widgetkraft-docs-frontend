@@ -23,6 +23,7 @@ const getWidgetData = () => {
     ],
     screenshotCaption: "Screenshot: Dashboard Create Widget - AI Chatbot Selection",
     pricing: '0.8 credit / chat',
+    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/ai-chatbot-widget',
   };
 
   return widgetDetails;
@@ -32,7 +33,10 @@ export default function ChatbotWidgetPage() {
   const widgetDetails = getWidgetData();
 
   return (
-    <div className="max-w-4xl">
+    <>
+      {/* Hidden paragraph for Searching purposes */}
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails?.currentPageUrl}`}</p>
+
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
@@ -768,6 +772,6 @@ export default function ChatbotWidgetPage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

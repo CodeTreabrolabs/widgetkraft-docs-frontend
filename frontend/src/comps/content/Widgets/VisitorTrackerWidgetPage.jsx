@@ -23,6 +23,7 @@ const getWidgetData = () => {
     ],
     screenshotCaption: "Screenshot: Dashboard Create Widget - Visitor Tracker Selection",
     pricing: '0.1 credit / visit',
+    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/visitor-tracker-analysis',
   };
 
   return widgetDetails;
@@ -33,6 +34,7 @@ export default function VisitorTrackerWidgetPage() {
 
   return (
     <div className="max-w-4xl">
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails?.currentPageUrl}`}</p>
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">

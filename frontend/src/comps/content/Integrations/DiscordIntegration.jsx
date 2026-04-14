@@ -6,6 +6,7 @@ export default function DiscordIntegrationGuidePage() {
   return (
     <div className="max-w-4xl">
       {/* Header */}
+      <p style={{ display: 'none' }}>{`Current Page URL: https://docs.widgetkraft.com/integrations/connect-discord`}</p>
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">
           <div className="p-3 rounded-lg">

@@ -23,6 +23,7 @@ const getWidgetData = () => {
       'Click Configure',
     ],
     pricing: '0.25 Credit / Comment',
+    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/comment-chaos',
   };
 
   return widgetDetails;
@@ -34,6 +35,7 @@ export default function CommentChaosWidgetPage() {
   return (
     <div className="max-w-4xl">
       {/* Header */}
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails?.currentPageUrl}`}</p>
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="bg-black p-3 rounded-lg">

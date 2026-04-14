@@ -25,6 +25,7 @@ const getWidgetData = async () => {
     screenshot: '/widgets/contactform/first.png',
     screenshotCaption: 'Screenshot: Dashboard → Create Widget → Select Contact Form',
     pricing: '0.4 credit / submission',
+    currentPageUrl: 'http://localhost:3000/available-widgets/contactform-widget',
   };
 
   return widgetDetails;
@@ -36,6 +37,7 @@ export default async function ContactFormWidgetPage() {
   return (
     <div className="max-w-4xl">
       {/* Header */}
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails?.currentPageUrl}`}</p>
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-4">
           <div className="bg-black p-3 rounded-lg">

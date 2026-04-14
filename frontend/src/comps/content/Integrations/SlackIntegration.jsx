@@ -5,6 +5,7 @@ export default function SlackIntegrationGuidePage() {
   
   return (
     <div className="max-w-4xl">
+      <p style={{ display: 'none' }}>{`Current Page URL: https://docs.widgetkraft.com/integrations/connect-slack`}</p>
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-4">

@@ -110,7 +110,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
         />
       )}
@@ -121,7 +121,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } lg:translate-x-0 flex flex-col`}
       >
-        <div className="sticky top-0 p-4 border-b border-gray-800 h-16 bg-black z-10 flex-shrink-0">
+        <div className="sticky top-0 p-4 border-b border-gray-800 h-16 bg-black z-10 shrink-0">
           <div className="flex items-center justify-between">
             <img src="/widgetkraft_logo.png" alt="WidgetKraft Logo" className="h-7 w-auto" />
             <h1 className="text-xl font-bold text-white">

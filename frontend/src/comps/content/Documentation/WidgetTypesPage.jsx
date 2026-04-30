@@ -11,13 +11,13 @@ const getWidgetsData = async () => {
       link: 'available-widgets/ai-chatbot-widget',
       image: '/images/widgettypes/wtype-1.png', // Replace with your actual image path
     },
-    {
-      name: 'AI Meet Scheduler (Coming Soon)',
-      desc: 'Allows visitors to book meetings directly from your website.',
-      useCases: ['Sales calls', 'Consultations', 'Support scheduling'],
-      features: ['Calendar integration', 'AI-assisted scheduling', 'High-intent lead capture'],
-      // image: '/images/widgettypes/meet-scheduler.png',
-    },
+    // {
+    //   name: 'AI Meet Scheduler (Coming Soon)',
+    //   desc: 'Allows visitors to book meetings directly from your website.',
+    //   useCases: ['Sales calls', 'Consultations', 'Support scheduling'],
+    //   features: ['Calendar integration', 'AI-assisted scheduling', 'High-intent lead capture'],
+    //   image: '/images/widgettypes/meet-scheduler.png',
+    // },
     {
       name: 'Comment Chaos',
       desc: 'Embed comments directly into blog posts or content pages.',
@@ -48,7 +48,7 @@ const getWidgetsData = async () => {
       useCases: ['Sales inquiries', 'Support questions', 'Pre-purchase clarifications'],
       features: ['Real-time chat', 'Email capture (paid plans)', 'Conversation history', 'Team responses from dashboard', 'Email notifications', 'Slack & Discord notifications'],
       link: 'available-widgets/live-conversation',
-      image: '/images/widgettypes/wtype-5.png',
+      image: '/images/widgettypes/wtype-6.png',
     },
     {
       name: 'Know Your Visitors',
@@ -56,7 +56,7 @@ const getWidgetsData = async () => {
       useCases: ['Traffic awareness', 'Advanced visitor insights', 'Device breakdowns'],
       features: ['Lightweight tracking', 'No setup complexity', 'Credit-efficient events'],
       link: 'available-widgets/visitor-tracker-analysis',
-      image: '/images/widgettypes/wtype-6.png',
+      image: '/images/widgettypes/wtype-5.png',
     },
   ];
 

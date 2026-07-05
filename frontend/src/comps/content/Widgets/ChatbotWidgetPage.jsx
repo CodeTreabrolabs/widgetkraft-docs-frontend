@@ -586,7 +586,7 @@ export default function ChatbotWidgetPage() {
             <code className="text-sm text-green-400 whitespace-pre">
               {`<div id="chatbot-root"></div>
 
-<script src="https://unpkg.com/@getwidgets/chatbot-widget@latest/dist/chatbot-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/chatbot.js"></script>
 
 <script>
   ChatbotWidget.init({ 

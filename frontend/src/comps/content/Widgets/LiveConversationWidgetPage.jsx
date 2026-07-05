@@ -448,7 +448,7 @@ export default function LiveConversationWidgetPage() {
             <code className="text-sm text-green-400 whitespace-pre">
 {`<div id="livechat-root"></div>
 
-<script src="https://unpkg.com/@getwidgets/live-chat-widget@latest/dist/live-chat-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/livechat.js"></script>
 
 <script>
   LiveChatWidget.init({ 

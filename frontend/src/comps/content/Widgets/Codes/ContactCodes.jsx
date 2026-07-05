@@ -9,7 +9,7 @@ const HTML_CODE = `<!-- 1. Add this where you want the contact form to appear --
 <div id="contactform-root"></div>
 
 <!-- 2. Load the widget script -->
-<script src="https://unpkg.com/@getwidgets/contact-widget@latest/dist/contact-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/contact.js"></script>
 
 <!-- 3. Initialize with your Widget ID -->
 <script>
@@ -25,7 +25,7 @@ export default function App() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/contact-widget@latest/dist/contact-widget.umd.js';
+      'https://cdn.widgetkraft.com/contact.js';
 
     script.onload = () => {
       if (window.ContactFormWidget) {
@@ -60,7 +60,7 @@ export default function ContactFormWidget() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/contact-widget@latest/dist/contact-widget.umd.js';
+      'https://cdn.widgetkraft.com/contact.js';
     script.async = true;
 
     script.onload = () => {

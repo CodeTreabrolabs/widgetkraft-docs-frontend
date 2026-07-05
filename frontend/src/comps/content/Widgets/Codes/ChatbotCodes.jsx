@@ -9,7 +9,7 @@ const HTML_CODE = `<!-- 1. Add this where you want the chatbot to appear -->
 <div id="chatbot-root"></div>
 
 <!-- 2. Load the widget script -->
-<script src="https://unpkg.com/@getwidgets/chatbot-widget@latest/dist/chatbot-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/chatbot.js"></script>
 
 <!-- 3. Initialize with your Widget ID -->
 <script>
@@ -24,7 +24,7 @@ export default function App() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/chatbot-widget@latest/dist/chatbot-widget.umd.js';
+      'https://cdn.widgetkraft.com/chatbot.js';
 
     script.onload = () => {
       if (window.ChatbotWidget) {
@@ -56,7 +56,7 @@ export default function ChatbotWidget() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/chatbot-widget@latest/dist/chatbot-widget.umd.js';
+      'https://cdn.widgetkraft.com/chatbot.js';
     script.async = true;
 
     script.onload = () => {

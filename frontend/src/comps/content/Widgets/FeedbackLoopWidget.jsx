@@ -403,7 +403,7 @@ export default function FeedbackLoopWidgetPage() {
             <code className="text-sm text-green-400 whitespace-pre">
               {`<div id="feedbackloop-root"></div>
 
-<script src="https://unpkg.com/@getwidgets/feedback-loop-widget/dist/feedback-loop-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/feedback.js"></script>
 
 <script>
   FeedbackLoopWidget.init({

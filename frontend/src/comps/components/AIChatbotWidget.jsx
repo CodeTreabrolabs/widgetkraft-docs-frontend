@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 const SCRIPT_SRC =
-  'https://unpkg.com/@getwidgets/chatbot-widget@latest/dist/chatbot-widget.umd.js';
+  'https://cdn.widgetkraft.com/chatbot.js';
 const WIDGET_ID = '55ddbfd3-8a47-4d1b-b09f-a1a93cab878a';
 
 const AIChatbotWidget = () => {

@@ -356,7 +356,7 @@ export default async function ContactFormWidgetPage() {
 
           <div className="bg-gray-900 p-4 rounded-lg border border-gray-700 mb-4">
             <code className="text-sm text-green-400">
-              {`<script src="https://unpkg.com/@getwidgets/contact-widget@latest/dist/contact-widget.umd.js"></script>
+              {`<script src="https://cdn.widgetkraft.com/contact.js"></script>
               <script>
               ContactFormWidget.init({
                   widgetId: "7aaaaaaa-xxxx-yyyy-zzzz-2bbbbbbbbbbb",

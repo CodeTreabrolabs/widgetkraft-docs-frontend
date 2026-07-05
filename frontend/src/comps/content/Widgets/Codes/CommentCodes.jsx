@@ -9,7 +9,7 @@ const HTML_CODE = `<!-- 1. Add this where you want the comment box to appear -->
 <div id="commentbox-root"></div>
 
 <!-- 2. Load the widget script -->
-<script src="https://unpkg.com/@getwidgets/commentbox-widget@latest/dist/commentbox-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/comments.js"></script>
 
 <!-- 3. Initialize with your Widget ID -->
 <script>
@@ -24,7 +24,7 @@ export default function App() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/commentbox-widget@latest/dist/commentbox-widget.umd.js';
+      'https://cdn.widgetkraft.com/comments.js';
 
     script.onload = () => {
       if (window.CommentBoxWidget) {
@@ -56,7 +56,7 @@ export default function CommentBoxWidget() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/commentbox-widget@latest/dist/commentbox-widget.umd.js';
+      'https://cdn.widgetkraft.com/comments.js';
     script.async = true;
 
     script.onload = () => {

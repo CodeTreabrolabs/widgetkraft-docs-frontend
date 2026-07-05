@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 const FeedbackWidgetContext = () => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://unpkg.com/@getwidgets/feedback-loop-widget/dist/feedback-loop-widget.umd.js";
+    script.src = "https://cdn.widgetkraft.com/feedback.js";
     script.async = true;
     script.onload = () => {
       if (typeof FeedbackLoopWidget !== "undefined") {

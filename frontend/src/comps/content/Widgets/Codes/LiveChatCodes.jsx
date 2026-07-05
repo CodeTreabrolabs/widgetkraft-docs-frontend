@@ -9,7 +9,7 @@ const HTML_CODE = `<!-- 1. Add this where you want the live chat to appear -->
 <div id="livechat-root"></div>
 
 <!-- 2. Load the widget script -->
-<script src="https://unpkg.com/@getwidgets/live-chat-widget@latest/dist/live-chat-widget.umd.js"></script>
+<script src="https://cdn.widgetkraft.com/livechat.js"></script>
 
 <!-- 3. Initialize the widget and set user -->
 <script>
@@ -48,7 +48,7 @@ export default function App() {
 
     const script = document.createElement("script");
     script.src =
-      "https://unpkg.com/@getwidgets/live-chat-widget@latest/dist/live-chat-widget.umd.js";
+      "https://cdn.widgetkraft.com/livechat.js";
     script.async = true;
 
     script.onload = () => {
@@ -98,7 +98,7 @@ export default function RootLayout({ children }) {
 
     const script = document.createElement("script");
     script.src =
-      "https://unpkg.com/@getwidgets/live-chat-widget@latest/dist/live-chat-widget.umd.js";
+      "https://cdn.widgetkraft.com/livechat.js";
     script.async = true;
 
     script.onload = () => {

@@ -7,7 +7,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const HTML_CODE = `<!-- Add this snippet before the closing </head> or </body> tag -->
 <script
-  src="https://unpkg.com/@getwidgets/analytics-widget@latest/dist/analytics-widget.umd.js"
+  src="https://cdn.widgetkraft.com/analytics.js"
   data-widget-id="YOUR_WIDGET_ID">
 </script>`;
 
@@ -17,7 +17,7 @@ export default function App() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/analytics-widget@latest/dist/analytics-widget.umd.js';
+      'https://cdn.widgetkraft.com/analytics.js';
     script.setAttribute('data-widget-id', 'YOUR_WIDGET_ID');
     script.async = true;
 
@@ -44,7 +44,7 @@ export default function VisitorAnalytics() {
   useEffect(() => {
     const script = document.createElement('script');
     script.src =
-      'https://unpkg.com/@getwidgets/analytics-widget@latest/dist/analytics-widget.umd.js';
+      'https://cdn.widgetkraft.com/analytics.js';
     script.setAttribute('data-widget-id', 'YOUR_WIDGET_ID');
     script.async = true;
 

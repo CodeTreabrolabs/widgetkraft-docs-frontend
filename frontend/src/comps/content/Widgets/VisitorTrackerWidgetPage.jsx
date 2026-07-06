@@ -1,4 +1,5 @@
-import { Eye, CheckCircle, Sparkles, Settings, Code, Palette } from 'lucide-react';
+import Link from 'next/link';
+import { CheckCircle, Sparkles } from 'lucide-react';
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { VisitorCodes } from './Codes/VisitorCodes';
 
@@ -44,9 +45,17 @@ export default function VisitorTrackerWidgetPage() {
           <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
         </div>
         <p className="text-lg text-gray-300">{widgetDetails.description}</p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
-          <span className="text-blue-400 font-medium">Pricing:</span>
-          <span className="text-white">{widgetDetails.pricing}</span>
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <div className="inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
+            <span className="text-blue-400 font-medium">Pricing:</span>
+            <span className="text-white">{widgetDetails.pricing}</span>
+          </div>
+          <Link
+            href="/available-widgets/what-widgetkraft-analytics-track"
+            className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+          >
+            Know what it Tracks
+          </Link>
         </div>
       </div>
 

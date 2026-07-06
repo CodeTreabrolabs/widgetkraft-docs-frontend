@@ -78,6 +78,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://docs.widgetkraft.com/available-widgets/what-widgetkraft-analytics-track</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://docs.widgetkraft.com/plans-usage</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

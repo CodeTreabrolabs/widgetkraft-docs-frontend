@@ -26,7 +26,7 @@ const card = `rounded-xl border ${hairline} bg-transparent`;
 const getWidgetData = () => ({
   title: 'AI Chatbot Widget',
   description:
-    'Add intelligent, conversational AI assistance to your website — powered by advanced language models. Create a custom assistant that understands your business and helps visitors around the clock.',
+    'Add intelligent, conversational AI assistance to your website, powered by advanced language models. Create a custom assistant that understands your business and helps visitors around the clock.',
   customizableFeatures: [
     'Chat appearance and theme',
     'AI behavior and personality',
@@ -40,7 +40,7 @@ const getWidgetData = () => ({
     'Go to My Widgets → AI Chatbot',
     'Click Configure',
   ],
-  screenshotCaption: 'Dashboard — creating a new AI Chatbot widget',
+  screenshotCaption: 'Dashboard, creating a new AI Chatbot widget',
   pricing: '0.8 credit / chat',
   currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/ai-chatbot-widget',
 });
@@ -50,7 +50,6 @@ const editorTabs = [
   { icon: MessageCircle, label: 'Chat', desc: 'Message bubble styling' },
   { icon: Settings, label: 'Input', desc: 'Message input setup' },
   { icon: Palette, label: 'Appearance', desc: 'Size and design' },
-  { icon: Bot, label: 'AI', desc: 'Behavior and personality' },
   { icon: Code, label: 'Code', desc: 'Embed snippet' },
 ];
 
@@ -65,7 +64,7 @@ const themePresets = [
 const bestPractices = [
   {
     title: 'Write a comprehensive master prompt',
-    body: 'The more detail you provide about your business, the better your AI can assist visitors — product details, pricing, FAQs, and contact information all help.',
+    body: 'The more detail you provide about your business, the better your AI can assist visitors, product details, pricing, FAQs, and contact information all help.',
   },
   {
     title: 'Test your chatbot thoroughly',
@@ -77,7 +76,7 @@ const bestPractices = [
   },
   {
     title: 'Use your brand voice',
-    body: 'Define tone and personality — friendly, professional, casual — directly in the master prompt.',
+    body: 'Define tone and personality, friendly, professional, casual, directly in the master prompt.',
   },
   {
     title: 'Match visual design to your site',
@@ -101,7 +100,7 @@ const summaryPoints = [
   'Customize appearance, behavior, and AI personality',
   'Provide 24/7 support without human intervention',
   'Handle common questions and guide visitors automatically',
-  'Embed with a single script tag — no backend required',
+  'Embed with a single script tag, no backend required',
   'Update instantly without changing the embed code',
 ];
 
@@ -218,7 +217,7 @@ function EmbedCodeBlock() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard unavailable — no-op */
+      /* clipboard unavailable, no-op */
     }
   };
 
@@ -308,7 +307,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/image.png"
-          alt="WidgetKraft: creating an AI Chatbot widget — dashboard selection"
+          alt="WidgetKraft: creating an AI Chatbot widget, dashboard selection"
           caption={widgetDetails.screenshotCaption}
         />
 
@@ -360,7 +359,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/chatbot-one.png"
-          alt="WidgetKraft: header tab — title, subtitle, and logo configuration"
+          alt="WidgetKraft: header tab, title, subtitle, and logo configuration"
           caption="Custom title, subtitle, and logo"
         />
       </section>
@@ -380,7 +379,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/chatbot-two.png"
-          alt="WidgetKraft: chat tab — bubble colors and fonts"
+          alt="WidgetKraft: chat tab, bubble colors and fonts"
           caption="Custom bubble colors and fonts"
         />
 
@@ -410,7 +409,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/chatbot-three.png"
-          alt="WidgetKraft: input tab — styled field with placeholder text"
+          alt="WidgetKraft: input tab, styled field with placeholder text"
           caption="Styled input field with custom colors"
         />
       </section>
@@ -433,7 +432,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/chatbot-four.png"
-          alt="WidgetKraft: appearance tab — dimensions, background, and theme"
+          alt="WidgetKraft: appearance tab, dimensions, background, and theme"
           caption="Dimensions, background, and theme customization"
         />
 
@@ -458,7 +457,11 @@ export default function ChatbotWidgetPage() {
 
 
       <section className="mb-10">
-        <SectionHeading step="5" title="AI tab" description="Your AI assistant's knowledge and behavior." />
+        <SectionHeading
+          step="5"
+          title="Knowledge Base"
+          description="Define how your AI responds and what business information it can use."
+        />
 
         <div className={`${card} mb-4 p-4`}>
           <div className="mb-3 flex items-start gap-2">
@@ -466,68 +469,69 @@ export default function ChatbotWidgetPage() {
             <div>
               <h4 className="text-[13px] font-semibold text-[var(--docs-ink)]">Master prompt</h4>
               <p className="text-[13px] text-[var(--docs-steel)]">
-                The most important setting — it defines your AI's personality, knowledge, and
-                capabilities.
+                This is where you define your AI assistant&apos;s identity, behavior, response
+                style, and presentation.
               </p>
             </div>
           </div>
 
           <ul className="mb-3 space-y-1 pl-5 text-[13px] text-[var(--docs-steel)]" style={{ listStyle: 'disc' }}>
-            <li>Who it is and what it represents</li>
-            <li>What it knows about your business</li>
-            <li>How it should respond to visitors</li>
-            <li>What tone and style to use</li>
-            <li>Any specific rules or limitations</li>
+            <li>Who the assistant is and what brand or business it represents</li>
+            <li>How it should answer, friendly, professional, concise, or detailed</li>
+            <li>How replies should be styled and structured for visitors</li>
+            <li>What business topics it should prioritize when answering</li>
+            <li>Any rules, boundaries, or fallback behavior it should follow</li>
           </ul>
 
           <div className={`rounded-lg border p-3 ${hairlineSoft}`}>
             <p className="mb-1 text-[12px] font-medium text-[var(--docs-ink)]">Example master prompt</p>
             <p className="font-mono text-[12px] leading-relaxed text-[var(--docs-stone)]">
-              "WidgetKraft offers an intuitive, no-code platform for adding customizable AI chat
-              widgets and contact forms to any website…"
+              &quot;You are the official AI assistant for our business. Answer in a helpful,
+              professional, and easy-to-understand tone. Keep responses clear and concise first,
+              then add more detail when needed. Use our services, pricing, policies, and terms as
+              the source of truth, and avoid guessing when information is unavailable.&quot;
             </p>
           </div>
 
           <Screenshot
             src="/images/chatbot/chatbot-five-1.png"
-            alt="WidgetKraft: AI tab — master prompt configuration"
-            caption="Master prompt and generate-from-URL"
+            alt="WidgetKraft: AI tab, master prompt configuration"
+            caption="Master prompt and knowledge base setup"
           />
         </div>
 
         <div className={`${card} mb-4 p-4`}>
-          <h4 className="mb-2 text-[13px] font-semibold text-[var(--docs-ink)]">AI prompt generation</h4>
+          <h4 className="mb-2 text-[13px] font-semibold text-[var(--docs-ink)]">Knowledge sources</h4>
           <p className="mb-3 text-[13px] text-[var(--docs-steel)]">
-            Provide your site URL and WidgetKraft generates a master prompt automatically from your
-            website's content.
+            Add important business pages and URLs so the AI can answer with better context and more
+            accurate information.
           </p>
-          <div className={`flex items-center gap-2 rounded-lg border p-2 ${hairline}`}>
-            <input
-              type="text"
-              placeholder="https://getwidgets.app"
-              disabled
-              className="flex-1 bg-transparent px-1 text-[13px] text-[var(--docs-steel)] outline-none"
-            />
-            <button
-              className={`rounded-md border px-3 py-1.5 text-[12px] font-medium text-[var(--docs-ink)] ${hairline}`}
-            >
-              Generate (28 left)
-            </button>
-          </div>
+          <ul className="mb-3 space-y-1 pl-5 text-[13px] text-[var(--docs-steel)]" style={{ listStyle: 'disc' }}>
+            <li>Pricing pages and plan details</li>
+            <li>Terms and conditions, privacy policy, and refund policy</li>
+            <li>Product, service, and feature pages</li>
+            <li>About, FAQ, support, and onboarding pages</li>
+            <li>Any business-specific documentation the AI should rely on</li>
+          </ul>
+
+          <p className="text-[13px] text-[var(--docs-steel)]">
+            The more relevant sources you provide, the more confidently your AI can answer
+            questions about your business, services, pricing, policies, and customer expectations.
+          </p>
 
           <Screenshot
             src="/images/chatbot/chatbot-five-2.png"
-            alt="WidgetKraft: generate a master prompt from a site URL"
+            alt="WidgetKraft: knowledge sources for AI training"
           />
         </div>
 
-        <Callout icon={Sparkles} title="Master prompt tips">
+        <Callout icon={Sparkles} title="Prompt and knowledge base tips">
           <ul className="space-y-1 pl-4" style={{ listStyle: 'disc' }}>
-            <li>Be specific about your business, products, or services</li>
-            <li>Include common questions and how to answer them</li>
-            <li>Define the tone — professional, friendly, casual</li>
-            <li>Set boundaries for what the AI should not discuss</li>
-            <li>Add contact info, pricing, or other key details</li>
+            <li>Describe the exact tone and answer style you want the AI to use</li>
+            <li>Tell it whether replies should be short, detailed, persuasive, or support-focused</li>
+            <li>Add pricing, policy, and service pages as knowledge sources</li>
+            <li>Use real business information so the AI does not rely on generic answers</li>
+            <li>Update sources whenever your offers, terms, or policies change</li>
           </ul>
         </Callout>
       </section>
@@ -535,7 +539,7 @@ export default function ChatbotWidgetPage() {
       <section className="mb-10">
         <SectionHeading
           step="6"
-          title="Code — embedding the chatbot"
+          title="Code, embedding the chatbot"
           description="Once configured, copy the embed snippet onto your site."
         />
 
@@ -543,7 +547,7 @@ export default function ChatbotWidgetPage() {
 
         <Screenshot
           src="/images/chatbot/chatbot-six.png"
-          alt="WidgetKraft: code tab — embed snippet with widget ID"
+          alt="WidgetKraft: code tab, embed snippet with widget ID"
          
         />
 

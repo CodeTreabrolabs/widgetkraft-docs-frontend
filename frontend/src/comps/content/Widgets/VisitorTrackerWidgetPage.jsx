@@ -77,12 +77,17 @@ export default function VisitorTrackerWidgetPage() {
           <li>Timestamp and related visit context</li>
         </ul>
         <Screenshot src="/images/visitortracker/visitor-tracker-configuration.png" alt="Visitor Tracker configuration" caption="Configuration panel and install flow" />
+        <Screenshot src="/images/visitortracker/visitor-track-cs.png" alt="Visitor tracker Custom Events" caption="WidgetKraft Know Your Visitor Custom Events" />
       </section>
 
       <section className="mb-10">
         <SectionHeading title="Visitor data dashboard" description="Review sessions and detailed visit activity." />
+        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-rtv.png" alt="Real time visitors analysis" caption="WidgetKraft Real time visitors analysis" />
         <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-interface.png" alt="Visitor Tracker dashboard" caption="Dashboard overview" />
-        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-interface1.png" alt="Visitor Tracker dashboard detail" caption="Detailed visitor records and filters" />
+        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-interface-2.png" alt="Visitor Tracker Country Demographics" caption="Country Demographics" />
+        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-3.png" alt="Top Pages, Referral sources, Browsers, Operating Systems, Device Breakdown analysis" caption="Top Pages, Referral sources, Browsers, Operating Systems, Device Breakdown analysis" />
+        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-atv.png" alt="All time Vistors records" caption="All time Vistors records" />
+        <Screenshot src="/images/visitortracker/visitor-tracker-dashboard-journey.png" alt="Visitor Journey analysis" caption="Individual Visitor Journey analysis" />
       </section>
 
       <SummaryCard intro="The Know Your Visitor Tool lets you:" points={summaryPoints} />

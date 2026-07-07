@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function TableOfContents() {
+  const pathname = usePathname();
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
 
@@ -10,17 +12,26 @@ export default function TableOfContents() {
     const article = document.querySelector('[data-docs-article]');
     if (!article) return;
 
-    const elements = Array.from(article.querySelectorAll('h2[id], h3[id]')).map((el) => ({
-      id: el.id,
-      text: el.textContent || '',
-      level: el.tagName === 'H2' ? 2 : 3,
-    }));
+    let observer;
 
-    const frame = requestAnimationFrame(() => {
+    const syncHeadings = () => {
+      const elements = Array.from(article.querySelectorAll('h2[id], h3[id]')).map((el) => ({
+        id: el.id,
+        text: el.textContent || '',
+        level: el.tagName === 'H2' ? 2 : 3,
+      }));
+
       setHeadings(elements);
-    });
+      observer?.disconnect();
+      elements.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) observer?.observe(el);
+      });
+    };
 
-    const observer = new IntersectionObserver(
+    const frame = requestAnimationFrame(syncHeadings);
+
+    observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
@@ -33,16 +44,22 @@ export default function TableOfContents() {
       { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
     );
 
-    elements.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
+    const mutationObserver = new MutationObserver(() => {
+      syncHeadings();
+    });
+
+    mutationObserver.observe(article, {
+      childList: true,
+      subtree: true,
+      characterData: true,
     });
 
     return () => {
       cancelAnimationFrame(frame);
+      mutationObserver.disconnect();
       observer.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   if (headings.length < 2) return null;
 

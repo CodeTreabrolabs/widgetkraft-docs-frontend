@@ -1,777 +1,637 @@
-import { Mail, MessageCircle, Plus, Settings, Code, Eye, Palette, Save, Copy, CheckCircle, AlertCircle, Bot, Sparkles } from 'lucide-react';
-import { TbMessageChatbot } from "react-icons/tb";
+'use client';
+
+import { useState } from 'react';
+import {
+  MessageCircle,
+  Settings,
+  Code,
+  Palette,
+  Save,
+  Copy,
+  Check,
+  CheckCircle2,
+  AlertCircle,
+  Bot,
+  Sparkles,
+} from 'lucide-react';
+import { TbMessageChatbot } from 'react-icons/tb';
 import { ChatbotCodes } from './Codes/ChatbotCodes';
 
-// This runs on the server (in real Next.js app)
-const getWidgetData = () => {
-  const widgetDetails = {
-    title: 'AI Chatbot Widget',
-    description:
-      'The AI Chatbot Widget lets you add intelligent, conversational AI assistance to your website—powered by advanced language models. Create custom AI assistants that understand your business and help visitors 24/7.',
-    customizableFeatures: [
-      'Chat appearance and theme',
-      'AI behavior and personality',
-      'Initial greeting messages',
-      'Colors, fonts, and bubble styles',
-      'Chat widget size and positioning',
-    ],
-    creationSteps: [
-      'Go to All Widgets → AI Chatbot',
-      'Click + Add Widget',
-      'Go to My Widgets → AI Chatbot',
-      'Click Configure',
-    ],
-    screenshotCaption: "Screenshot: Dashboard Create Widget - AI Chatbot Selection",
-    pricing: '0.8 credit / chat',
-    currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/ai-chatbot-widget',
+
+const hairline = 'border-[color:var(--docs-hairline,rgba(255,255,255,0.1))]';
+const hairlineSoft = 'border-[color:var(--docs-hairline-soft,rgba(255,255,255,0.06))]';
+const card = `rounded-xl border ${hairline} bg-transparent`;
+
+
+const getWidgetData = () => ({
+  title: 'AI Chatbot Widget',
+  description:
+    'Add intelligent, conversational AI assistance to your website — powered by advanced language models. Create a custom assistant that understands your business and helps visitors around the clock.',
+  customizableFeatures: [
+    'Chat appearance and theme',
+    'AI behavior and personality',
+    'Initial greeting messages',
+    'Colors, fonts, and bubble styles',
+    'Chat widget size and positioning',
+  ],
+  creationSteps: [
+    'Go to All Widgets → AI Chatbot',
+    'Click + Add Widget',
+    'Go to My Widgets → AI Chatbot',
+    'Click Configure',
+  ],
+  screenshotCaption: 'Dashboard — creating a new AI Chatbot widget',
+  pricing: '0.8 credit / chat',
+  currentPageUrl: 'https://docs.widgetkraft.com/available-widgets/ai-chatbot-widget',
+});
+
+const editorTabs = [
+  { icon: MessageCircle, label: 'Header', desc: 'Title and branding' },
+  { icon: MessageCircle, label: 'Chat', desc: 'Message bubble styling' },
+  { icon: Settings, label: 'Input', desc: 'Message input setup' },
+  { icon: Palette, label: 'Appearance', desc: 'Size and design' },
+  { icon: Bot, label: 'AI', desc: 'Behavior and personality' },
+  { icon: Code, label: 'Code', desc: 'Embed snippet' },
+];
+
+const themePresets = [
+  { name: 'Default', swatch: '#3a3a3c' },
+  { name: 'Dark', swatch: '#0a0a0a' },
+  { name: 'Ocean', swatch: '#2b6cb0' },
+  { name: 'Sunset', swatch: 'linear-gradient(90deg,#e08a4b,#d9636c)' },
+  { name: 'Forest', swatch: '#3f7a52' },
+];
+
+const bestPractices = [
+  {
+    title: 'Write a comprehensive master prompt',
+    body: 'The more detail you provide about your business, the better your AI can assist visitors — product details, pricing, FAQs, and contact information all help.',
+  },
+  {
+    title: 'Test your chatbot thoroughly',
+    body: 'Ask a range of questions in the preview to confirm the AI responds accurately, then refine the master prompt from what you see.',
+  },
+  {
+    title: 'Set clear boundaries',
+    body: 'Tell the AI which topics to avoid or redirect. This keeps conversations on-topic and professional.',
+  },
+  {
+    title: 'Use your brand voice',
+    body: 'Define tone and personality — friendly, professional, casual — directly in the master prompt.',
+  },
+  {
+    title: 'Match visual design to your site',
+    body: 'Colors and styling that complement your website keep the widget feeling native, not bolted on.',
+  },
+  {
+    title: 'Monitor conversations',
+    body: 'Review chat logs regularly to spot common questions and improve the master prompt over time.',
+  },
+];
+
+const conversationSteps = [
+  { title: 'AI processing', body: 'Messages are sent to Claude for context-aware responses.' },
+  { title: 'Master prompt usage', body: 'Your custom master prompt guides every AI response.' },
+  { title: 'Conversation history', body: 'Chat logs are stored in your dashboard for review.' },
+  { title: 'Credit consumption', body: 'Credits are used per AI message generated.' },
+];
+
+const summaryPoints = [
+  'Add intelligent AI assistance to your website in minutes',
+  'Customize appearance, behavior, and AI personality',
+  'Provide 24/7 support without human intervention',
+  'Handle common questions and guide visitors automatically',
+  'Embed with a single script tag — no backend required',
+  'Update instantly without changing the embed code',
+];
+
+
+function Eyebrow({ children }) {
+  return (
+    <span className="text-[11px] font-semibold uppercase tracking-wide text-[var(--docs-stone)]">
+      {children}
+    </span>
+  );
+}
+
+function SectionHeading({ eyebrow, title, description, step }) {
+  return (
+    <div className={`mb-4 flex gap-3 border-b pb-3 ${hairlineSoft}`}>
+      {step && (
+        <span
+          className={`mt-0.5 inline-flex h-6 w-6 flex-none items-center justify-center rounded-full border text-[11px] font-medium text-[var(--docs-steel)] ${hairline}`}
+        >
+          {step}
+        </span>
+      )}
+      <div>
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <h2 className="text-[17px] font-semibold text-[var(--docs-ink)] leading-snug">{title}</h2>
+        {description && (
+          <p className="mt-0.5 text-[13px] text-[var(--docs-steel)]">{description}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function InfoCard({ icon: Icon, title, children, className = '' }) {
+  return (
+    <div className={`${card} p-4 ${className}`}>
+      {Icon && (
+        <div className={`mb-2 inline-flex h-7 w-7 items-center justify-center rounded-md border ${hairline}`}>
+          <Icon size={14} className="text-[var(--docs-steel)]" />
+        </div>
+      )}
+      {title && <h4 className="mb-1 text-[13px] font-semibold text-[var(--docs-ink)]">{title}</h4>}
+      <div className="text-[13px] leading-relaxed text-[var(--docs-steel)]">{children}</div>
+    </div>
+  );
+}
+
+function ConfigRow({ label, description, example }) {
+  return (
+    <div className={`border-b py-3 last:border-b-0 ${hairlineSoft}`}>
+      <p className="text-[13px] font-medium text-[var(--docs-ink)]">{label}</p>
+      {description && <p className="mt-0.5 text-[13px] text-[var(--docs-steel)]">{description}</p>}
+      {example && (
+        <code className={`mt-1.5 inline-block rounded border px-1.5 py-0.5 font-mono text-[12px] text-[var(--docs-steel)] ${hairline}`}>
+          {example}
+        </code>
+      )}
+    </div>
+  );
+}
+
+function ColorRow({ label, description, swatch }) {
+  return (
+    <div className={`flex items-center gap-3 border-b py-3 last:border-b-0 ${hairlineSoft}`}>
+      <span
+        className={`h-4 w-4 flex-none rounded-full border ${hairline}`}
+        style={{ background: swatch }}
+      />
+      <div>
+        <p className="text-[13px] font-medium text-[var(--docs-ink)]">{label}</p>
+        {description && <p className="text-[13px] text-[var(--docs-steel)]">{description}</p>}
+      </div>
+    </div>
+  );
+}
+
+function Callout({ icon: Icon = Sparkles, title, children }) {
+  return (
+    <div className={`${card} flex gap-3 p-4`}>
+      <Icon size={16} className="mt-0.5 flex-none text-[var(--docs-steel)]" />
+      <div className="text-[13px] leading-relaxed text-[var(--docs-steel)]">
+        {title && <p className="mb-1 font-semibold text-[var(--docs-ink)]">{title}</p>}
+        {children}
+      </div>
+    </div>
+  );
+}
+
+function Screenshot({ src, alt, caption }) {
+  return (
+    <figure className="docs-screenshot my-5">
+      <img src={src} alt={alt} className="shadow-lg" />
+      {caption && <figcaption className="mt-3 text-center text-sm text-[var(--docs-stone)]">{caption}</figcaption>}
+    </figure>
+  );
+}
+
+function EmbedCodeBlock() {
+  const [copied, setCopied] = useState(false);
+
+  const snippet = `<div id="chatbot-root"></div>
+
+<script src="https://cdn.widgetkraft.com/chatbot.js"></script>
+
+<script>
+  ChatbotWidget.init({
+    widgetId: "aaaaaaaa-7777-4545-bbbb-112233445566"
+  });
+</script>`;
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(snippet);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* clipboard unavailable — no-op */
+    }
   };
 
-  return widgetDetails;
-};
+  return (
+    <div className="my-5 flex justify-center">
+      <div className={`w-full max-w-md overflow-hidden rounded-lg border ${hairline}`}>
+        <div className={`flex items-center justify-between border-b px-3 py-1.5 ${hairlineSoft}`}>
+          <span className="font-mono text-[11px] text-[var(--docs-stone)]">HTML</span>
+          <button
+            onClick={handleCopy}
+            className="inline-flex items-center gap-1 rounded border border-transparent px-1.5 py-0.5 text-[11px] text-[var(--docs-stone)] hover:border-white/10"
+          >
+            {copied ? <Check size={12} /> : <Copy size={12} />}
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+        </div>
+        <pre className="overflow-x-auto px-3 py-3">
+          <code className="font-mono text-[12px] leading-relaxed text-[var(--docs-steel)]">
+            {snippet}
+          </code>
+        </pre>
+      </div>
+    </div>
+  );
+}
+
 
 export default function ChatbotWidgetPage() {
   const widgetDetails = getWidgetData();
 
   return (
-    <>
-      {/* Hidden paragraph for Searching purposes */}
-      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails?.currentPageUrl}`}</p>
+    <div className="mx-auto w-full max-w-[var(--docs-prose-max)] px-4 text-[13px] leading-relaxed text-[var(--docs-steel)]">
+      <p style={{ display: 'none' }}>{`Current Page URL: ${widgetDetails.currentPageUrl}`}</p>
 
-      {/* Header */}
-      <div className="mb-6">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="bg-black p-3 rounded-lg">
-            <TbMessageChatbot size={28} className="text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-white">{widgetDetails.title}</h1>
-        </div>
-        <p className="text-lg text-gray-300">{widgetDetails.description}</p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-blue-900/30 px-4 py-2 rounded-lg">
-          <span className="text-blue-400 font-medium">Pricing:</span>
-          <span className="text-white">{widgetDetails.pricing}</span>
-        </div>
-      </div>
 
-      {/* What You Can Customize */}
-      <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-        <h2 className="text-2xl font-semibold mb-4 text-white">You Can Fully Customize:</h2>
-        <div className="grid md:grid-cols-2 gap-3">
-          {widgetDetails.customizableFeatures.map((feature, idx) => (
-            <div key={idx} className="flex items-start gap-2 text-gray-300">
-              <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-              <span>{feature}</span>
-            </div>
-          ))}
+      <header className="mb-10 flex flex-col items-center text-center">
+        <div className={`mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg border ${hairline}`}>
+          <TbMessageChatbot size={18} className="text-[var(--docs-ink)]" />
         </div>
-        <p className="text-gray-300 mt-4 italic">
-          Your AI assistant is powered by Claude and can be customized with your own knowledge base.
+        <h1 className="text-[22px] font-semibold text-[var(--docs-ink)]">{widgetDetails.title}</h1>
+        <p className="mx-auto mt-2 max-w-md text-[13px] text-[var(--docs-steel)]">
+          {widgetDetails.description}
         </p>
-      </div>
+        <span
+          className={`mt-4 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[12px] text-[var(--docs-steel)] ${hairline}`}
+        >
+          Pricing <span className="font-medium text-[var(--docs-ink)]">{widgetDetails.pricing}</span>
+        </span>
+      </header>
 
-      <ChatbotCodes /> 
 
-      {/* Creating a Chatbot Widget */}
-      <section className="mb-6">
-        <h2 className="text-3xl font-bold mb-4 text-white">Creating an AI Chatbot Widget</h2>
-        <p className="text-gray-300 mb-4">To create an AI Chatbot widget:</p>
-
-        <ol className="text-gray-300 space-y-2 mb-6">
-          {widgetDetails.creationSteps.map((step, idx) => (
-            <li key={idx} className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">
-                {idx + 1}
-              </span>
-              <span>{step}</span>
-            </li>
-          ))}
-        </ol>
-
-        <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-4">
-          <div className="text-center">
-            {/* Using Next.js Image component for better performance */}
-            <img src="/images/chatbot/image.png" alt="WidgetKraft: Creating an AI Chatbot Widget - Dashboard Selection" className="mx-auto mb-3 rounded-lg shadow-lg" />
-            <p className="text-gray-300 text-sm">{widgetDetails.screenshotCaption}</p>
-          </div>
-        </div>
-
-        <p className="text-gray-300 mb-4">
-          The chatbot editor opens with a live preview on the left and configuration panels on the right.
-          Any change you make updates the preview instantly, so you can see exactly how your AI assistant will look and behave.
-        </p>
-
-        <div className="bg-blue-900/30 border-blue-700 border-l-4 p-4 rounded mb-6">
-          <div className="flex gap-3">
-            <Sparkles size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-white mb-1">✨ AI-Powered Intelligence:</p>
-              <p className="text-gray-300 text-sm">
-                Your chatbot uses advanced AI to understand context, provide helpful responses, and learn from your master prompt.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Understanding the Editor */}
-      <section className="mb-6">
-        <h2 className="text-3xl font-bold mb-4 text-white">Understanding the Chatbot Editor</h2>
-        <p className="text-gray-300 mb-4">
-          The editor is divided into six main configuration tabs:
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <MessageCircle size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">Header</h3>
-            <p className="text-gray-300 text-sm">Widget title and branding</p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <MessageCircle size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">Chat</h3>
-            <p className="text-gray-300 text-sm">Message bubble styling</p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Settings size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">Input</h3>
-            <p className="text-gray-300 text-sm">Message input configuration</p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Palette size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">Appearance</h3>
-            <p className="text-gray-300 text-sm">Widget size and design</p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Bot size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">AI</h3>
-            <p className="text-gray-300 text-sm">AI behavior and personality</p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700 text-center">
-            <Code size={32} className="text-blue-600 mx-auto mb-2" />
-            <h3 className="font-semibold text-white mb-1">Code</h3>
-            <p className="text-gray-300 text-sm">Embed snippet</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 1. Header Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-4">
-          <h2 className="text-3xl font-bold mb-3 text-white">1. Header Tab</h2>
-          <p className="text-gray-300">Controls the top section of your chatbot widget.</p>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-4 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Configurable Elements</h3>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-1">Title</h4>
-              <p className="text-gray-300 text-sm mb-1">The name displayed at the top of the chat window</p>
-              <p className="text-gray-300 text-sm italic">Example: "Your Assistant", "Support Bot", "Sales Assistant"</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Subtitle</h4>
-              <p className="text-gray-300 text-sm mb-1">Descriptive text that appears below the title</p>
-              <p className="text-gray-300 text-sm italic">Example: "Ask Me Something I Don't Know..."</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Logo URL</h4>
-              <p className="text-gray-300 text-sm mb-1">Display your brand logo or an icon in the header</p>
-              <p className="text-gray-300 text-sm italic">Supports PNG, JPG, SVG formats</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">AI Processing Message</h4>
-              <p className="text-gray-300 text-sm mb-1">Message shown while AI is thinking</p>
-              <p className="text-gray-300 text-sm italic">Example: "Thinking...", "Processing your request..."</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Font Color</h4>
-              <p className="text-gray-300 text-sm">Customize the text color in the header section</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Background Color</h4>
-              <p className="text-gray-300 text-sm">Set the header background to match your brand</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Font Family</h4>
-              <p className="text-gray-300 text-sm">Choose the typography for your header text</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-          <div className="text-center">
-            <img src="/images/chatbot/chatbot-one.png" alt="WidgetKraft: Header Tab - Custom title, subtitle, and logo configuration" className="mx-auto mb-3 rounded-lg shadow-lg" />
-            <p className="text-gray-300 text-sm mt-4">Example: Chatbot header with custom title, subtitle, and logo</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Chat Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-6">
-          <h2 className="text-3xl font-bold mb-3 text-white">2. Chat Tab</h2>
-          <p className="text-gray-300">Customize how chat messages appear in the conversation.</p>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Message Bubble Customization</h3>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-2">User Bubble Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-400 rounded"></div>
-                <p className="text-gray-300 text-sm">Color for messages sent by the visitor</p>
+      <section className="mb-10">
+        <div className={`${card} p-5`}>
+          <h3 className="mb-3 text-[14px] font-semibold text-[var(--docs-ink)]">You can fully customize</h3>
+          <div className="grid gap-x-6 gap-y-2 sm:grid-cols-2">
+            {widgetDetails.customizableFeatures.map((feature) => (
+              <div key={feature} className="flex items-start gap-2">
+                <CheckCircle2 size={14} className="mt-0.5 flex-none text-[var(--docs-steel)]" />
+                <span className="text-[13px] text-[var(--docs-steel)]">{feature}</span>
               </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">AI Bubble Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-200 rounded"></div>
-                <p className="text-gray-300 text-sm">Color for AI assistant responses</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">User Font Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-black rounded border border-gray-600"></div>
-                <p className="text-gray-300 text-sm">Text color for user messages</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">AI Font Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-black rounded border border-gray-600"></div>
-                <p className="text-gray-300 text-sm">Text color for AI responses</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Bubble Radius</h4>
-              <p className="text-gray-300 text-sm">Control the roundness of message bubbles</p>
-              <p className="text-gray-300 text-sm italic">Example: 18px for rounded, 4px for squared</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Font Size</h4>
-              <p className="text-gray-300 text-sm">Adjust message text size for readability</p>
-              <p className="text-gray-300 text-sm italic">Typically 14px-16px works well</p>
-            </div>
-
-            <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-              <div className="text-center">
-                <img src="/images/chatbot/chatbot-two.png" alt="WidgetKraft: Chat Tab - Custom message bubble colors and fonts" className="mx-auto mb-3 rounded-lg shadow-lg" />
-                <p className="text-gray-300 text-sm mt-4">Example: Chatbot Chat with custom bubble colors and Fonts</p>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Floating Chat Bubble</h3>
-          <p className="text-gray-300 mb-3">The circular button that opens your chat widget</p>
-
-          <div className="space-y-3">
-            <div>
-              <h4 className="font-semibold text-white text-sm mb-1">Bubble Size / Radius</h4>
-              <p className="text-gray-300 text-sm">Control the size of the floating chat button</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-blue-900/30 border-blue-700 border-l-4 p-4 rounded">
-          <div className="flex gap-3">
-            <AlertCircle size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-white mb-1">💡 Design Tip:</p>
-              <p className="text-gray-300 text-sm">
-                Use contrasting colors for user and AI bubbles to make conversations easy to follow. Ensure text colors have sufficient contrast for readability.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Input Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-6">
-          <h2 className="text-3xl font-bold mb-3 text-white">3. Input Tab</h2>
-          <p className="text-gray-300">Configure the message input area where visitors type.</p>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Input Field Settings</h3>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-1">Placeholder Text</h4>
-              <p className="text-gray-300 text-sm mb-1">The hint text shown in the empty input field</p>
-              <p className="text-gray-300 text-sm italic">Example: "Type your message...", "Ask me anything..."</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">First AI Message</h4>
-              <p className="text-gray-300 text-sm mb-2">The initial greeting your AI sends when chat opens</p>
-              <div className="bg-gray-900 p-3 rounded text-sm text-gray-300">
-                Example: "Hey there, How are you ?"
-              </div>
-              <p className="text-gray-300 text-sm mt-2 italic">
-                This is the first thing visitors see and sets the tone for the conversation
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">Background Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-900 rounded border border-gray-700"></div>
-                <p className="text-gray-300 text-sm">Input area background color</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">Border Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded border-4 border-blue-600"></div>
-                <p className="text-gray-300 text-sm">Color of the input field border</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">Text Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-500 rounded"></div>
-                <p className="text-gray-300 text-sm">Color of text as user types</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Font Size</h4>
-              <p className="text-gray-300 text-sm">Size of text in the input field</p>
-              <p className="text-gray-300 text-sm italic">Typically 14px matches chat bubble text</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-2">Send Button Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
-                <p className="text-gray-300 text-sm">Color of the send/submit button</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8">
-          <div className="text-center">
-            <img src="/images/chatbot/chatbot-three.png" alt="WidgetKraft: Input Tab - Styled input field with custom colors and placeholder text" className="mx-auto mb-3 rounded-lg shadow-lg" />
-            <p className="text-gray-300 text-sm mt-4">Example: Styled input field with custom colors</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Appearance Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-6">
-          <h2 className="text-3xl font-bold mb-3 text-white">4. Appearance Tab</h2>
-          <p className="text-gray-300">Control the overall widget dimensions and visual style.</p>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Widget Dimensions</h3>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-1">Width</h4>
-              <p className="text-gray-300 text-sm">Control how wide the chat window appears</p>
-              <p className="text-gray-300 text-sm italic">Default: 400px (works well on most screens)</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Height</h4>
-              <p className="text-gray-300 text-sm">Set the vertical size of the chat window</p>
-              <p className="text-gray-300 text-sm italic">Default: 550px (fits most viewport heights)</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Visual Styling</h3>
-
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-2">Background Color</h4>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-gray-100 rounded border border-gray-300"></div>
-                <p className="text-gray-300 text-sm">Main chat area background color</p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Background Image URL</h4>
-              <p className="text-gray-300 text-sm mb-1">Add a custom background pattern or image</p>
-              <div className="bg-gray-900 p-2 rounded text-xs text-gray-400 break-all mt-2">
-                https://i.pinimg.com/736x/6a/0b/d1/6a0bd1a083263f84c0ec5b40299cecea.jpg
-              </div>
-              <p className="text-gray-300 text-sm mt-2 italic">Optional: Leave empty for solid color background</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Border Radius</h4>
-              <p className="text-gray-300 text-sm">Roundness of the entire chat window corners</p>
-              <p className="text-gray-300 text-sm italic">Example: 16px for smooth rounded corners</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-1">Shadow</h4>
-              <p className="text-gray-300 text-sm">Add depth with a drop shadow effect</p>
-              <div className="bg-gray-900 p-2 rounded text-xs text-gray-400 mt-2">
-                0 4px 12px rgba(0,0,0,0.1)
-              </div>
-              <p className="text-gray-300 text-sm mt-2 italic">Creates elevation and visual separation from the page</p>
-            </div>
-            <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-              <div className="text-center">
-                <img src="/images/chatbot/chatbot-four.png" alt="WidgetKraft: Appearance Tab - Widget dimensions, background color, and theme customization" className="mx-auto mb-3 rounded-lg shadow-lg" />
-                <p className="text-gray-300 text-sm mt-4">Example: Chatbot Appearence with customization and Background Settings</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-          <h3 className="text-xl font-semibold mb-3 text-white">Theme Presets</h3>
-          <p className="text-gray-300 mb-4">Quick-start with pre-designed themes:</p>
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            <div className="bg-gray-700 p-3 rounded text-center text-gray-300 text-sm">
-              Default
-            </div>
-            <div className="bg-gray-900 p-3 rounded text-center text-white text-sm">
-              Dark
-            </div>
-            <div className="bg-blue-600 p-3 rounded text-center text-white text-sm">
-              Ocean
-            </div>
-            <div className="bg-gradient-to-r from-orange-500 to-pink-500 p-3 rounded text-center text-white text-sm">
-              Sunset
-            </div>
-            <div className="bg-green-600 p-3 rounded text-center text-white text-sm">
-              Forest
-            </div>
-          </div>
-
-          <p className="text-gray-300 text-sm mt-3 italic">
-            Click any preset to instantly apply coordinated colors across all elements
+          <p className="mt-4 text-[12px] italic text-[var(--docs-stone)]">
+            Your AI assistant is powered by Claude and can be customized with your own knowledge base.
           </p>
         </div>
       </section>
 
-      {/* 5. AI Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-6">
-          <h2 className="text-3xl font-bold mb-3 text-white">5. AI Tab</h2>
-          <p className="text-gray-300">Configure your AI assistant's knowledge and behavior.</p>
-        </div>
+      <ChatbotCodes />
 
-        <div className="bg-gradient-to-r from-blue-900/30 to-blue-900/30 p-6 rounded-lg mb-6 border border-blue-700">
-          <div className="flex items-start gap-3 mb-4">
-            <Bot size={28} className="text-blue-400 flex-shrink-0" />
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-2">Master Prompt</h3>
-              <p className="text-gray-300 text-sm">
-                This is the most important configuration—it defines your AI's personality, knowledge, and capabilities.
-              </p>
-            </div>
-          </div>
 
-          <div className="bg-gray-900 p-4 rounded-lg mb-4">
-            <p className="text-gray-300 text-sm mb-2">The Master Prompt tells your AI:</p>
-            <ul className="text-gray-300 text-sm space-y-1 ml-4">
-              <li>• Who it is and what it represents</li>
-              <li>• What information it knows about your business</li>
-              <li>• How it should respond to visitors</li>
-              <li>• What tone and style to use</li>
-              <li>• Any specific rules or limitations</li>
-            </ul>
-          </div>
+      <section className="mb-10">
+        <SectionHeading title="Creating an AI Chatbot widget" description="Four steps from the dashboard." />
 
-          <div className="bg-gray-800 p-4 rounded border border-gray-700">
-            <p className="text-white font-semibold mb-2 text-sm">Example Master Prompt:</p>
-            <div className="bg-gray-900 p-3 rounded text-sm text-gray-300 leading-relaxed">
-              "Widget Kraft offers an intuitive, no-code platform revolutionizing how businesses, developers, and creators enhance their websites with customizable AI-powered chat widgets and versatile contact forms..."
-            </div>
-          </div>
-          <div className="bg-gray-800 mt-2 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-            <div className="text-center">
-              <img src="/images/chatbot/chatbot-five-1.png" alt="WidgetKraft: AI Tab - Master prompt configuration and AI behavior settings" className="mx-auto mb-3 rounded-lg shadow-lg" />
-              <p className="text-gray-300 text-sm mt-4">Example: AI tab with custom master prompt and generate prompt CTA through site url</p>
-            </div>
-          </div>
-        </div>
+        <ol className="mb-5 space-y-2.5">
+          {widgetDetails.creationSteps.map((step, idx) => (
+            <li key={step} className="flex items-start gap-3">
+              <span
+                className={`mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[11px] text-[var(--docs-steel)] ${hairline}`}
+              >
+                {idx + 1}
+              </span>
+              <span className="text-[13px] text-[var(--docs-steel)]">{step}</span>
+            </li>
+          ))}
+        </ol>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">AI Prompt Generation</h3>
+        <Screenshot
+          src="/images/chatbot/image.png"
+          alt="WidgetKraft: creating an AI Chatbot widget — dashboard selection"
+          caption={widgetDetails.screenshotCaption}
+        />
 
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-semibold text-white mb-2">Provide Your Site URL</h4>
-              <p className="text-gray-300 text-sm mb-2">Let WidgetKraft automatically generate a prompt based on your website</p>
-              <div className="flex items-center gap-2 bg-gray-900 p-3 rounded border border-gray-700">
-                <input
-                  type="text"
-                  placeholder="https://getwidgets.app"
-                  className="flex-1 bg-transparent text-gray-300 text-sm outline-none"
-                  disabled
-                />
-                <button className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium">
-                  Generate Prompt (28 left)
-                </button>
-              </div>
-              <p className="text-gray-300 text-sm mt-2 italic">
-                The AI will scrape your website and create a customized master prompt automatically
-              </p>
-            </div>
-            <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-              <div className="text-center">
-                <img src="/images/chatbot/chatbot-five-2.png" alt="WidgetKraft: AI Prompt Generation - Website URL input for automatic master prompt generation" className="mx-auto mb-3 rounded-lg shadow-lg" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <p className="mb-4 text-[13px] text-[var(--docs-steel)]">
+          The chatbot editor opens with a live preview on the left and configuration panels on the
+          right. Every change updates the preview instantly.
+        </p>
 
-        <div className="bg-blue-900/30 border-blue-700 border-l-4 p-4 rounded">
-          <div className="flex gap-3">
-            <Sparkles size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-white mb-1">💡 Master Prompt Tips:</p>
-              <ul className="text-gray-300 text-sm space-y-1">
-                <li>• Be specific about your business, products, or services</li>
-                <li>• Include common questions and how to answer them</li>
-                <li>• Define the tone (professional, friendly, casual, etc.)</li>
-                <li>• Set boundaries (what the AI should NOT discuss)</li>
-                <li>• Add your contact info, pricing, or other key details</li>
-              </ul>
+        <Callout icon={Sparkles} title="AI-powered intelligence">
+          Your chatbot uses advanced AI to understand context, respond helpfully, and stay aligned
+          with your master prompt.
+        </Callout>
+      </section>
+
+
+      <section className="mb-10">
+        <SectionHeading title="Understanding the chatbot editor" description="Six configuration tabs." />
+
+        <div className="flex flex-wrap justify-center gap-2.5">
+          {editorTabs.map(({ icon: Icon, label, desc }) => (
+            <div
+              key={label}
+              className={`flex w-[132px] flex-col items-center gap-1.5 rounded-lg border p-3 text-center ${hairline}`}
+            >
+              <Icon size={16} className="text-[var(--docs-steel)]" />
+              <p className="text-[12px] font-medium text-[var(--docs-ink)]">{label}</p>
+              <p className="text-[11px] text-[var(--docs-stone)]">{desc}</p>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* 6. Code Tab */}
-      <section className="mb-6">
-        <div className="border-l-4 border-blue-600 pl-6 mb-6">
-          <h2 className="text-3xl font-bold mb-3 text-white">6. Code (Embedding the Chatbot)</h2>
-          <p className="text-gray-300">Once your chatbot is configured, get the embed code to add it to your website.</p>
+      <section className="mb-10">
+        <SectionHeading
+          step="1"
+          title="Header tab"
+          description="Controls the top section of your chatbot widget."
+        />
+
+        <div className={`${card} p-4`}>
+          <ConfigRow label="Title" description="The name shown at the top of the chat window." example='"Support Bot"' />
+          <ConfigRow label="Subtitle" description="Descriptive text below the title." example='"Ask me anything…"' />
+          <ConfigRow label="Logo URL" description="Your brand logo or icon. PNG, JPG, or SVG." />
+          <ConfigRow label="AI processing message" description="Shown while the AI is thinking." example='"Thinking…"' />
+          <ConfigRow label="Font color" description="Text color in the header." />
+          <ConfigRow label="Background color" description="Header background, to match your brand." />
+          <ConfigRow label="Font family" description="Typography for the header text." />
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">Embed Code Section</h3>
-          <p className="text-gray-300 mb-4">You'll see a ready-to-use embed snippet that includes your widget ID:</p>
+        <Screenshot
+          src="/images/chatbot/chatbot-one.png"
+          alt="WidgetKraft: header tab — title, subtitle, and logo configuration"
+          caption="Custom title, subtitle, and logo"
+        />
+      </section>
 
-          <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-6">
-            <div className="text-center">
-              <img src="/images/chatbot/chatbot-six.png" alt="WidgetKraft: Code Tab - Embed code snippet with widget ID and integration instructions" className="mx-auto mb-3 rounded-lg shadow-lg" />
+      <section className="mb-10">
+        <SectionHeading step="2" title="Chat tab" description="How messages appear in the conversation." />
+
+        <div className={`${card} p-4`}>
+          <h4 className="mb-1 text-[13px] font-semibold text-[var(--docs-ink)]">Message bubbles</h4>
+          <ColorRow label="User bubble color" description="Messages sent by the visitor." swatch="#3fa66b" />
+          <ColorRow label="AI bubble color" description="AI assistant responses." swatch="#8a8a8a" />
+          <ColorRow label="User font color" description="Text color for user messages." swatch="#0a0a0a" />
+          <ColorRow label="AI font color" description="Text color for AI responses." swatch="#0a0a0a" />
+          <ConfigRow label="Bubble radius" description="Roundness of message bubbles." example="18px" />
+          <ConfigRow label="Font size" description="Message text size." example="14–16px" />
+        </div>
+
+        <Screenshot
+          src="/images/chatbot/chatbot-two.png"
+          alt="WidgetKraft: chat tab — bubble colors and fonts"
+          caption="Custom bubble colors and fonts"
+        />
+
+        <InfoCard title="Floating chat bubble" className="mb-4">
+          The circular button that opens your widget. Its size and radius are configurable here.
+        </InfoCard>
+
+        <Callout icon={AlertCircle} title="Design tip">
+          Use contrasting colors for user and AI bubbles so conversations stay easy to follow, and
+          keep text contrast high enough to read comfortably.
+        </Callout>
+      </section>
+
+
+      <section className="mb-10">
+        <SectionHeading step="3" title="Input tab" description="The message field where visitors type." />
+
+        <div className={`${card} p-4`}>
+          <ConfigRow label="Placeholder text" description="Hint text in the empty input." example='"Type your message…"' />
+          <ConfigRow label="First AI message" description="The greeting your AI sends when chat opens." example='"Hey there, how are you?"' />
+          <ColorRow label="Background color" description="Input area background." swatch="#141414" />
+          <ColorRow label="Border color" description="Input field border." swatch="#3a3a3c" />
+          <ColorRow label="Text color" description="Color of text as the visitor types." swatch="#3fa66b" />
+          <ConfigRow label="Font size" description="Text size in the input field." example="14px" />
+          <ColorRow label="Send button color" description="Color of the send button." swatch="#0a0a0a" />
+        </div>
+
+        <Screenshot
+          src="/images/chatbot/chatbot-three.png"
+          alt="WidgetKraft: input tab — styled field with placeholder text"
+          caption="Styled input field with custom colors"
+        />
+      </section>
+
+
+      <section className="mb-10">
+        <SectionHeading step="4" title="Appearance tab" description="Widget dimensions and visual style." />
+
+        <div className={`${card} mb-4 p-4`}>
+          <ConfigRow label="Width" description="How wide the chat window appears." example="400px default" />
+          <ConfigRow label="Height" description="Vertical size of the chat window." example="550px default" />
+        </div>
+
+        <div className={`${card} p-4`}>
+          <ColorRow label="Background color" description="Main chat area background." swatch="#141414" />
+          <ConfigRow label="Background image URL" description="Optional custom pattern or image." />
+          <ConfigRow label="Border radius" description="Roundness of the chat window corners." example="16px" />
+          <ConfigRow label="Shadow" description="Adds elevation and separation from the page." example="0 4px 12px rgba(0,0,0,.1)" />
+        </div>
+
+        <Screenshot
+          src="/images/chatbot/chatbot-four.png"
+          alt="WidgetKraft: appearance tab — dimensions, background, and theme"
+          caption="Dimensions, background, and theme customization"
+        />
+
+        <div className={`${card} p-4`}>
+          <h4 className="mb-3 text-[13px] font-semibold text-[var(--docs-ink)]">Theme presets</h4>
+          <div className="flex flex-wrap gap-2.5">
+            {themePresets.map((preset) => (
+              <div
+                key={preset.name}
+                className={`flex items-center gap-2 rounded-full border py-1 pl-1 pr-3 ${hairline}`}
+              >
+                <span className="h-4 w-4 rounded-full" style={{ background: preset.swatch }} />
+                <span className="text-[12px] text-[var(--docs-steel)]">{preset.name}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-[12px] italic text-[var(--docs-stone)]">
+            Pick a preset to instantly apply coordinated colors across every element.
+          </p>
+        </div>
+      </section>
+
+
+      <section className="mb-10">
+        <SectionHeading step="5" title="AI tab" description="Your AI assistant's knowledge and behavior." />
+
+        <div className={`${card} mb-4 p-4`}>
+          <div className="mb-3 flex items-start gap-2">
+            <Bot size={16} className="mt-0.5 flex-none text-[var(--docs-steel)]" />
+            <div>
+              <h4 className="text-[13px] font-semibold text-[var(--docs-ink)]">Master prompt</h4>
+              <p className="text-[13px] text-[var(--docs-steel)]">
+                The most important setting — it defines your AI's personality, knowledge, and
+                capabilities.
+              </p>
             </div>
           </div>
 
-          <div className="bg-gray-900 p-4 rounded-lg border border-gray-700 mb-4 overflow-x-auto">
-            <code className="text-sm text-green-400 whitespace-pre">
-              {`<div id="chatbot-root"></div>
+          <ul className="mb-3 space-y-1 pl-5 text-[13px] text-[var(--docs-steel)]" style={{ listStyle: 'disc' }}>
+            <li>Who it is and what it represents</li>
+            <li>What it knows about your business</li>
+            <li>How it should respond to visitors</li>
+            <li>What tone and style to use</li>
+            <li>Any specific rules or limitations</li>
+          </ul>
 
-<script src="https://cdn.widgetkraft.com/chatbot.js"></script>
-
-<script>
-  ChatbotWidget.init({ 
-    widgetId: "aaaaaaaa-7777-4545-bbbb-112233445566" 
-  });
-</script>`}
-            </code>
+          <div className={`rounded-lg border p-3 ${hairlineSoft}`}>
+            <p className="mb-1 text-[12px] font-medium text-[var(--docs-ink)]">Example master prompt</p>
+            <p className="font-mono text-[12px] leading-relaxed text-[var(--docs-stone)]">
+              "WidgetKraft offers an intuitive, no-code platform for adding customizable AI chat
+              widgets and contact forms to any website…"
+            </p>
           </div>
+
+          <Screenshot
+            src="/images/chatbot/chatbot-five-1.png"
+            alt="WidgetKraft: AI tab — master prompt configuration"
+            caption="Master prompt and generate-from-URL"
+          />
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-lg mb-6 border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-white">How to Use the Embed Code</h3>
-          <ol className="text-gray-300 space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">1</span>
-              <span>Click <strong>Copy Code</strong> to copy the embed snippet</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">2</span>
-              <div>
-                <span>Paste it into your website's HTML, typically before the closing <code className="bg-gray-900 px-2 py-1 rounded text-sm">&lt;/body&gt;</code> tag</span>
-                <p className="text-sm text-gray-400 mt-2">This ensures the chatbot loads on every page of your site</p>
-              </div>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">3</span>
-              <span>The chatbot will appear as a floating button in the bottom-right corner</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5">4</span>
-              <span>Visitors can click it to start chatting with your AI assistant</span>
-            </li>
+        <div className={`${card} mb-4 p-4`}>
+          <h4 className="mb-2 text-[13px] font-semibold text-[var(--docs-ink)]">AI prompt generation</h4>
+          <p className="mb-3 text-[13px] text-[var(--docs-steel)]">
+            Provide your site URL and WidgetKraft generates a master prompt automatically from your
+            website's content.
+          </p>
+          <div className={`flex items-center gap-2 rounded-lg border p-2 ${hairline}`}>
+            <input
+              type="text"
+              placeholder="https://getwidgets.app"
+              disabled
+              className="flex-1 bg-transparent px-1 text-[13px] text-[var(--docs-steel)] outline-none"
+            />
+            <button
+              className={`rounded-md border px-3 py-1.5 text-[12px] font-medium text-[var(--docs-ink)] ${hairline}`}
+            >
+              Generate (28 left)
+            </button>
+          </div>
+
+          <Screenshot
+            src="/images/chatbot/chatbot-five-2.png"
+            alt="WidgetKraft: generate a master prompt from a site URL"
+          />
+        </div>
+
+        <Callout icon={Sparkles} title="Master prompt tips">
+          <ul className="space-y-1 pl-4" style={{ listStyle: 'disc' }}>
+            <li>Be specific about your business, products, or services</li>
+            <li>Include common questions and how to answer them</li>
+            <li>Define the tone — professional, friendly, casual</li>
+            <li>Set boundaries for what the AI should not discuss</li>
+            <li>Add contact info, pricing, or other key details</li>
+          </ul>
+        </Callout>
+      </section>
+
+      <section className="mb-10">
+        <SectionHeading
+          step="6"
+          title="Code — embedding the chatbot"
+          description="Once configured, copy the embed snippet onto your site."
+        />
+
+        <EmbedCodeBlock />
+
+        <Screenshot
+          src="/images/chatbot/chatbot-six.png"
+          alt="WidgetKraft: code tab — embed snippet with widget ID"
+         
+        />
+
+        <div className={`${card} mb-4 p-4`}>
+          <h4 className="mb-3 text-[13px] font-semibold text-[var(--docs-ink)]">Using the embed code</h4>
+          <ol className="space-y-2.5">
+            {[
+              'Click Copy to copy the embed snippet',
+              'Paste it before the closing </body> tag, so it loads on every page',
+              'The chatbot appears as a floating button in the bottom-right corner',
+              'Visitors click it to start chatting with your AI assistant',
+            ].map((step, idx) => (
+              <li key={step} className="flex items-start gap-3">
+                <span
+                  className={`mt-0.5 inline-flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[11px] text-[var(--docs-steel)] ${hairline}`}
+                >
+                  {idx + 1}
+                </span>
+                <span className="text-[13px] text-[var(--docs-steel)]">{step}</span>
+              </li>
+            ))}
           </ol>
         </div>
 
-        <div className="bg-gray-800 p-6 rounded-lg border border-gray-700">
-          <h3 className="text-xl font-semibold mb-3 text-white">Integration Notes</h3>
-          <ul className="text-gray-300 space-y-2">
-            <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>No backend required:</strong> The widget is fully hosted and managed</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Instant updates:</strong> Changes in the editor apply immediately to live widgets</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Mobile responsive:</strong> Automatically adapts to all screen sizes</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle size={18} className="text-blue-600 flex-shrink-0 mt-0.5" />
-              <span><strong>Fast loading:</strong> Optimized for performance with minimal page impact</span>
-            </li>
+        <div className={`${card} p-4`}>
+          <h4 className="mb-2 text-[13px] font-semibold text-[var(--docs-ink)]">Integration notes</h4>
+          <ConfigRow label="No backend required" description="The widget is fully hosted and managed." />
+          <ConfigRow label="Instant updates" description="Editor changes apply immediately to live widgets." />
+          <ConfigRow label="Mobile responsive" description="Automatically adapts to every screen size." />
+          <ConfigRow label="Fast loading" description="Optimized for performance with minimal page impact." />
+        </div>
+      </section>
+
+
+      <section className="mb-10">
+        <div className={`${card} p-4`}>
+          <h3 className="mb-2 flex items-center gap-2 text-[14px] font-semibold text-[var(--docs-ink)]">
+            <Save size={16} className="text-[var(--docs-steel)]" />
+            Saving and publishing
+          </h3>
+          <ul className="space-y-1 pl-4 text-[13px] text-[var(--docs-steel)]" style={{ listStyle: 'disc' }}>
+            <li>Click Save at the top to store your configuration</li>
+            <li>Changes apply instantly to your live chatbot</li>
+            <li>No need to update the embed code when making changes</li>
+            <li>Your widget ID stays the same across updates</li>
           </ul>
         </div>
       </section>
 
-      {/* Saving & Publishing */}
+
       <section className="mb-10">
-        <div className="bg-gray-800 p-6 rounded-lg border-l-4 border-blue-600">
-          <h2 className="text-2xl font-bold mb-3 text-white flex items-center gap-2">
-            <Save size={28} className="text-blue-600" />
-            Saving & Publishing
-          </h2>
-          <ul className="text-gray-300 space-y-2">
-            <li>• Click <strong>Save</strong> at the top to store your configuration</li>
-            <li>• All changes apply instantly to your live chatbot</li>
-            <li>• No need to update the embed code when making changes</li>
-            <li>• Your widget ID remains the same across updates</li>
-          </ul>
+        <SectionHeading title="What happens during conversations" description="When a visitor chats with your assistant." />
+        <div className="grid gap-2.5 sm:grid-cols-2">
+          {conversationSteps.map((item) => (
+            <InfoCard key={item.title} icon={CheckCircle2} title={item.title}>
+              {item.body}
+            </InfoCard>
+          ))}
         </div>
       </section>
 
-      {/* What Happens During Conversations */}
-      <section className="mb-10">
-        <h2 className="text-3xl font-bold mb-4 text-white">What Happens During Conversations</h2>
-        <p className="text-gray-300 mb-4">When a visitor chats with your AI assistant:</p>
 
-        <div className="space-y-3">
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex items-start gap-3">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-white font-semibold mb-1">AI Processing</p>
-              <p className="text-gray-300 text-sm">Messages are sent to Claude AI for intelligent, context-aware responses</p>
-            </div>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex items-start gap-3">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-white font-semibold mb-1">Master Prompt Usage</p>
-              <p className="text-gray-300 text-sm">Your custom master prompt guides every AI response</p>
-            </div>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex items-start gap-3">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-white font-semibold mb-1">Conversation History</p>
-              <p className="text-gray-300 text-sm">Chat logs are stored in your WidgetKraft dashboard for review</p>
-            </div>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 flex items-start gap-3">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-white font-semibold mb-1">Credit Consumption</p>
-              <p className="text-gray-300 text-sm">Credits are consumed per AI message generated</p>
-            </div>
-          </div>
+      <section className="mb-10">
+        <SectionHeading title="Best practices for AI chatbots" />
+        <div className="grid gap-2.5 sm:grid-cols-2">
+          {bestPractices.map((item) => (
+            <InfoCard key={item.title} title={item.title}>
+              {item.body}
+            </InfoCard>
+          ))}
         </div>
       </section>
 
-      {/* Best Practices */}
+
       <section className="mb-6">
-        <h2 className="text-3xl font-bold mb-4 text-white">Best Practices for AI Chatbots</h2>
-        <div className="space-y-3">
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Write a Comprehensive Master Prompt</p>
-            <p className="text-gray-300 text-sm">
-              The more detail you provide about your business, the better your AI can assist visitors. Include product details, pricing, FAQs, and contact information.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Test Your Chatbot Thoroughly</p>
-            <p className="text-gray-300 text-sm">
-              Ask various questions in the preview to ensure the AI responds accurately and helpfully. Refine your master prompt based on test conversations.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Set Clear Boundaries</p>
-            <p className="text-gray-300 text-sm">
-              Tell the AI what topics it should avoid or redirect. This prevents off-topic conversations and keeps interactions professional.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Use Your Brand Voice</p>
-            <p className="text-gray-300 text-sm">
-              Define the tone and personality in your master prompt (friendly, professional, casual) to match your brand identity.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Match Visual Design to Your Site</p>
-            <p className="text-gray-300 text-sm">
-              Use colors and styling that complement your website's design for a seamless, professional appearance.
-            </p>
-          </div>
-          <div className="bg-gray-800 p-5 rounded-lg border border-gray-700">
-            <p className="text-white font-semibold mb-2">Monitor Conversations</p>
-            <p className="text-gray-300 text-sm">
-              Regularly review chat logs in your dashboard to identify common questions and improve your master prompt accordingly.
-            </p>
+        <div className={`${card} p-5`}>
+          <h2 className="mb-3 text-[15px] font-semibold text-[var(--docs-ink)]">Summary</h2>
+          <p className="mb-3 text-[13px] text-[var(--docs-steel)]">The AI Chatbot Widget lets you:</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {summaryPoints.map((point) => (
+              <div key={point} className="flex items-start gap-2">
+                <CheckCircle2 size={14} className="mt-0.5 flex-none text-[var(--docs-steel)]" />
+                <span className="text-[13px] text-[var(--docs-steel)]">{point}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Summary */}
-      <section className="bg-gradient-to-r from-blue-900/30 to-blue-900/30 p-8 rounded-lg border border-blue-700">
-        <h2 className="text-3xl font-bold mb-4 text-white">Summary</h2>
-        <p className="text-gray-300 mb-4">The AI Chatbot Widget allows you to:</p>
-        <div className="grid md:grid-cols-2 gap-3 mb-6">
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Add intelligent AI assistance to your website in minutes</span>
-          </div>
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Customize appearance, behavior, and AI personality</span>
-          </div>
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Provide 24/7 support without human intervention</span>
-          </div>
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Handle common questions and guide visitors automatically</span>
-          </div>
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Embed with a single script tag—no backend required</span>
-          </div>
-          <div className="flex items-start gap-2 text-gray-300">
-            <CheckCircle size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-            <span>Update instantly without changing embed code</span>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

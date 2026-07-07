@@ -1,40 +1,45 @@
-'use client'; // This is a client component because of the theme toggle button
+'use client';
 
-import { Menu, Sun, Moon } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+const getBreadcrumb = (pathname) => {
+  if (pathname === '/') return 'Home';
+  const segments = pathname.split('/').filter(Boolean);
+  const last = segments[segments.length - 1];
+  return last
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+};
 
 const Header = ({ onMenuClick }) => {
-  const [theme, setTheme] = useState('dark'); // Default to dark theme as requested
-  
-  // Initialize theme from localStorage or use default
-  useEffect(() => {
-    // Since you said to keep only black theme manually, we're setting to 'dark' always
-    setTheme('dark');
-    document.documentElement.classList.add('dark');
-  }, []);
-  
-  const toggleTheme = () => {
-    // Since you want only dark theme, this function can be removed or kept for future use
-    // For now, it does nothing as requested
-    console.log("Theme toggle disabled - using fixed dark theme only");
-  };
-  
+  const pathname = usePathname();
+  const breadcrumb = getBreadcrumb(pathname);
+
   return (
-    <header className="fixed top-0 right-0 left-0 lg:left-64 h-16 bg-black text-gray-300 border-b border-gray-800 z-30 flex items-center justify-between px-6">
-      <button onClick={onMenuClick} className="lg:hidden">
-        <Menu size={24} className="text-gray-300" />
-      </button>
-      
-      <div className="flex-1" />
-      
-      <div className="flex items-center gap-4">
-        {/* Removed theme toggle button since only dark theme is required */}
-        
+    <header className="fixed top-0 right-0 left-0 z-30 flex h-[var(--docs-header-height)] items-center justify-between border-b border-[var(--docs-hairline)] bg-[var(--docs-canvas-elevated)]/95 px-4 backdrop-blur-sm sm:px-6 lg:left-[var(--docs-sidebar-width)]">
+      <div className="flex min-w-0 items-center gap-3">
+        <button
+          onClick={onMenuClick}
+          className="rounded-[var(--docs-radius-md)] p-2 text-[var(--docs-steel)] hover:bg-[var(--docs-surface)] hover:text-[var(--docs-ink)] lg:hidden"
+          aria-label="Open navigation"
+        >
+          <Menu size={20} />
+        </button>
+        <div className="hidden min-w-0 sm:block">
+          <p className="truncate text-sm text-[var(--docs-stone)]">Documentation</p>
+          <p className="truncate text-sm font-medium text-[var(--docs-ink)]">{breadcrumb}</p>
+        </div>
+      </div>
+
+
+      <div className="flex items-center gap-2">
         <Link
           href="https://www.widgetkraft.com"
-          target='_blank'
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="docs-btn docs-btn-primary !py-2 !text-sm"
         >
           Platform →
         </Link>

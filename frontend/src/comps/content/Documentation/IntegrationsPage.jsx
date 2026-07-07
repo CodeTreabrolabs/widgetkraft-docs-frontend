@@ -1,300 +1,177 @@
-"use client";
+import { CheckCircle, Zap, Bell, MessageSquare } from 'lucide-react';
+import { FaSlack, FaDiscord } from 'react-icons/fa';
+import { SiGooglecalendar } from 'react-icons/si';
+import { TbPlugConnected } from 'react-icons/tb';
+import {
+  DocsPage,
+  DocsArticleHeader,
+  DocsSection,
+  DocsCard,
+  DocsStatCard,
+  DocsScreenshot,
+  DocsCallout,
+  DocsButton,
+} from '@/comps/docs-ui';
+import ConnectButton from './ConnectButton';
 
-import { Zap, CheckCircle, AlertCircle, Settings, Bell, MessageSquare } from 'lucide-react';
-import { FaSlack, FaDiscord } from "react-icons/fa";
-import { SiGooglecalendar } from "react-icons/si";
-import { TbPlugConnected  } from "react-icons/tb";
-
-// Server-side data fetching
-const getIntegrationsData = async () => {
-  return {
-    availableIntegrations: [
-      {
-        id: 1,
-        name: 'Slack',
-        description: 'Get widget notifications directly in Slack',
-        icon: <FaSlack />,
-        status: 'available',
-        category: 'Communication',
-        features: [
-          'Real-time notifications',
-          'Channel routing',
-          'Thread replies',
-          'Custom alerts'
-        ],
-        useCase: 'Perfect for teams that live in Slack. Get instant notifications when users submit feedback, start live chats, or fill out forms.'
-      },
-      {
-        id: 2,
-        name: 'Discord',
-        description: 'Send widget activity updates to Discord channels',
-        icon: <FaDiscord />,
-        status: 'available',
-        category: 'Communication',
-        features: [
-          'Real-time notifications',
-          'Thread replies',
-          'Embed messages',
-          'Activity logs'
-        ],
-        useCase: 'Ideal for community-driven projects. Keep your Discord community informed about feedback and user interactions in real-time.'
-      },
-      {
-        id: 3,
-        name: 'Google Calendar',
-        description: 'Automatically sync events and schedules with Google Calendar',
-        icon: <SiGooglecalendar />,
-        status: 'coming-soon',
-        category: 'Productivity & Scheduling',
-        features: [
-          'Two-way event sync',
-          'Automatic reminders',
-          'Real-time updates',
-          'Multi-calendar support'
-        ],
-        useCase: 'Sync widget-generated events directly to Google Calendar. Ideal for managing bookings, reminders, meetings, and schedules in one place.'
-      },
-    ],
-    summary: {
-      totalIntegrations: 3,
-      availableNow: 2,
-      comingSoon: 1,
-      categories: 2
-    }
-  };
-};
+const getIntegrationsData = async () => ({
+  availableIntegrations: [
+    {
+      id: 1,
+      name: 'Slack',
+      description: 'Get widget notifications directly in Slack',
+      icon: <FaSlack />,
+      status: 'available',
+      category: 'Communication',
+      features: ['Real-time notifications', 'Channel routing', 'Thread replies', 'Custom alerts'],
+      useCase:
+        'Perfect for teams that live in Slack. Get instant notifications when users submit feedback, start live chats, or fill out forms.',
+    },
+    {
+      id: 2,
+      name: 'Discord',
+      description: 'Send widget activity updates to Discord channels',
+      icon: <FaDiscord />,
+      status: 'available',
+      category: 'Communication',
+      features: ['Real-time notifications', 'Thread replies', 'Embed messages', 'Activity logs'],
+      useCase:
+        'Ideal for community-driven projects. Keep your Discord community informed about feedback and user interactions in real-time.',
+    },
+    {
+      id: 3,
+      name: 'Google Calendar',
+      description: 'Automatically sync events and schedules with Google Calendar',
+      icon: <SiGooglecalendar />,
+      status: 'coming-soon',
+      category: 'Productivity & Scheduling',
+      features: ['Two-way event sync', 'Automatic reminders', 'Real-time updates', 'Multi-calendar support'],
+      useCase:
+        'Sync widget-generated events directly to Google Calendar. Ideal for managing bookings, reminders, meetings, and schedules in one place.',
+    },
+  ],
+  summary: {
+    totalIntegrations: 3,
+    availableNow: 2,
+    comingSoon: 1,
+    categories: 2,
+  },
+});
 
 export default async function IntegrationsPage() {
   const integrationsData = await getIntegrationsData();
-  
+
   return (
-    <div className="max-w-4xl">
-      {/* Header */}
-      <div className="mb-10">
-        <div className="flex items-center gap-3 mb-4">
-          <TbPlugConnected size={32} className="text-blue-600" />
-          <div>
-            <h1 className="text-3xl font-bold text-white">Integrations</h1>
-            <p className="text-gray-400">Manage and configure your integrations</p>
-          </div>
-        </div>
-        
-        {/* Summary Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-          <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
-            <p className="text-gray-400 text-xs mb-1">TOTAL</p>
-            <p className="text-2xl font-bold text-white">{integrationsData.summary.totalIntegrations}</p>
-            <p className="text-gray-500 text-xs mt-1">Integrations</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-green-900/50">
-            <p className="text-green-400 text-xs mb-1">AVAILABLE</p>
-            <p className="text-2xl font-bold text-white">{integrationsData.summary.availableNow}</p>
-            <p className="text-gray-500 text-xs mt-1">Ready to use</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-blue-900/50">
-            <p className="text-blue-600 text-xs mb-1">COMING SOON</p>
-            <p className="text-2xl font-bold text-white">{integrationsData.summary.comingSoon}</p>
-            <p className="text-gray-500 text-xs mt-1">In development</p>
-          </div>
-          <div className="bg-gray-800 p-4 rounded-lg border border-purple-900/50">
-            <p className="text-purple-400 text-xs mb-1">CATEGORIES</p>
-            <p className="text-2xl font-bold text-white">{integrationsData.summary.categories}</p>
-            <p className="text-gray-500 text-xs mt-1">Integration types</p>
-          </div>
-        </div>
+    <DocsPage>
+      <DocsArticleHeader
+        icon={TbPlugConnected}
+        title="Integrations"
+        description="Manage and configure your integrations"
+      />
+
+      <div className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <DocsStatCard label="Total" value={integrationsData.summary.totalIntegrations} hint="Integrations" />
+        <DocsStatCard label="Available" value={integrationsData.summary.availableNow} hint="Ready to use" accent />
+        <DocsStatCard label="Coming Soon" value={integrationsData.summary.comingSoon} hint="In development" />
+        <DocsStatCard label="Categories" value={integrationsData.summary.categories} hint="Integration types" />
       </div>
 
-      {/* Screenshot Section */}
-      <div className="bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg p-8 mb-10">
-        <div className="text-center">
-          <img 
-            src="/images/integrations/slack/image.png" 
-            alt="WidgetKraft Integrations Dashboard" 
-            className="mx-auto mb-4 rounded-lg shadow-lg max-w-full" 
-          />
-          <p className="text-gray-300 text-sm">Integrations dashboard showing available connections</p>
-        </div>
-      </div>
+      <DocsScreenshot
+        src="/images/integrations/slack/image.png"
+        alt="WidgetKraft Integrations Dashboard"
+        caption="Integrations dashboard showing available connections"
+      />
 
-      {/* Available Integrations */}
-      <div className="mb-10">
-        <h2 className="text-2xl font-bold text-white mb-6">Available Integrations</h2>
-        
-        <div className="grid md:grid-cols-2 gap-6">
+      <DocsSection id="available-integrations" title="Available Integrations">
+        <div className="grid gap-4 md:grid-cols-2">
           {integrationsData.availableIntegrations.map((integration) => (
-            <div 
-              key={integration.id}
-              className={`bg-gray-800 border rounded-lg p-6 transition-all hover:border-purple-500 ${
-                integration.status === 'available' 
-                  ? 'border-green-700' 
-                  : 'border-gray-700'
-              }`}
-            >
-              {/* Integration Header */}
-              <div className="flex items-start justify-between mb-4">
+            <DocsCard key={integration.id}>
+              <div className="mb-4 flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="text-4xl">{integration.icon}</div>
+                  <div className="text-3xl">{integration.icon}</div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white">{integration.name}</h3>
-                    <p className="text-sm text-gray-400">{integration.category}</p>
+                    <h3 className="text-lg font-semibold text-[var(--docs-ink)]">{integration.name}</h3>
+                    <p className="text-sm text-[var(--docs-stone)]">{integration.category}</p>
                   </div>
                 </div>
-                {integration.status === 'available' ? (
-                  <span className="px-3 py-1 bg-green-900/30 text-green-400 text-xs font-medium rounded-full border border-green-700">
-                    Available
-                  </span>
-                ) : (
-                  <span className="px-3 py-1 bg-blue-900/30 text-blue-600 text-xs font-medium rounded-full border border-blue-700">
-                    Coming Soon
-                  </span>
-                )}
+                <span
+                  className={`rounded-full px-2.5 py-1 text-xs font-medium ${
+                    integration.status === 'available'
+                      ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+                      : 'bg-[var(--docs-accent-soft)] text-blue-300 border border-[var(--docs-accent-border)]'
+                  }`}
+                >
+                  {integration.status === 'available' ? 'Available' : 'Coming Soon'}
+                </span>
               </div>
 
-              {/* Description */}
-              <p className="text-gray-300 text-sm mb-4">{integration.description}</p>
+              <p className="mb-4 text-sm">{integration.description}</p>
 
-              {/* Features */}
-              <div className="mb-4">
-                <p className="text-white font-medium text-sm mb-2">Features:</p>
-                <ul className="space-y-1">
-                  {integration.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-400 text-sm">
-                      <CheckCircle size={14} className="text-purple-500 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="mb-2 text-sm font-medium text-[var(--docs-ink)]">Features</p>
+              <ul className="mb-4 space-y-1 !pl-0 list-none">
+                {integration.features.map((feature) => (
+                  <li key={feature} className="flex items-center gap-2 text-sm">
+                    <CheckCircle size={14} className="shrink-0 text-[var(--docs-accent)]" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-              {/* Use Case */}
-              <div className="bg-gray-900 p-3 rounded-lg mb-4 border border-gray-700">
-                <p className="text-gray-300 text-xs italic">
-                  <strong className="text-white">Use Case:</strong> {integration.useCase}
+              <DocsCard className="!p-3 mb-4 bg-[var(--docs-surface-soft)]">
+                <p className="text-xs italic !mb-0">
+                  <strong className="text-[var(--docs-ink)]">Use Case:</strong> {integration.useCase}
                 </p>
-              </div>
+              </DocsCard>
 
-              {/* Action Button */}
               {integration.status === 'available' ? (
                 <ConnectButton integrationName={integration.name} />
               ) : (
-                <button className="w-full bg-gray-700 text-gray-400 font-medium py-2 px-4 rounded-lg cursor-not-allowed flex items-center justify-center gap-2">
+                <DocsButton variant="secondary" className="w-full justify-center opacity-60 cursor-not-allowed" disabled>
                   <Bell size={16} />
                   Notify Me When Available
-                </button>
+                </DocsButton>
               )}
-            </div>
+            </DocsCard>
           ))}
         </div>
-      </div>
+      </DocsSection>
 
-      {/* Explanation Section */}
-      <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
-        <h2 className="text-2xl font-bold text-white mb-4">About Integrations</h2>
-        
-        <div className="space-y-4 text-gray-300">
-          <p>
-            <strong>Purpose:</strong> Connect your WidgetKraft widgets with your favorite tools and platforms to automate workflows and streamline your operations.
+      <DocsSection id="about-integrations" title="About Integrations">
+        <DocsCard>
+          <p className="mb-4">
+            <strong className="text-[var(--docs-ink)]">Purpose:</strong> Connect your WidgetKraft widgets with
+            your favorite tools and platforms to automate workflows and streamline your operations.
           </p>
-          
-          <div>
-            <p className="font-medium text-white mb-2">What you can do here:</p>
-            <ul className="space-y-2 ml-5 list-disc">
-              <li><strong>Connect Apps:</strong> Link your widgets to communication tools like Slack and Discord</li>
-              <li><strong>Sync Schedules:</strong> Automatically sync widget events to Google Calendar</li>
-              <li><strong>Stay Informed:</strong> Get real-time alerts when users interact with your widgets</li>
-              <li><strong>Automate Workflows:</strong> Set up automatic notifications and event tracking</li>
-              <li><strong>Team Collaboration:</strong> Keep your team in sync with centralized notifications</li>
-            </ul>
-          </div>
-          
-          <div>
-            <p className="font-medium text-white mb-2">Integration Categories:</p>
-            <div className="grid md:grid-cols-2 gap-3 mt-3">
-              <div className="bg-gray-900 p-3 rounded-lg border border-gray-700">
-                <p className="font-medium text-white text-sm mb-1">💬 Communication</p>
-                <p className="text-gray-400 text-xs">Slack & Discord — Stay connected with your team through real-time notifications across your preferred platform</p>
-              </div>
-              <div className="bg-gray-900 p-3 rounded-lg border border-gray-700">
-                <p className="font-medium text-white text-sm mb-1">📅 Productivity & Scheduling</p>
-                <p className="text-gray-400 text-xs">Google Calendar — Manage events and schedules seamlessly</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-4 rounded-lg border border-purple-700/50">
-            <p className="font-medium text-white mb-2 flex items-center gap-2">
-              <Zap size={20} className="text-purple-400" />
-              How Integrations Work:
-            </p>
-            <ol className="space-y-2 ml-5 list-decimal text-sm">
+
+          <h3 className="docs-h3 !mt-0">What you can do here</h3>
+          <ul className="mb-4">
+            <li>Connect apps like Slack and Discord</li>
+            <li>Sync schedules to Google Calendar</li>
+            <li>Get real-time alerts when users interact with your widgets</li>
+            <li>Automate workflows and team collaboration</li>
+          </ul>
+
+          <DocsCallout title="How Integrations Work" icon={Zap}>
+            <ol className="!mb-0 list-decimal pl-4">
               <li>Choose an integration from the available options</li>
-              <li>Click "Connect" and authenticate with the platform</li>
+              <li>Click Connect and authenticate with the platform</li>
               <li>Configure what events trigger notifications or actions</li>
-              <li>Test the integration to ensure it's working correctly</li>
+              <li>Test the integration to ensure it is working correctly</li>
               <li>Your widgets will now automatically sync with the connected service</li>
             </ol>
-          </div>
+          </DocsCallout>
+        </DocsCard>
+      </DocsSection>
 
-          <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">
-            <p className="font-medium text-white mb-2">💡 Example Use Cases:</p>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Slack Integration:</strong> Get instant Slack messages when someone starts a live chat or submits feedback. Perfect for support teams that need immediate notifications.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Discord Integration:</strong> Route widget interactions like bug reports or feature requests to specific Discord channels. Keep your community and team in the loop without switching tools.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Google Calendar Sync:</strong> Automatically create calendar events when users book appointments through your widgets. Keep your schedule organized without manual entry.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Team Coordination:</strong> Use Slack or Discord to route different widget interactions to specific channels — send bug reports to #engineering and feature requests to #product.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <span><strong>Meeting Reminders:</strong> Sync Google Calendar with your booking widgets to send automatic reminders to both you and your clients before scheduled meetings.</span>
-              </li>
-            </ul>
-          </div>
-          
-          <p className="text-gray-400 text-sm italic">
-            More integrations are being added regularly. If you need a specific integration, please reach out to our support team or submit a feature request through the button below.
-          </p>
-        </div>
-      </div>
-
-      {/* Request Integration Section */}
-      <div className="mt-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 p-6 rounded-lg border border-purple-700">
-        <h3 className="text-xl font-bold text-white mb-2">Need a Specific Integration?</h3>
-        <p className="text-gray-300 text-sm mb-4">
-          Don't see the integration you need? Let us know and we'll consider adding it to our roadmap. We're always looking to expand our integration ecosystem.
+      <DocsCallout title="Need a Specific Integration?" icon={MessageSquare}>
+        <p className="!mb-3">
+          Do not see the integration you need? Let us know and we will consider adding it to our roadmap.
         </p>
-        <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition flex items-center gap-2">
-          <MessageSquare size={18} />
+        <DocsButton variant="primary">
+          <MessageSquare size={16} />
           Use Feedback Widget to Request
-        </button>
-      </div>
-    </div>
-  );
-}
-
-// Moved the button click handler to a client-side component
-function ConnectButton({ integrationName }) {
-  const handleClick = () => {
-    window.location.href = 'https://www.widgetkraft.com/signin';
-  };
-
-  return (
-    <button 
-      className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition flex items-center justify-center gap-2"
-      onClick={handleClick}
-    >
-      <Zap size={16} />
-      Connect {integrationName}
-    </button>
+        </DocsButton>
+      </DocsCallout>
+    </DocsPage>
   );
 }

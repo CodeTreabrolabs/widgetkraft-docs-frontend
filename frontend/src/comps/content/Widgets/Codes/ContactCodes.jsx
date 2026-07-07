@@ -147,8 +147,8 @@ export function ContactCodes() {
     <section className="mb-10">
       {/* Heading */}
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-white mb-2">Quick Start</h2>
-        <p className="text-gray-300">
+        <h2 className="text-3xl font-bold text-[var(--docs-ink)] mb-2">Quick Start</h2>
+        <p className="text-[var(--docs-steel)]">
           Copy the snippet for your stack and paste it into your project your contact form is live in under a minute.
         </p>
       </div>
@@ -161,13 +161,13 @@ export function ContactCodes() {
             onClick={() => { setActiveTab(tab.id); setCopied(false); }}
             className={`relative flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-colors rounded-t-lg
               ${activeTab === tab.id
-                ? 'bg-gray-800 text-white border border-b-0 border-gray-700'
-                : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                ? 'bg-gray-800 text-[var(--docs-ink)] border border-b-0 border-gray-700'
+                : 'text-[var(--docs-stone)] hover:text-gray-200 hover:bg-gray-800/50'
               }`}
           >
             {tab.label}
             {tab.badge && (
-              <span className="bg-blue-600 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full leading-none">
+              <span className="bg-blue-600 text-[var(--docs-ink)] text-[10px] font-semibold px-1.5 py-0.5 rounded-full leading-none">
                 {tab.badge}
               </span>
             )}
@@ -176,7 +176,7 @@ export function ContactCodes() {
       </div>
 
       {/* Code panel */}
-      <div className="bg-gray-800 border border-t-0 border-gray-700 rounded-b-lg rounded-tr-lg overflow-hidden">
+      <div className="docs-code-panel">
 
         {/* Toolbar */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-700 bg-gray-900/70">
@@ -191,7 +191,7 @@ export function ContactCodes() {
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all border
                 ${copied
                   ? 'bg-green-600/20 text-green-400 border-green-600/40'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white border-gray-600'
+                  : 'bg-gray-700 text-[var(--docs-steel)] hover:bg-gray-600 hover:text-[var(--docs-ink)] border-gray-600'
                 }`}
             >
               {copied
@@ -203,7 +203,7 @@ export function ContactCodes() {
         </div>
 
         {/* Description (mobile) */}
-        <p className="sm:hidden text-gray-400 text-xs px-5 pt-3">{descMap[activeTab]}</p>
+        <p className="sm:hidden text-[var(--docs-stone)] text-xs px-5 pt-3">{descMap[activeTab]}</p>
 
         {/* Code */}
         <div className="overflow-x-auto px-5 py-4">
@@ -221,19 +221,19 @@ export function ContactCodes() {
         {/* Footer tip */}
         <div className="px-5 py-3 border-t border-gray-700 bg-gray-900/40 flex items-center gap-2">
           <span className="text-blue-400 text-xs font-semibold">TIP</span>
-          <span className="text-gray-400 text-xs">
+          <span className="text-[var(--docs-stone)] text-xs">
             Replace{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               YOUR_WIDGET_ID
             </code>{' '}
             with the ID found in the{' '}
-            <strong className="text-gray-300">Code</strong> tab of your contact form editor.
+            <strong className="text-[var(--docs-steel)]">Code</strong> tab of your contact form editor.
             Change{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               mode
             </code>{' '}
             to{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               &quot;popup&quot;
             </code>{' '}
             to show the form as an overlay instead.

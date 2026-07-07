@@ -258,8 +258,8 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
   return (
     <section className="mb-10">
       <div className="mb-6">
-        <h2 className="text-3xl font-bold text-white mb-2">{title}</h2>
-        <p className="text-gray-300">{description}</p>
+        <h2 className="text-3xl font-bold text-[var(--docs-ink)] mb-2">{title}</h2>
+        <p className="text-[var(--docs-steel)]">{description}</p>
       </div>
 
       <div className="flex items-center gap-1 border-b border-gray-700">
@@ -272,8 +272,8 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
             }}
             className={`relative flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-colors rounded-t-lg
               ${activeTab === tab.id
-                ? 'bg-gray-800 text-white border border-b-0 border-gray-700'
-                : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                ? 'bg-gray-800 text-[var(--docs-ink)] border border-b-0 border-gray-700'
+                : 'text-[var(--docs-stone)] hover:text-gray-200 hover:bg-gray-800/50'
               }`}
           >
             {tab.label}
@@ -281,7 +281,7 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
         ))}
       </div>
 
-      <div className="bg-gray-800 border border-t-0 border-gray-700 rounded-b-lg rounded-tr-lg overflow-hidden">
+      <div className="docs-code-panel">
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-700 bg-gray-900/70">
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-500">
             {active.lang === 'html' ? 'HTML' : 'JavaScript · ' + active.label}
@@ -294,7 +294,7 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all border
                 ${copied
                   ? 'bg-green-600/20 text-green-400 border-green-600/40'
-                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white border-gray-600'
+                  : 'bg-gray-700 text-[var(--docs-steel)] hover:bg-gray-600 hover:text-[var(--docs-ink)] border-gray-600'
                 }`}
             >
               {copied
@@ -305,7 +305,7 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
           </div>
         </div>
 
-        <p className="sm:hidden text-gray-400 text-xs px-5 pt-3">{descMap[activeTab]}</p>
+        <p className="sm:hidden text-[var(--docs-stone)] text-xs px-5 pt-3">{descMap[activeTab]}</p>
 
         <div className="overflow-x-auto px-5 py-4">
           <SyntaxHighlighter
@@ -321,7 +321,7 @@ function CodeTabsSection({ title, description, tabs, codeMap, descMap, tipLabel,
 
         <div className="px-5 py-3 border-t border-gray-700 bg-gray-900/40 flex items-center gap-2 flex-wrap gap-y-1">
           <span className="text-blue-400 text-xs font-semibold">{tipLabel}</span>
-          <span className="text-gray-400 text-xs">{tip}</span>
+          <span className="text-[var(--docs-stone)] text-xs">{tip}</span>
         </div>
       </div>
     </section>
@@ -341,17 +341,17 @@ export function VisitorCodes() {
         tip={(
           <>
             Replace{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               YOUR_WIDGET_ID
             </code>{' '}
             with the ID from the{' '}
-            <strong className="text-gray-300">Code</strong> tab of your analytics editor.{' '}
+            <strong className="text-[var(--docs-steel)]">Code</strong> tab of your analytics editor.{' '}
             Unlike other widgets, the ID is passed via{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               data-widget-id
             </code>{' '}
             no separate{' '}
-            <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">
+            <code className="docs-inline-code text-[11px]">
               init()
             </code>{' '}
             call needed.
@@ -361,15 +361,15 @@ export function VisitorCodes() {
 
       <section className="mb-10">
         <div className="mb-6">
-          <h2 className="text-3xl font-bold text-white mb-2">Track Custom Events with createWidgetKraftEvent()</h2>
-          <p className="text-gray-300">
+          <h2 className="text-3xl font-bold text-[var(--docs-ink)] mb-2">Track Custom Events with createWidgetKraftEvent()</h2>
+          <p className="text-[var(--docs-steel)]">
             Custom events help you understand what your visitors are doing on your website. Use them to track important actions like purchases, signups, downloads, and chatbot opens.
           </p>
         </div>
 
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
-          <p className="text-gray-300 leading-7">
-            Think of custom events as telling WidgetKraft what important action just happened. Once the tracking script is installed, you can call <span className="text-white font-semibold">WidgetKraft.CreateEvent()</span> anywhere in your app.
+        <div className="docs-card mb-6">
+          <p className="text-[var(--docs-steel)] leading-7">
+            Think of custom events as telling WidgetKraft what important action just happened. Once the tracking script is installed, you can call <span className="text-[var(--docs-ink)] font-semibold">WidgetKraft.CreateEvent()</span> anywhere in your app.
           </p>
         </div>
 
@@ -382,17 +382,17 @@ export function VisitorCodes() {
           tipLabel="NOTE"
           tip={(
             <>
-              If you use React or Next.js, keep the helper in a shared <code className="bg-gray-700 px-1 py-0.5 rounded text-gray-300 text-[11px]">lib/widgetkraft</code> file so event tracking stays consistent across the app.
+              If you use React or Next.js, keep the helper in a shared <code className="docs-inline-code text-[11px]">lib/widgetkraft</code> file so event tracking stays consistent across the app.
             </>
           )}
         />
 
-        <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
-          <h3 className="text-xl font-semibold text-white mb-4">Event Types</h3>
+        <div className="docs-card mb-6">
+          <h3 className="text-xl font-semibold text-[var(--docs-ink)] mb-4">Event Types</h3>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-gray-700 text-gray-400">
+                <tr className="border-b border-gray-700 text-[var(--docs-stone)]">
                   <th className="py-3 pr-4 font-medium">Event Type</th>
                   <th className="py-3 font-medium">When to Use</th>
                 </tr>
@@ -400,8 +400,8 @@ export function VisitorCodes() {
               <tbody>
                 {eventTypes.map((eventType) => (
                   <tr key={eventType.type} className="border-b border-gray-700/70 last:border-b-0">
-                    <td className="py-3 pr-4 align-top text-white">{eventType.type}</td>
-                    <td className="py-3 align-top text-gray-300">{eventType.whenToUse}</td>
+                    <td className="py-3 pr-4 align-top text-[var(--docs-ink)]">{eventType.type}</td>
+                    <td className="py-3 align-top text-[var(--docs-steel)]">{eventType.whenToUse}</td>
                   </tr>
                 ))}
               </tbody>
@@ -410,12 +410,12 @@ export function VisitorCodes() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-5">
-            <h3 className="text-xl font-semibold text-white mb-3">Event Properties</h3>
-            <p className="text-gray-300 leading-7 mb-4">
+          <div className="docs-card">
+            <h3 className="text-xl font-semibold text-[var(--docs-ink)] mb-3">Event Properties</h3>
+            <p className="text-[var(--docs-steel)] leading-7 mb-4">
               Send extra information with every event so you can analyze which plan was purchased, how much was spent, which coupon was used, or which button was clicked.
             </p>
-            <div className="bg-gray-900/70 rounded-md p-4 text-sm text-gray-300 overflow-x-auto">
+            <div className="bg-gray-900/70 rounded-md p-4 text-sm text-[var(--docs-steel)] overflow-x-auto">
               <pre className="whitespace-pre-wrap leading-6">{`createWidgetKraftEvent({
   eventType: "purchase",
   eventName: "Pro Plan Purchased",
@@ -429,9 +429,9 @@ export function VisitorCodes() {
             </div>
           </div>
 
-          <div className="bg-gray-800 border border-gray-700 rounded-lg p-5">
-            <h3 className="text-xl font-semibold text-white mb-3">Best Practices</h3>
-            <ul className="text-gray-300 space-y-3 leading-7">
+          <div className="docs-card">
+            <h3 className="text-xl font-semibold text-[var(--docs-ink)] mb-3">Best Practices</h3>
+            <ul className="text-[var(--docs-steel)] space-y-3 leading-7">
               <li>Track important actions like purchases, signups, and downloads.</li>
               <li>Give events clear names such as Checkout Started or Purchase Completed.</li>
               <li>Add helpful properties whenever you can to make reporting more useful.</li>
@@ -441,8 +441,8 @@ export function VisitorCodes() {
         </div>
 
         <div className="mt-6 bg-blue-900/20 border border-blue-800/40 rounded-lg p-5">
-          <h3 className="text-xl font-semibold text-white mb-3">Example</h3>
-          <div className="bg-gray-900/70 rounded-md p-4 text-sm text-gray-300 overflow-x-auto">
+          <h3 className="text-xl font-semibold text-[var(--docs-ink)] mb-3">Example</h3>
+          <div className="bg-gray-900/70 rounded-md p-4 text-sm text-[var(--docs-steel)] overflow-x-auto">
             <pre className="whitespace-pre-wrap leading-6">{`createWidgetKraftEvent({
   eventType: "checkout",
   eventName: "Checkout Started",
@@ -453,7 +453,7 @@ export function VisitorCodes() {
   },
 });`}</pre>
           </div>
-          <p className="text-gray-300 text-sm mt-4 leading-7">
+          <p className="text-[var(--docs-steel)] text-sm mt-4 leading-7">
             Every time this code runs, WidgetKraft records the event so you can see it in your analytics dashboard and build better reports, funnels, and customer journeys.
           </p>
         </div>

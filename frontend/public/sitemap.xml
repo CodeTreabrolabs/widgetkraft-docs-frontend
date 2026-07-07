@@ -83,11 +83,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://docs.widgetkraft.com/plans-usage</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://docs.widgetkraft.com/best-practices</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>

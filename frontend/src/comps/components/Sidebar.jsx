@@ -1,202 +1,182 @@
 'use client';
 
-import { Home, BookOpen, SquareLibrary, Layers, Package, DollarSign, Lightbulb, Shield, X, ChevronDown, ChevronRight, LayoutDashboard } from 'lucide-react';
+import {
+  Home,
+  BookOpen,
+  SquareLibrary,
+  Layers,
+  Package,
+  Lightbulb,
+  Shield,
+  X,
+  ChevronDown,
+  ChevronRight,
+  LayoutDashboard,
+} from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { LuCreditCard } from "react-icons/lu";
-import { TbMessageChatbot, TbPlugConnected  } from "react-icons/tb";
-import { TiContacts, TiEdit } from "react-icons/ti";
-import { HiChatBubbleLeftRight } from "react-icons/hi2";
-import { HiMiniUserGroup } from "react-icons/hi2";
-import { FaDiscord, FaSlack } from "react-icons/fa";
-import { BsEnvelopePaper } from "react-icons/bs";
+import { TbMessageChatbot, TbPlugConnected } from 'react-icons/tb';
+import { TiContacts, TiEdit } from 'react-icons/ti';
+import { HiChatBubbleLeftRight, HiMiniUserGroup } from 'react-icons/hi2';
+import { FaDiscord, FaSlack } from 'react-icons/fa';
+import { BsEnvelopePaper } from 'react-icons/bs';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
   const [expandedSections, setExpandedSections] = useState({
-    'available-widgets': false // Start collapsed by default
+    'available-widgets': false,
+    integrations: false,
   });
 
-  // Navigation items with sub-items
   const navItems = [
     { id: '', label: 'Home', icon: Home, section: 'Getting Started' },
     { id: 'introduction', label: 'Introduction', icon: BookOpen, section: 'Getting Started' },
     { id: 'platform-concepts', label: 'Platform Concepts', icon: Layers, section: 'Getting Started' },
     { id: 'dashboards', label: 'Analytics Dashboard', icon: LayoutDashboard, section: 'Core Features' },
-    { 
-      id: 'available-widgets', 
-      label: 'Available Widgets', 
-      icon: Package, 
+    {
+      id: 'available-widgets',
+      label: 'Available Widgets',
+      icon: Package,
       section: 'Core Features',
       hasSubItems: true,
       subItems: [
-        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot',icon: TbMessageChatbot },
+        { id: 'available-widgets/ai-chatbot-widget', label: 'AI Chatbot', icon: TbMessageChatbot },
         { id: 'available-widgets/comment-chaos', label: 'Comment Chaos', icon: BsEnvelopePaper },
         { id: 'available-widgets/contactform-widget', label: 'Contact Forms', icon: TiContacts },
         { id: 'available-widgets/feedback-loop', label: 'Feedback Loop', icon: TiEdit },
         { id: 'available-widgets/visitor-tracker-analysis', label: 'Know Your Visitor', icon: HiMiniUserGroup },
         { id: 'available-widgets/live-conversation', label: 'Live Conversation', icon: HiChatBubbleLeftRight },
-        // { id: 'available-widgets/meet-scheduler', label: 'AI Meet Scheduler' }
-      ]
+      ],
     },
     { id: 'my-widgets', label: 'My Widgets', icon: SquareLibrary, section: 'Core Features' },
-    { 
-      id: 'integrations', 
-      label: 'Integrations', 
-      icon: TbPlugConnected, 
+    {
+      id: 'integrations',
+      label: 'Integrations',
+      icon: TbPlugConnected,
       section: 'Core Features',
       hasSubItems: true,
       subItems: [
-        { id: 'integrations/connect-slack', label: 'Slack',icon: FaSlack },
-        { id: 'integrations/connect-discord', label: 'Discord',icon: FaDiscord },
-      ]
+        { id: 'integrations/connect-slack', label: 'Slack', icon: FaSlack },
+        { id: 'integrations/connect-discord', label: 'Discord', icon: FaDiscord },
+      ],
     },
-    { id: 'plans-usage', label: 'Plans & Usage', icon: LuCreditCard, section: 'Core Features' },
     { id: 'best-practices', label: 'Best Practices', icon: Lightbulb, section: 'Guides' },
-    { id: 'security-privacy', label: 'Security & Privacy', icon: Shield, section: 'Guides' }
+    { id: 'security-privacy', label: 'Security & Privacy', icon: Shield, section: 'Guides' },
   ];
 
-  const sections = [...new Set(navItems.map(item => item.section))];
+  const sections = [...new Set(navItems.map((item) => item.section))];
 
-  // Check if mobile on mount and resize
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle click for mobile close
   const handleLinkClick = () => {
-    if (isMobile) {
-      onClose();
-    }
+    if (isMobile) onClose();
   };
 
-  // Toggle sub-items visibility
   const toggleSection = (sectionId, e) => {
-    e.stopPropagation(); // Prevent link click when clicking chevron
+    e.stopPropagation();
     e.preventDefault();
-    setExpandedSections(prev => ({
+    setExpandedSections((prev) => ({
       ...prev,
-      [sectionId]: !prev[sectionId]
+      [sectionId]: !prev[sectionId],
     }));
   };
 
-  // Auto-expand if a sub-item is active
-  useEffect(() => {
-    const activeSection = navItems.find(item => 
-      item.hasSubItems && item.subItems?.some(subItem => 
-        pathname === `/${subItem.id}`
-      )
-    );
-    
-    if (activeSection) {
-      setExpandedSections(prev => ({
-        ...prev,
-        [activeSection.id]: true
-      }));
-    }
-  }, [pathname]);
+  const linkClass = (active) =>
+    `flex w-full items-center gap-2.5 rounded-[var(--docs-radius-sm)] px-3 py-2 text-sm transition-colors ${
+      active
+        ? 'bg-[var(--docs-surface-hover)] font-medium text-[var(--docs-ink)]'
+        : 'text-[var(--docs-stone)] hover:bg-[var(--docs-surface)] hover:text-[var(--docs-charcoal)]'
+    }`;
 
   return (
     <>
-      {/* Mobile Overlay */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm z-40 lg:hidden"
+        <div
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
-      
-      {/* Sidebar */}
-      <aside 
-        className={`fixed top-0 left-0 h-full bg-black text-gray-300 w-64 border-r border-gray-800 z-50 transform transition-transform duration-300 ease-in-out ${
+
+      <aside
+        className={`fixed top-0 left-0 z-50 flex h-full w-[var(--docs-sidebar-width)] flex-col border-r border-[var(--docs-hairline)] bg-[var(--docs-canvas-elevated)] transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 flex flex-col`}
+        } lg:translate-x-0`}
       >
-        <div className="sticky top-0 p-4 border-b border-gray-800 h-16 bg-black z-10 shrink-0">
-          <div className="flex items-center justify-between">
-            <img src="/widgetkraft_logo.png" alt="WidgetKraft Logo" className="h-7 w-auto" />
-            <h1 className="text-xl font-bold text-white">
-              WidgetKraft<span className="text-blue-600"> Docs</span>
-            </h1>
-            <button onClick={onClose} className="lg:hidden">
-              <X size={20} className="text-gray-300" />
-            </button>
+        <div className="flex h-[var(--docs-header-height)] shrink-0 items-center justify-between border-b border-[var(--docs-hairline)] px-4">
+          <div className="flex min-w-0 items-center gap-2">
+            <img src="/widgetkraft_logo.png" alt="WidgetKraft" className="h-6 w-auto" />
+            <span className="truncate text-sm font-semibold text-[var(--docs-ink)]">
+              WidgetKraft <span className="text-[var(--docs-accent)]">Docs</span>
+            </span>
           </div>
+          <button
+            onClick={onClose}
+            className="rounded-[var(--docs-radius-sm)] p-1.5 text-[var(--docs-stone)] hover:bg-[var(--docs-surface)] lg:hidden"
+            aria-label="Close navigation"
+          >
+            <X size={18} />
+          </button>
         </div>
-        
-        <nav className="p-4 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-600 scrollbar-track-transparent">
-          {sections.map(section => (
-            <div key={section} className="mb-6">
-              <h3 className="text-xs font-semibold uppercase mb-2 text-gray-500">
-                {section}
-              </h3>
+
+        <nav className="flex-1 overflow-y-auto p-3">
+          {sections.map((section) => (
+            <div key={section} className="mb-5">
+              <h3 className="docs-eyebrow mb-2 px-3">{section}</h3>
               {navItems
-                .filter(item => item.section === section)
-                .map(item => {
+                .filter((item) => item.section === section)
+                .map((item) => {
                   const Icon = item.icon;
                   const isActive = item.id === '' ? pathname === '/' : pathname === `/${item.id}`;
                   const href = item.id === '' ? '/' : `/${item.id}`;
                   const hasSubItems = item.hasSubItems;
-                  const isExpanded = expandedSections[item.id];
-                  
-                  // Check if any sub-item is active
-                  const isSubItemActive = hasSubItems && item.subItems?.some(subItem => 
-                    pathname === `/${subItem.id}`
-                  );
-                  
+                  const isSubItemActive =
+                    hasSubItems &&
+                    item.subItems?.some((subItem) => pathname === `/${subItem.id}`);
+                  const isExpanded = expandedSections[item.id] || isSubItemActive;
+
                   return (
-                    <div key={item.id || 'home'} className="mb-1">
+                    <div key={item.id || 'home'} className="mb-0.5">
                       {hasSubItems ? (
                         <>
-                          <Link
-                            href={href}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors group ${
-                              isActive || isSubItemActive ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'
-                            }`}
-                            onClick={handleLinkClick}
-                          >
-                            <div className="flex items-center gap-3">
-                              <Icon size={18} />
-                              <span className="text-sm">{item.label}</span>
-                            </div>
+                          <div className="flex items-center">
+                            <Link
+                              href={href}
+                              className={`${linkClass(isActive || isSubItemActive)} flex-1`}
+                              onClick={handleLinkClick}
+                            >
+                              <Icon size={16} className="shrink-0 opacity-80" />
+                              <span className="truncate">{item.label}</span>
+                            </Link>
                             <button
                               onClick={(e) => toggleSection(item.id, e)}
-                              className="p-1 hover:bg-gray-700 rounded transition-colors"
-                              aria-label={isExpanded ? "Collapse sub-items" : "Expand sub-items"}
+                              className="rounded-[var(--docs-radius-sm)] p-1.5 text-[var(--docs-stone)] hover:bg-[var(--docs-surface)]"
+                              aria-label={isExpanded ? 'Collapse' : 'Expand'}
                             >
-                              {isExpanded ? (
-                                <ChevronDown size={16} />
-                              ) : (
-                                <ChevronRight size={16} />
-                              )}
+                              {isExpanded ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
                             </button>
-                          </Link>
-                          
-                          {/* Sub-items */}
+                          </div>
+
                           {isExpanded && (
-                            <div className="ml-4 mt-1 space-y-1">
+                            <div className="mt-0.5 ml-3 space-y-0.5 border-l border-[var(--docs-hairline)] pl-2">
                               {item.subItems?.map((subItem) => {
+                                const SubIcon = subItem.icon;
                                 const isSubActive = pathname === `/${subItem.id}`;
                                 return (
                                   <Link
                                     key={subItem.id}
                                     href={`/${subItem.id}`}
-                                    className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-                                      isSubActive ? 'bg-blue-600/80 text-white' : 'text-gray-300 hover:bg-gray-800'
-                                    }`}
+                                    className={linkClass(isSubActive)}
                                     onClick={handleLinkClick}
                                   >
-                                    <span className="text-xs ml-1">{subItem.icon && <subItem.icon size={12} />}</span>
-                                    <span className="text-sm">{subItem.label}</span>
+                                    {SubIcon && <SubIcon size={14} className="shrink-0 opacity-70" />}
+                                    <span className="truncate text-[13px]">{subItem.label}</span>
                                   </Link>
                                 );
                               })}
@@ -206,13 +186,11 @@ const Sidebar = ({ isOpen, onClose }) => {
                       ) : (
                         <Link
                           href={href}
-                          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
-                            isActive ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-gray-800'
-                          }`}
+                          className={linkClass(isActive)}
                           onClick={handleLinkClick}
                         >
-                          <Icon size={18} />
-                          <span className="text-sm">{item.label}</span>
+                          <Icon size={16} className="shrink-0 opacity-80" />
+                          <span className="truncate">{item.label}</span>
                         </Link>
                       )}
                     </div>
